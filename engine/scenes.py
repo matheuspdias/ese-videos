@@ -711,3 +711,150 @@ SLOTS = {
     'quarto_noite': dict(a=(760, 1010, 1.0)),
     'onibus': dict(a=(300, 870, 0.85), b=(1030, 870, 0.9), c=(1290, 870, 0.9)),
 }
+
+
+# ---------------------------------------------------------------- ep03: porão-bunker da escola
+def dog_doodle(ctx, x, y, s, col='#FFFFFF', ink=(0.12, 0.1, 0.2), crown=False):
+    """cachorrinho em giz (o desenho da Bia)."""
+    ctx.save(); ctx.translate(x, y); ctx.scale(s, s)
+    ctx.set_line_width(6); ctx.set_line_cap(cairo.LINE_CAP_ROUND)
+    ctx.arc(0, 0, 40, 0, TAU); setc(ctx, col); ctx.fill_preserve()
+    ctx.set_source_rgba(*ink, 1); ctx.stroke()
+    for sx in (-1, 1):
+        ctx.save(); ctx.translate(sx * 36, -6); ctx.rotate(sx * 0.35); ctx.scale(0.45, 1)
+        ctx.arc(0, 0, 30, 0, TAU); ctx.restore()
+        ctx.set_source_rgba(0.55, 0.35, 0.2, 1); ctx.fill_preserve(); ctx.set_source_rgba(*ink, 1); ctx.stroke()
+        ctx.arc(sx * 14, -8, 5, 0, TAU); ctx.fill()
+    ctx.arc(0, 10, 8, 0, TAU); ctx.fill()
+    ctx.arc(0, 18, 12, 0.2, TAU / 2 - 0.2); ctx.stroke()
+    if crown:
+        ctx.move_to(-26, -38); ctx.line_to(-26, -66); ctx.line_to(-12, -50); ctx.line_to(0, -72)
+        ctx.line_to(12, -50); ctx.line_to(26, -66); ctx.line_to(26, -38); ctx.close_path()
+        fill_stroke(ctx, '#FFD23F', 4)
+    ctx.restore()
+
+
+MURAL = [(660, 250, 'MÃE', 1.1), (820, 300, 'VÓ CIDA', 1.1), (1110, 300, 'DAVI', 1.1), (1270, 250, 'SEU JORGE', 1.1),
+         (660, 455, 'PROF. NEIDE', 1.0), (1330, 450, 'SEU VALDIR', 1.1), (760, 520, 'TIA MARTA', 1.0),
+         (1170, 520, 'PADARIA', 1.0), (965, 420, 'LARI', 1.7)]
+
+
+def porao(rotina=False, mural=0, night=False):
+    def f(ctx, t):
+        # parede de blocos
+        wall(ctx, '#6C7A89', 800)
+        ctx.set_source_rgba(0, 0, 0, 0.12); ctx.set_line_width(3)
+        for r in range(0, 11):
+            y = 40 + r * 75
+            ctx.move_to(0, y); ctx.line_to(W, y); ctx.stroke()
+            for k in range(0, 14):
+                x = k * 160 + (80 if r % 2 else 0)
+                ctx.move_to(x, y); ctx.line_to(x, y + 75); ctx.stroke()
+        # canos no teto
+        for y, c in ((30, '#9E2A2B'), (62, '#ADB5BD')):
+            rect(ctx, 0, y, W, 22, c, lw=4)
+        # janelinha alta com grade
+        rr(ctx, 230, 110, 330, 170, 6, '#3D405B')
+        g = cairo.LinearGradient(0, 120, 0, 270)
+        if night:
+            g.add_color_stop_rgb(0, 0.08, 0.1, 0.25); g.add_color_stop_rgb(1, 0.2, 0.18, 0.4)
+        else:
+            g.add_color_stop_rgb(0, 0.55, 0.85, 1); g.add_color_stop_rgb(1, 0.6, 0.85, 0.5)
+        ctx.rectangle(245, 125, 300, 140); ctx.set_source(g); ctx.fill()
+        for k in range(1, 6):
+            rect(ctx, 245 + k * 50 - 5, 125, 10, 140, '#495057', lw=2)
+        if not night:
+            ctx.move_to(245, 265); ctx.line_to(545, 265); ctx.line_to(900, 800); ctx.line_to(300, 800); ctx.close_path()
+            ctx.set_source_rgba(1, 0.97, 0.8, 0.10); ctx.fill()
+        # porta de cofre com o relógio
+        ctx.arc(1660, 470, 240, 0, TAU); fill_stroke(ctx, '#8D99AE', 8)
+        ctx.arc(1660, 470, 200, 0, TAU); fill_stroke(ctx, '#ADB5BD', 5)
+        ctx.set_source_rgba(*OUT); ctx.set_line_width(14)
+        for k in range(6):
+            a = k * TAU / 6 + t * 0.0
+            ctx.move_to(1660, 470); ctx.line_to(1660 + 110 * math.cos(a), 470 + 110 * math.sin(a)); ctx.stroke()
+        ctx.arc(1660, 470, 34, 0, TAU); fill_stroke(ctx, '#495057', 5)
+        rr(ctx, 1560, 190, 200, 70, 10, '#1B1B1E')
+        text(ctx, '30 DIAS', 1660, 240, 40, '#FF4D4D')
+        # prateleira com caixas
+        rect(ctx, 20, 430, 300, 16, '#7F5539', lw=4)
+        rect(ctx, 20, 600, 300, 16, '#7F5539', lw=4)
+        for x, y, w, h, c in ((40, 340, 120, 90, '#D4A373'), (170, 370, 130, 60, '#E9C46A'), (50, 520, 250, 80, '#D4A373')):
+            rect(ctx, x, y, w, h, c, lw=4)
+        text(ctx, 'FESTA JUNINA', 175, 572, 26, '#5C3D2E', bold=True)
+        if rotina:
+            ctx.save(); ctx.translate(335, 330); ctx.rotate(-0.03)
+            rect(ctx, 0, 0, 230, 290, '#FFFFFF', lw=4)
+            for k, s in enumerate(('7h acordar', '8h aula', '12h marmita', '15h dama', '21h estrelas')):
+                text(ctx, s, 115, 50 + k * 52, 26, '#1D3557', bold=True)
+            ctx.restore()
+        for k, (x, y, name, sc) in enumerate(MURAL[:mural]):
+            dog_doodle(ctx, x, y, sc, crown=(name == 'LARI'))
+            text(ctx, name, x, y + 50 + 30 * sc, 26 if sc < 1.5 else 34, '#FFFFFF', outline='#1B1B1E', lw=7)
+        floor(ctx, 800, '#4A4E69')
+        # colchonetes
+        rr(ctx, 380, 880, 380, 60, 14, '#3A86FF')
+        rr(ctx, 1100, 880, 380, 60, 14, '#FF5D8F')
+        # lâmpada pendurada
+        ctx.set_source_rgba(*OUT); ctx.set_line_width(4)
+        ctx.move_to(960, 84); ctx.line_to(960, 170); ctx.stroke()
+        ctx.arc(960, 185, 22, 0, TAU); fill_stroke(ctx, '#FFF3B0', 4)
+        if night:
+            ctx.rectangle(0, 0, W, H); ctx.set_source_rgba(0.04, 0.04, 0.18, 0.45); ctx.fill()
+            rg = cairo.RadialGradient(960, 185, 10, 960, 185, 700)
+            rg.add_color_stop_rgba(0, 1, 0.9, 0.6, 0.35); rg.add_color_stop_rgba(1, 1, 0.9, 0.6, 0)
+            ctx.rectangle(0, 0, W, H); ctx.set_source(rg); ctx.fill()
+    return f
+
+
+def fg_cortina(ctx, t):
+    """cortina de cobertores no meio do porão: o lado dela e o seu lado."""
+    ctx.set_source_rgba(*OUT); ctx.set_line_width(5)
+    ctx.move_to(880, 300); ctx.line_to(1040, 300); ctx.stroke()
+    for k, c in enumerate(('#E76F51', '#2A9D8F', '#E9C46A')):
+        x = 880 + k * 54
+        sw = 4 * math.sin(t * 1.3 + k)
+        ctx.move_to(x, 300); ctx.line_to(x + 54, 300); ctx.line_to(x + 58 + sw, 1000); ctx.line_to(x - 2 + sw, 1000); ctx.close_path()
+        fill_stroke(ctx, c, 4)
+
+
+def bg_grade(ctx, t):
+    """lado de fora: a janelinha do porão rente ao chão, no fundo da escola."""
+    g = cairo.LinearGradient(0, 0, 0, 500)
+    g.add_color_stop_rgb(0, 0.5, 0.78, 0.98); g.add_color_stop_rgb(1, 0.82, 0.93, 1)
+    ctx.rectangle(0, 0, W, 800); ctx.set_source(g); ctx.fill()
+    for x, y, r in ((1500, 120, 50), (1560, 100, 64), (1630, 125, 46)):
+        ctx.arc(x, y, r, 0, TAU); ctx.set_source_rgba(1, 1, 1, 0.95); ctx.fill()
+    rect(ctx, -10, 200, W + 20, 640, '#F4D35E')
+    rect(ctx, -10, 200, W + 20, 40, '#EE964B')
+    for x in (200, 700, 1220, 1700):
+        window(ctx, x - 110, 300, 220, 200)
+    floor(ctx, 840, '#74C69D')
+    # janelinha do porão
+    rr(ctx, 820, 690, 280, 150, 6, '#3D405B')
+    ctx.rectangle(835, 705, 250, 125); ctx.set_source_rgba(0.08, 0.08, 0.15, 1); ctx.fill()
+    for k in range(1, 5):
+        rect(ctx, 835 + k * 50 - 5, 705, 10, 125, '#6C757D', lw=2)
+    # placa
+    rr(ctx, 830, 560, 260, 100, 10, '#FFFFFF')
+    text(ctx, 'NÃO ALIMENTE', 960, 602, 26, '#C9184A')
+    text(ctx, 'OS ALUNOS', 960, 640, 26, '#C9184A')
+
+
+BG.update({
+    'porao': (porao(), None),
+    'porao_cortina': (porao(), fg_cortina),
+    'porao_rotina': (porao(rotina=True), fg_cortina),
+    'porao_noite': (porao(rotina=True, night=True), fg_cortina),
+    'porao_mural': (porao(rotina=True, mural=len(MURAL)), None),
+    'porao_meio': (porao(rotina=True, mural=5), None),
+    'grade': (bg_grade, None),
+})
+SLOTS.update({
+    'porao': dict(a=(640, 960, 0.92), b=(1280, 960, 0.92), c=(960, 960, 0.92)),
+    'grade': dict(a=(560, 1010, 0.95), b=(1360, 1010, 0.95), c=(1640, 1010, 0.9), d=(300, 1010, 0.9)),
+})
+SLOTS['porao_meio'] = SLOTS['porao']
+for _k in ('porao_cortina', 'porao_rotina', 'porao_noite'):
+    SLOTS[_k] = dict(a=(620, 960, 0.92), b=(1300, 960, 0.92))
+SLOTS['porao_mural'] = dict(SLOTS['porao'], d=(360, 1000, 0.9), e=(1560, 1000, 0.9), f=(1780, 1010, 0.85), g=(160, 1010, 0.85))

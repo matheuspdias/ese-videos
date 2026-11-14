@@ -793,6 +793,19 @@ def draw_frame(ctx, ep, clips, shots, envs, t):
     if 'bolo' in fx and sc['bg'] == 'jantar':
         from .chars import draw_prop
         draw_prop(ctx, 'bolo', 1100, 752, 1)
+    if 'marmita' in fx and sc['bg'].startswith('porao'):
+        # marmita descendo pela corda da janelinha
+        k = ease(min(u / 1.4, 1))
+        by = 270 + (720 - 270) * k
+        ctx.set_source_rgba(0.85, 0.75, 0.55, 1); ctx.set_line_width(6)
+        ctx.move_to(395, 265); ctx.line_to(395 + 4 * math.sin(t * 3), by - 40); ctx.stroke()
+        rrect(ctx, 335, by - 40, 120, 80, 10); fill_stroke(ctx, '#ADB5BD', 5)
+        rrect(ctx, 325, by - 52, 140, 22, 8); fill_stroke(ctx, '#E63946', 5)
+    if 'bolachas' in fx and sc['bg'].startswith('porao'):
+        rrect(ctx, 820, 900, 280, 70, 14); fill_stroke(ctx, '#FFFFFF', 4)
+        n = 11 if 'bolachas_11' in fx else 12
+        for k in range(n):
+            ctx.arc(855 + (k % 6) * 42, 922 + (k // 6) * 28, 17, 0, TAU); fill_stroke(ctx, '#C68B59', 3)
     # barras
     for cid, (start, kf) in shot['bars'].items():
         info, s = heads[cid]
