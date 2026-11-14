@@ -339,15 +339,15 @@ def overlay(ctx, fx, u, dur, t, shot):
         text(ctx, 'E VOCÊ?', 1390, 380, 96, '#FFD23F', outline='#10002B', lw=12)
         text(ctx, 'quem você olharia', 1390, 480, 54, '#FFFFFF')
         text(ctx, 'primeiro?', 1390, 550, 54, '#FFFFFF')
-        if p > 0.6:
-            b = ease((p - 0.6) / 0.1)
+        if p > 0.25:
+            b = ease((p - 0.25) / 0.08)
             ctx.save(); ctx.translate(1390, 680); ctx.scale(b, b)
             rrect(ctx, -260, -50, 520, 100, 50)
             ctx.set_source_rgba(1, 0.25, 0.6, 1); ctx.fill()
             text(ctx, 'COMENTA AQUI', 0, 18, 48, '#FFFFFF')
             ctx.restore()
-        if p > 0.75:
-            b = ease((p - 0.75) / 0.1)
+        if p > 0.4:
+            b = ease((p - 0.4) / 0.08)
             ctx.save(); ctx.translate(1390, 880); ctx.scale(b, b)
             rrect(ctx, -330, -46, 660, 92, 46)
             ctx.set_source_rgba(0.9, 0.1, 0.15, 1); ctx.fill()
