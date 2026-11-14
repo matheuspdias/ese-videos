@@ -37,6 +37,7 @@ def rrect(ctx, x, y, w, h, r):
 
 OUT = (0.07, 0.07, 0.09, 1)  # cor do contorno
 LW = 7  # espessura do contorno (em unidades do personagem)
+FACE = (0.16, 0.09, 0.07, 1)  # traços do rosto (boca, sobrancelha, olho fechado)
 
 
 def fill_stroke(ctx, fill, lw=LW):
@@ -49,19 +50,19 @@ def fill_stroke(ctx, fill, lw=LW):
 
 # ---------------------------------------------------------------- elenco
 CAST = {
-    'voce':   dict(name='Você', shirt='#1FA95B', pants='#2B3A55', shoes='#F2F2F2', kind='hoodie', hair=None, extra='fone', h=1.0),
-    'bia':    dict(name='Bia', shirt='#F4A6C0', pants='#3D4F8A', shoes='#FFFFFF', kind='tee', hair='long', hair_c='#6B3B22', extra='presilha', h=0.97),
-    'davi':   dict(name='Davi', shirt='#2F7DE1', pants='#333B44', shoes='#E94B3C', kind='tee', hair='curly', hair_c='#2A1C14', extra=None, h=1.03),
-    'lari':   dict(name='Lari', shirt='#FFD23F', pants='#9B5DE5', shoes='#FF6B9A', kind='tee', hair='pigtails', hair_c='#5A3420', extra=None, h=0.72),
-    'vo':     dict(name='Vó Cida', shirt='#B37BC9', pants='#B37BC9', shoes='#6E4A3A', kind='dress', hair='bun', hair_c='#D9D9D9', extra='oculos', h=0.9),
-    'mae':    dict(name='Mãe', shirt='#E8664F', pants='#2E4057', shoes='#3A2A22', kind='tee', hair='ponytail', hair_c='#3B2416', extra=None, h=0.98),
-    'tia':    dict(name='Tia Marta', shirt='#2EC4B6', pants='#2EC4B6', shoes='#C9184A', kind='dress', hair='bigcurls', hair_c='#C1440E', extra='brinco', h=0.96),
-    'jorge':  dict(name='Seu Jorge', shirt='#5C6B73', pants='#3A3F44', shoes='#222222', kind='tee', hair='cap', hair_c='#2D3E50', extra='bigode', h=1.02),
-    'prof':   dict(name='Professor', shirt='#F1F1F1', pants='#4A4E69', shoes='#3A2A22', kind='shirt', hair='bald', hair_c='#555555', extra='oculos', h=1.02),
-    'aluno1': dict(name='Aluno', shirt='#F77F00', pants='#264653', shoes='#FFFFFF', kind='tee', hair='short', hair_c='#2A1C14', extra=None, h=0.98),
-    'aluno2': dict(name='Aluna', shirt='#8AC926', pants='#3D405B', shoes='#FFFFFF', kind='tee', hair='long', hair_c='#1B1B1B', extra=None, h=0.95),
-    'aluno3': dict(name='Aluno', shirt='#6A4C93', pants='#22333B', shoes='#FFFFFF', kind='hoodie', hair='short', hair_c='#4A2C17', extra=None, h=1.0),
-    'aluno4': dict(name='Aluna', shirt='#FF595E', pants='#1D3557', shoes='#FFFFFF', kind='tee', hair='ponytail', hair_c='#E2B04A', extra=None, h=0.95),
+    'voce':   dict(skin='#B9784A', name='Você', shirt='#1FA95B', pants='#2B3A55', shoes='#F2F2F2', kind='hoodie', hair='short', hair_c='#2A1C14', extra='fone', h=1.0),
+    'bia':    dict(skin='#F1C9A0', name='Bia', shirt='#F4A6C0', pants='#3D4F8A', shoes='#FFFFFF', kind='tee', hair='long', hair_c='#6B3B22', extra='presilha', h=0.97),
+    'davi':   dict(skin='#7A4A2A', name='Davi', shirt='#2F7DE1', pants='#333B44', shoes='#E94B3C', kind='tee', hair='curly', hair_c='#2A1C14', extra=None, h=1.03),
+    'lari':   dict(skin='#C68A5C', name='Lari', shirt='#FFD23F', pants='#9B5DE5', shoes='#FF6B9A', kind='tee', hair='pigtails', hair_c='#5A3420', extra=None, h=0.72),
+    'vo':     dict(skin='#D9A27A', name='Vó Cida', shirt='#B37BC9', pants='#B37BC9', shoes='#6E4A3A', kind='dress', hair='bun', hair_c='#D9D9D9', extra='oculos', h=0.9),
+    'mae':    dict(skin='#B07247', name='Mãe', shirt='#E8664F', pants='#2E4057', shoes='#3A2A22', kind='tee', hair='ponytail', hair_c='#3B2416', extra=None, h=0.98),
+    'tia':    dict(skin='#F3D3B5', name='Tia Marta', shirt='#2EC4B6', pants='#2EC4B6', shoes='#C9184A', kind='dress', hair='bigcurls', hair_c='#C1440E', extra='brinco', h=0.96),
+    'jorge':  dict(skin='#5E3A22', name='Seu Jorge', shirt='#5C6B73', pants='#3A3F44', shoes='#222222', kind='tee', hair='cap', hair_c='#2D3E50', extra='bigode', h=1.02),
+    'prof':   dict(skin='#E8B98A', name='Professor', shirt='#F1F1F1', pants='#4A4E69', shoes='#3A2A22', kind='shirt', hair='bald', hair_c='#555555', extra='oculos', h=1.02),
+    'aluno1': dict(skin='#FFDCB8', name='Aluno', shirt='#F77F00', pants='#264653', shoes='#FFFFFF', kind='tee', hair='short', hair_c='#2A1C14', extra=None, h=0.98),
+    'aluno2': dict(skin='#8D5524', name='Aluna', shirt='#8AC926', pants='#3D405B', shoes='#FFFFFF', kind='tee', hair='long', hair_c='#1B1B1B', extra=None, h=0.95),
+    'aluno3': dict(skin='#C68642', name='Aluno', shirt='#6A4C93', pants='#22333B', shoes='#FFFFFF', kind='hoodie', hair='short', hair_c='#4A2C17', extra=None, h=1.0),
+    'aluno4': dict(skin='#EBC09A', name='Aluna', shirt='#FF595E', pants='#1D3557', shoes='#FFFFFF', kind='tee', hair='ponytail', hair_c='#E2B04A', extra=None, h=0.95),
 }
 
 
@@ -197,7 +198,7 @@ def draw_char(ctx, cid, x, y, s=1.0, pose=None):
             ctx.stroke()
         # mão
         ctx.arc(pts[2][0], pts[2][1], 19, 0, TAU)
-        fill_stroke(ctx, '#151517', 5)
+        fill_stroke(ctx, c['skin'], 5)
         return pts[2]
 
     hands = {}
@@ -323,10 +324,10 @@ def draw_head(ctx, cid, c, p, hx, hy, r):
 
     # cabeça
     ctx.arc(hx, hy, r, 0, TAU)
-    fill_stroke(ctx, '#141418', LW + 1)
+    fill_stroke(ctx, c['skin'], LW + 1)
     # brilho (glossy)
     g = cairo.RadialGradient(hx - r * 0.35, hy - r * 0.45, r * 0.05, hx - r * 0.2, hy - r * 0.3, r * 1.0)
-    g.add_color_stop_rgba(0, 1, 1, 1, 0.38)
+    g.add_color_stop_rgba(0, 1, 1, 1, 0.22)
     g.add_color_stop_rgba(0.35, 1, 1, 1, 0.08)
     g.add_color_stop_rgba(1, 1, 1, 1, 0.0)
     ctx.arc(hx, hy, r - 4, 0, TAU)
@@ -338,7 +339,7 @@ def draw_head(ctx, cid, c, p, hx, hy, r):
     ctx.scale(1.0, 0.55)
     ctx.arc(0, 0, r * 0.2, 0, TAU)
     ctx.restore()
-    ctx.set_source_rgba(1, 1, 1, 0.55)
+    ctx.set_source_rgba(1, 1, 1, 0.3)
     ctx.fill()
 
     # cabelo na frente
@@ -398,14 +399,14 @@ def draw_head(ctx, cid, c, p, hx, hy, r):
     for side in (-1, 1):
         cx = hx + side * ex + f * r * 0.08
         if p.blink or p.eyes == 'closed':
-            ctx.set_source_rgba(1, 1, 1, 1)
+            ctx.set_source_rgba(*FACE)
             ctx.set_line_width(9)
             ctx.move_to(cx - er * 0.8, ey + er * 0.2)
             ctx.curve_to(cx - er * 0.3, ey + er * 0.55, cx + er * 0.3, ey + er * 0.55, cx + er * 0.8, ey + er * 0.2)
             ctx.stroke()
             continue
         if p.eyes == 'happy':
-            ctx.set_source_rgba(1, 1, 1, 1)
+            ctx.set_source_rgba(*FACE)
             ctx.set_line_width(11)
             ctx.move_to(cx - er * 0.8, ey + er * 0.3)
             ctx.curve_to(cx - er * 0.4, ey - er * 0.6, cx + er * 0.4, ey - er * 0.6, cx + er * 0.8, ey + er * 0.3)
@@ -418,7 +419,10 @@ def draw_head(ctx, cid, c, p, hx, hy, r):
         ctx.arc(0, 0, er, 0, TAU)
         ctx.restore()
         ctx.set_source_rgba(1, 1, 1, 1)
-        ctx.fill()
+        ctx.fill_preserve()
+        ctx.set_source_rgba(*FACE)
+        ctx.set_line_width(4)
+        ctx.stroke()
         pr = er * (0.42 if p.eyes == 'wide' else 0.55)
         ctx.arc(cx + look, ey + er * 0.08, pr, 0, TAU)
         ctx.set_source_rgba(0.06, 0.06, 0.08, 1)
@@ -435,7 +439,7 @@ def draw_head(ctx, cid, c, p, hx, hy, r):
             ctx.restore()
             ctx.save()
             ctx.clip()
-            ctx.set_source_rgba(0.08, 0.08, 0.1, 1)
+            ctx.set_source_rgba(*darker(c['skin'], 0.82))
             if p.eyes == 'half':
                 ctx.rectangle(cx - er * 1.2, ey - er * 1.4, er * 2.4, er * 1.25)
             elif p.eyes == 'sad':
@@ -454,7 +458,7 @@ def draw_head(ctx, cid, c, p, hx, hy, r):
             ctx.restore()
     # sobrancelhas
     if p.eyes in ('angry', 'sad', 'wide'):
-        ctx.set_source_rgba(1, 1, 1, 0.92)
+        ctx.set_source_rgba(*FACE)
         ctx.set_line_width(8)
         for side in (-1, 1):
             cx = hx + side * ex + f * r * 0.08
@@ -486,7 +490,7 @@ def draw_head(ctx, cid, c, p, hx, hy, r):
     mx = hx + f * r * 0.1
     my = hy + r * 0.48
     mw = r * 0.26
-    ctx.set_source_rgba(1, 1, 1, 1)
+    ctx.set_source_rgba(*FACE)
     ctx.set_line_width(8)
     ctx.set_line_cap(cairo.LINE_CAP_ROUND)
     m = p.mouth
@@ -499,7 +503,7 @@ def draw_head(ctx, cid, c, p, hx, hy, r):
         ctx.restore()
         ctx.set_source_rgba(0.85, 0.25, 0.3, 1)
         ctx.fill_preserve()
-        ctx.set_source_rgba(1, 1, 1, 1)
+        ctx.set_source_rgba(*FACE)
         ctx.set_line_width(6)
         ctx.stroke()
     elif m == 'smile':
@@ -511,7 +515,10 @@ def draw_head(ctx, cid, c, p, hx, hy, r):
         ctx.curve_to(mx - mw * 0.6, my + mw * 1.1, mx + mw * 0.6, my + mw * 1.1, mx + mw * 1.2, my - mw * 0.3)
         ctx.close_path()
         ctx.set_source_rgba(1, 1, 1, 1)
-        ctx.fill()
+        ctx.fill_preserve()
+        ctx.set_source_rgba(*FACE)
+        ctx.set_line_width(6)
+        ctx.stroke()
     elif m == 'flat':
         ctx.move_to(mx - mw * 0.7, my + 4)
         ctx.line_to(mx + mw * 0.7, my + 4)
@@ -524,7 +531,7 @@ def draw_head(ctx, cid, c, p, hx, hy, r):
         ctx.arc(mx, my + 4, mw * 0.45, 0, TAU)
         ctx.set_source_rgba(0.85, 0.25, 0.3, 1)
         ctx.fill_preserve()
-        ctx.set_source_rgba(1, 1, 1, 1)
+        ctx.set_source_rgba(*FACE)
         ctx.set_line_width(6)
         ctx.stroke()
     elif m == 'wavy':
