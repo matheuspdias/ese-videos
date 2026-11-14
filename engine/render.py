@@ -22,7 +22,7 @@ FPS = 24
 GAP_NAR = 0.28
 GAP_DIALOG = 0.35
 LEAD = 0.4
-TAIL = 14.0
+TAIL = 18.0
 
 
 def ease(x):
