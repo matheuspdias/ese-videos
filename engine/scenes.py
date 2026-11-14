@@ -735,8 +735,8 @@ def dog_doodle(ctx, x, y, s, col='#FFFFFF', ink=(0.12, 0.1, 0.2), crown=False):
 
 
 MURAL = [(660, 250, 'MÃE', 1.1), (820, 300, 'VÓ CIDA', 1.1), (1110, 300, 'DAVI', 1.1), (1270, 250, 'SEU JORGE', 1.1),
-         (660, 455, 'PROF. NEIDE', 1.0), (1330, 450, 'SEU VALDIR', 1.1), (760, 520, 'TIA MARTA', 1.0),
-         (1170, 520, 'PADARIA', 1.0), (965, 420, 'LARI', 1.7)]
+         (660, 455, 'PROF. NEIDE', 1.0), (1330, 450, 'SEU VALDIR', 1.1), (810, 565, 'TIA MARTA', 0.95),
+         (1150, 565, 'PADARIA', 0.95), (965, 420, 'LARI', 1.7)]
 
 
 def porao(rotina=False, mural=0, night=False):
