@@ -124,6 +124,14 @@ LINES = [
      S('patio', C('voce', 'c', None, eyes='half', mouth='flat'), cam=dict(focus='voce', zoom=1.4, to=1.55))),
 
     # ---------------------------------------------------------------- O CUSTO
+    ('nar', "E o pior lugar do mundo pra pensar alto é o ônibus lotado das sete da manhã.",
+     S('onibus', C('aluno3', 'a', None, eyes='half', mouth='flat'), C('voce', 'b', None, eyes='half', mouth='flat'), C('moco', 'c', None, facing=-1, arms='hold', prop='coxinha', mouth='smile'))),
+    ('nar', "Um moço senta do seu lado comendo um salgado. Você tenta não pensar. Você pensa.",
+     S('onibus', C('voce', 'b', None, eyes='side', look=1, mouth='flat', sweat=True), C('moco', 'c', None, facing=-1, arms='hold', prop='coxinha', mouth='grin', eyes='happy'), cam=dict(zoom=1.3, to=1.4, cx=1150, cy=560))),
+    ('pens', "Isso é coxinha de frango... ou de cebola?",
+     S('onibus', C('voce', 'b', None, eyes='half', mouth='wavy'), C('moco', 'c', None, facing=-1, arms='hold', prop='coxinha', eyes='wide', mouth='o'), cam=dict(zoom=1.3, to=1.4, cx=1150, cy=560))),
+    ('nar', "O moço para de mastigar. Olha pra você. Olha pro salgado. E oferece metade. Você aceita. Era de frango. Com muita cebola.",
+     S('onibus', C('aluno3', 'a', None, eyes='happy', mouth='grin'), C('voce', 'b', None, eyes='happy', mouth='grin', arms='hold', prop='coxinha'), C('moco', 'c', None, facing=-1, eyes='happy', mouth='grin', arms='wave'), fx=['risos'])),
     ('nar', "Na prova de matemática, a Bia senta do seu lado.",
      S('classe', C('neide', 'prof', None, arms='cross'), C('voce', 'd2', None, sit=True, facing=-1, arms='hold', prop='caneta'), C('bia', 'd3', None, sit=True, facing=-1, arms='hold', prop='caneta'), C('davi', 'd1', None, sit=True, facing=-1))),
     ('nar', "Você tenta pensar em equação. Em número. Em qualquer coisa.",
@@ -174,6 +182,16 @@ LINES = [
      S('classe', *aula(neide=dict(eyes='happy', mouth='smile', arms='wave'), voce=dict(eyes='happy', mouth='grin'), davi=dict(eyes='happy', mouth='grin', arms='up'), bia=dict(eyes='happy', mouth='smile')), fx=['confete'])),
 
     # ---------------------------------------------------------------- CLÍMAX
+    ('nar', "Com os cinco minutos de sobra, você vai atrás do Davi.",
+     S('patio', C('davi', 'a', None, arms='hold', prop='bola', eyes='half', mouth='flat'), C('voce', 'b', None, facing=-1, eyes='sad'))),
+    ('pens', "Eu fui um idiota. Você treinou sete dias seguidos. Ninguém treina sete dias seguidos. Nem eu.",
+     S('patio', C('davi', 'a', None, arms='hold', prop='bola', eyes='wide', mouth='flat'), C('voce', 'b', None, facing=-1, eyes='sad', mouth='flat'), cam=dict(zoom=1.2, to=1.3))),
+    ('nar', "O Davi te olha de lado. Pega a bola. E faz doze embaixadinhas sem deixar cair.",
+     S('patio', C('davi', 'a', None, eyes='angry', mouth='smile', arms='up'), C('voce', 'b', None, facing=-1, eyes='wide', mouth='o'), fx=['embaixadinha'])),
+    ('davi', "Treze. Contou errado, cabeção.",
+     S('patio', C('davi', 'a', None, eyes='happy', mouth='grin', arms='hip'), C('voce', 'b', None, facing=-1, eyes='happy', mouth='grin'), cam=dict(focus='davi', zoom=1.5, to=1.6))),
+    ('nar', "Ele joga a bola pra você. E, pela primeira vez em semanas, alguém te chama de cabeção de novo.",
+     S('patio', C('davi', 'a', None, eyes='happy', mouth='grin', arms='wave'), C('voce', 'b', None, facing=-1, eyes='happy', mouth='grin', arms='hold', prop='bola'), cam=dict(zoom=1.05, to=1.15), fx=['hearts'])),
     ('nar', "No fim do mês, é o aniversário de oitenta anos da vó Cida. Salão da igreja. Balões dourados. A família inteira.",
      S('salao', C('vo', 'c', None, eyes='happy', mouth='grin'), C('tia', 'a', None, mouth='smile'), C('mae', 'b', None, mouth='smile'), C('lari', 'd', None, mouth='smile'), C('voce', 'e', None, facing=-1), cam=dict(zoom=1.0, to=1.08))),
     ('nar', "A tia Marta pega o microfone.",

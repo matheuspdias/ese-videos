@@ -59,6 +59,9 @@ CAST = {
     'tia':    dict(skin='#F3D3B5', name='Tia Marta', shirt='#2EC4B6', pants='#2EC4B6', shoes='#C9184A', kind='dress', hair='bigcurls', hair_c='#C1440E', extra='brinco', h=0.96),
     'jorge':  dict(skin='#5E3A22', name='Seu Jorge', shirt='#5C6B73', pants='#3A3F44', shoes='#222222', kind='tee', hair='cap', hair_c='#2D3E50', extra='bigode', h=1.02),
     'prof':   dict(skin='#E8B98A', name='Professor', shirt='#F1F1F1', pants='#4A4E69', shoes='#3A2A22', kind='shirt', hair='bald', hair_c='#555555', extra='oculos', h=1.02),
+    'neide':  dict(skin='#A86B3C', name='Prof. Neide', shirt='#4361EE', pants='#4361EE', shoes='#2B2D42', kind='dress', hair='bun', hair_c='#2B1B12', extra='oculos', h=0.98),
+    'feirante': dict(skin='#D69E74', name='Seu Valdir', shirt='#E9C46A', pants='#495057', shoes='#3A2A22', kind='tee', hair='cap', hair_c='#C1121F', extra='bigode', h=1.02),
+    'moco':   dict(skin='#8D5524', name='Moço', shirt='#F77F00', pants='#264653', shoes='#3A2A22', kind='tee', hair='short', hair_c='#1B1B1B', extra=None, h=1.02),
     'aluno1': dict(skin='#FFDCB8', name='Aluno', shirt='#F77F00', pants='#264653', shoes='#FFFFFF', kind='tee', hair='short', hair_c='#2A1C14', extra=None, h=0.98),
     'aluno2': dict(skin='#8D5524', name='Aluna', shirt='#8AC926', pants='#3D405B', shoes='#FFFFFF', kind='tee', hair='long', hair_c='#1B1B1B', extra=None, h=0.95),
     'aluno3': dict(skin='#C68642', name='Aluno', shirt='#6A4C93', pants='#22333B', shoes='#FFFFFF', kind='hoodie', hair='short', hair_c='#4A2C17', extra=None, h=1.0),
@@ -673,6 +676,42 @@ def draw_prop(ctx, prop, x, y, f):
         rrect(ctx, -6, -6, 12, 40, 6)
         fill_stroke(ctx, '#FFF4DC', 4)
         ctx.restore()
+    elif prop == 'sacola':
+        ctx.move_to(-40, -10)
+        ctx.line_to(40, -10)
+        ctx.line_to(34, 70)
+        ctx.line_to(-34, 70)
+        ctx.close_path()
+        fill_stroke(ctx, '#F1FAEE', 4)
+        for dx in (-18, 4, 20):
+            ctx.arc(dx, -16, 16, 0, TAU)
+            fill_stroke(ctx, '#E63946', 3)
+        ctx.arc(-8, -28, 14, 0, TAU)
+        fill_stroke(ctx, '#2A9D8F', 3)
+    elif prop == 'bolo':
+        ctx.save(); ctx.scale(1, 0.32); ctx.arc(0, 0, 80, 0, TAU); ctx.restore()
+        fill_stroke(ctx, '#FFFFFF', 4)
+        ctx.move_to(-60, -4); ctx.line_to(-60, -56); ctx.line_to(60, -56); ctx.line_to(60, -4); ctx.close_path()
+        fill_stroke(ctx, '#F4C430', 5)
+        ctx.save(); ctx.translate(0, -56); ctx.scale(1, 0.3); ctx.arc(0, 0, 60, 0, TAU); ctx.restore()
+        fill_stroke(ctx, '#F9D55B', 4)
+        ctx.arc(0, -58, 10, 0, TAU)
+        fill_stroke(ctx, '#FFFFFF', 3)
+    elif prop == 'microfone':
+        ctx.rotate(-0.4 * f)
+        rrect(ctx, -9, -10, 18, 70, 6)
+        fill_stroke(ctx, '#343A40', 4)
+        ctx.arc(0, -24, 20, 0, TAU)
+        fill_stroke(ctx, '#ADB5BD', 4)
+    elif prop == 'coxinha':
+        ctx.move_to(0, -50); ctx.curve_to(40, -10, 40, 30, 0, 32); ctx.curve_to(-40, 30, -40, -10, 0, -50); ctx.close_path()
+        fill_stroke(ctx, '#D98E32', 4)
+    elif prop == 'bola':
+        ctx.arc(0, -10, 34, 0, TAU); fill_stroke(ctx, '#FFFFFF', 4)
+        for k in range(5):
+            a = k * TAU / 5
+            ctx.arc(math.cos(a) * 21, -10 + math.sin(a) * 21, 7, 0, TAU)
+            ctx.set_source_rgba(0.1, 0.1, 0.12, 1); ctx.fill()
     elif prop == 'veu':
         ctx.save()
         ctx.scale(1, 0.6)

@@ -539,6 +539,128 @@ def bg_plain(col1, col2):
     return f
 
 
+def bg_feira(ctx, t):
+    g = cairo.LinearGradient(0, 0, 0, 700)
+    g.add_color_stop_rgb(0, 0.52, 0.8, 0.98)
+    g.add_color_stop_rgb(1, 0.85, 0.94, 1)
+    ctx.rectangle(0, 0, W, 780); ctx.set_source(g); ctx.fill()
+    for x, y, r in ((260, 120, 46), (320, 100, 60), (390, 125, 44), (1500, 90, 40), (1560, 80, 52)):
+        ctx.arc(x, y, r, 0, TAU); ctx.set_source_rgba(1, 1, 1, 0.95); ctx.fill()
+    # prédios ao fundo
+    for i, col in enumerate(('#F4A261', '#E9C46A', '#E76F51', '#2A9D8F', '#F4A261', '#E9C46A')):
+        rect(ctx, i * 330 - 20, 220 + (i % 2) * 60, 320, 560, col)
+        for k in range(3):
+            window(ctx, i * 330 + 50 + k * 90, 300 + (i % 2) * 60, 50, 60)
+    floor(ctx, 780, '#9C9C9C')
+    # barracas
+    for x, col, prod in ((80, '#E63946', '#E63946'), (720, '#2A9D8F', '#F4A261'), (1360, '#FFB703', '#8AC926')):
+        rect(ctx, x + 20, 430, 14, 360, '#6C757D', lw=3)
+        rect(ctx, x + 446, 430, 14, 360, '#6C757D', lw=3)
+        ctx.move_to(x - 20, 470); ctx.line_to(x + 240, 380); ctx.line_to(x + 500, 470); ctx.close_path()
+        fill_stroke(ctx, col)
+        for k in range(6):
+            ctx.move_to(x - 20 + k * 87, 470); ctx.line_to(x + 23 + k * 87, 500); ctx.line_to(x + 67 + k * 87, 470); ctx.close_path()
+            fill_stroke(ctx, '#FFFFFF' if k % 2 else col, 3)
+        rr(ctx, x, 640, 480, 70, 8, '#8B5E3C')
+        random.seed(x)
+        for k in range(14):
+            ctx.arc(x + 30 + k * 32 + random.random() * 6, 625 - (k % 2) * 18, 20, 0, TAU)
+            fill_stroke(ctx, prod, 3)
+    rr(ctx, 1500, 540, 200, 70, 8, '#FFFFFF')
+    text(ctx, 'R$ 5', 1600, 592, 46, '#C1121F')
+
+
+def bg_quadra(ctx, t):
+    g = cairo.LinearGradient(0, 0, 0, 600)
+    g.add_color_stop_rgb(0, 0.5, 0.78, 0.98)
+    g.add_color_stop_rgb(1, 0.85, 0.94, 1)
+    ctx.rectangle(0, 0, W, 700); ctx.set_source(g); ctx.fill()
+    # alambrado
+    ctx.set_source_rgba(0.35, 0.4, 0.45, 0.55); ctx.set_line_width(3)
+    for i in range(-40, 80):
+        ctx.move_to(i * 40, 160); ctx.line_to(i * 40 + 540, 700)
+        ctx.move_to(i * 40, 160); ctx.line_to(i * 40 - 540, 700)
+    ctx.stroke()
+    rect(ctx, 0, 150, W, 14, '#6C757D', lw=3)
+    rect(ctx, 0, 680, W, 780 - 680, '#5C677D')
+    floor(ctx, 760, '#4D908E')
+    ctx.set_source_rgba(1, 1, 1, 0.85); ctx.set_line_width(8)
+    ctx.move_to(0, 960); ctx.line_to(W, 960); ctx.stroke()
+    ctx.arc(1000, 1100, 260, math.pi, TAU); ctx.stroke()
+    # gol à direita
+    ctx.set_source_rgba(1, 1, 1, 1); ctx.set_line_width(16)
+    ctx.move_to(1560, 1000); ctx.line_to(1560, 640); ctx.line_to(1880, 640); ctx.line_to(1880, 1000); ctx.stroke()
+    ctx.set_source_rgba(1, 1, 1, 0.35); ctx.set_line_width(2)
+    for k in range(1600, 1880, 24):
+        ctx.move_to(k, 640); ctx.line_to(k, 1000)
+    for k in range(660, 1000, 24):
+        ctx.move_to(1560, k); ctx.line_to(1880, k)
+    ctx.stroke()
+
+
+def bg_salao(ctx, t):
+    wall(ctx, '#FFF1E6', 780, '#E8C2CA', 560)
+    # faixa
+    rr(ctx, 460, 70, 1000, 120, 16, '#C9184A')
+    text(ctx, '80 ANOS DA VÓ CIDA', 960, 152, 66, '#FFFFFF', outline='#590D22', lw=10)
+    # balões dourados e rosa
+    for k, (x, y) in enumerate(((150, 160), (260, 120), (1660, 150), (1780, 110), (360, 230), (1560, 230))):
+        bob = 8 * math.sin(t * 1.5 + k)
+        ctx.set_source_rgba(0.4, 0.4, 0.4, 0.8); ctx.set_line_width(2)
+        ctx.move_to(x, y + 70 + bob); ctx.line_to(x + 10, y + 260); ctx.stroke()
+        ctx.save(); ctx.translate(x, y + bob); ctx.scale(0.85, 1.0); ctx.arc(0, 0, 70, 0, TAU); ctx.restore()
+        fill_stroke(ctx, '#F4C430' if k % 2 == 0 else '#FF8FAB', 4)
+    floor(ctx, 780, '#C9A27E', tiles=True)
+    # mesa com bolo
+    rr(ctx, 1440, 640, 420, 140, 10, '#FFFFFF')
+    ctx.save(); ctx.translate(1650, 640); ctx.scale(1, 0.3); ctx.arc(0, 0, 110, 0, TAU); ctx.restore()
+    fill_stroke(ctx, '#FFFFFF', 4)
+    rect(ctx, 1570, 520, 160, 120, '#FFB5C2')
+    text(ctx, '80', 1650, 610, 70, '#C9184A')
+
+
+def bg_quarto_noite(ctx, t):
+    wall(ctx, '#3C3A6B', 780)
+    window(ctx, 1300, 140, 360, 300, night=True)
+    rr(ctx, 260, 140, 260, 340, 6, '#5A5891')
+    star(ctx, 390, 260, 70, '#8D8BC4')
+    rr(ctx, 1150, 620, 680, 160, 20, '#2B2D5E')
+    rr(ctx, 1170, 590, 200, 70, 30, '#8D8BC4')
+    floor(ctx, 780, '#2E2C52')
+    ctx.rectangle(0, 0, W, H); ctx.set_source_rgba(0.05, 0.05, 0.2, 0.25); ctx.fill()
+
+
+def bg_onibus(ctx, t):
+    wall(ctx, '#DDE5ED', 780)
+    # janelas com paisagem passando
+    for k in range(4):
+        x = 120 + k * 450
+        rr(ctx, x - 10, 130, 380, 300, 16, '#ADB5BD')
+        ctx.save(); rrect(ctx, x, 140, 360, 280, 12); ctx.clip()
+        g = cairo.LinearGradient(0, 140, 0, 420)
+        g.add_color_stop_rgb(0, 0.95, 0.75, 0.55); g.add_color_stop_rgb(1, 0.98, 0.9, 0.75)
+        ctx.rectangle(x, 140, 360, 280); ctx.set_source(g); ctx.fill()
+        off = (t * 400) % 300
+        for b in range(-1, 4):
+            bx = x - off + b * 150
+            ctx.rectangle(bx, 260 + (b % 2) * 30, 110, 200); ctx.set_source_rgba(0.45, 0.4, 0.55, 0.9); ctx.fill()
+        ctx.restore()
+    # barra de apoio
+    ctx.set_source_rgba(0.75, 0.76, 0.78, 1); ctx.set_line_width(14)
+    ctx.move_to(0, 90); ctx.line_to(W, 90); ctx.stroke()
+    for k in range(6):
+        ctx.arc(150 + k * 330, 130, 26, 0, TAU); ctx.set_source_rgba(0.95, 0.75, 0.2, 1); ctx.set_line_width(8); ctx.stroke()
+    floor(ctx, 780, '#495057')
+    # bancos
+    for x in (420, 1150):
+        rr(ctx, x - 230, 560, 460, 260, 30, '#1D3557')
+
+
+def fg_onibus(ctx, t):
+    for x in (420, 1150):
+        rr(ctx, x - 250, 800, 500, 90, 20, '#274472')
+
+
 BG = {
     'jantar': (bg_jantar, fg_jantar),
     'sala': (bg_sala, fg_sala),
@@ -558,6 +680,13 @@ BG = {
     'placar': (bg_plain('#10002B', '#3C096C'), None),
     'whatsapp': (bg_plain('#0B3D2E', '#081C15'), None),
     'final': (bg_plain('#3A0CA3', '#7209B7'), None),
+    'feira': (bg_feira, None),
+    'onibus': (bg_onibus, fg_onibus),
+    'quadra': (bg_quadra, None),
+    'salao': (bg_salao, None),
+    'quarto_noite': (bg_quarto_noite, None),
+    'desenho': (bg_plain('#6D4C41', '#4E342E'), None),
+    'lista': (bg_plain('#1B1B3A', '#3A0CA3'), None),
 }
 
 # slots: (x, y_pés, escala)
@@ -576,4 +705,9 @@ SLOTS = {
     'meiofio': dict(a=(760, 960, 0.9), b=(1130, 960, 0.9)),
     'ciencia': dict(a=(620, 1000, 0.9), b=(1300, 1000, 0.9)),
     'final': dict(c=(560, 1020, 1.0)),
+    'feira': dict(a=(560, 1010, 0.95), b=(980, 1010, 0.95), c=(1560, 1010, 0.95)),
+    'quadra': dict(a=(500, 1010, 0.9), b=(1000, 1010, 0.95), gol=(1720, 1000, 0.85), gol2=(1640, 980, 0.85)),
+    'salao': dict(a=(330, 1010, 0.9), b=(700, 1010, 0.9), c=(1060, 1010, 0.95), d=(1400, 1010, 0.8), e=(1700, 1010, 0.9)),
+    'quarto_noite': dict(a=(760, 1010, 1.0)),
+    'onibus': dict(a=(300, 870, 0.85), b=(1030, 870, 0.9), c=(1290, 870, 0.9)),
 }

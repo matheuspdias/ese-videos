@@ -70,6 +70,8 @@ def build(ep_mod, ep_id):
         d = probe(path)
         if prev_sp is not None:
             t += GAP_DIALOG if (sp != 'nar' or prev_sp != 'nar') else GAP_NAR
+            if sp == 'pens' or prev_sp == 'pens':
+                t += 0.15
         clips.append(dict(i=i, sp=sp, path=path, t0=t, t1=t + d, text=txt))
         if scene is not None or not shots:
             shots.append(dict(scene=scene, t0=t, lines=[i]))
@@ -232,13 +234,16 @@ def overlay(ctx, fx, u, dur, t, shot):
     p = u / max(dur, 0.01)
     if 'title' in fx and p > 0.25:
         a = ease((p - 0.25) / 0.15)
+        words = _G['ep'].TITLE.upper().split()
+        best = min(range(1, len(words)), key=lambda i: abs(len(' '.join(words[:i])) - len(' '.join(words[i:]))))
+        l1, l2 = ' '.join(words[:best]), ' '.join(words[best:])
         ctx.save()
         ctx.translate(0, (1 - a) * -60)
-        rrect(ctx, 260, 60, 1400, 200, 30)
+        rrect(ctx, 200, 60, 1520, 200, 30)
         ctx.set_source_rgba(0.08, 0.02, 0.12, 0.82 * a)
         ctx.fill()
-        text(ctx, 'E SE VOCÊ PUDESSE VER', 960, 140, 64, '#FFFFFF', outline='#1A0A1F', lw=10)
-        text(ctx, 'O QUANTO CADA PESSOA TE AMA?', 960, 225, 64, '#FF4FAE', outline='#1A0A1F', lw=10)
+        text(ctx, l1, 960, 140, 60, '#FFFFFF', outline='#1A0A1F', lw=10)
+        text(ctx, l2, 960, 225, 60, '#FF4FAE', outline='#1A0A1F', lw=10)
         ctx.restore()
     if 'conta' in fx:
         notebook(ctx)
@@ -332,6 +337,122 @@ def overlay(ctx, fx, u, dur, t, shot):
                 ctx.scale(a, a)
                 text(ctx, random.choice(['HAHAHA', 'KKKKK', 'HAHA']), 0, 0, 64, '#FFFFFF', outline='#E63946', lw=10)
                 ctx.restore()
+    if 'desenho' in fx:
+        # porta do quarto com o desenho colado
+        rrect(ctx, 560, 40, 800, 1040, 10); fill_stroke(ctx, '#A47148', 8)
+        ctx.save(); ctx.translate(960, 470); ctx.rotate(-0.04)
+        rrect(ctx, -300, -300, 600, 560, 6); fill_stroke(ctx, '#FFFFFF', 5)
+        # cavalo em giz de cera
+        ctx.set_line_width(10); ctx.set_line_cap(cairo.LINE_CAP_ROUND)
+        ctx.set_source_rgba(0.55, 0.32, 0.15, 1)
+        ctx.save(); ctx.translate(-10, 20); ctx.scale(1.5, 0.8); ctx.arc(0, 0, 90, 0, TAU); ctx.restore(); ctx.stroke()
+        ctx.move_to(110, -20); ctx.line_to(170, -130); ctx.line_to(230, -110); ctx.line_to(200, -60); ctx.close_path(); ctx.stroke()
+        for lx in (-100, -50, 60, 110):
+            ctx.move_to(lx, 80); ctx.line_to(lx, 190); ctx.stroke()
+        ctx.set_source_rgba(0.9, 0.3, 0.4, 1)
+        ctx.move_to(-140, -10); ctx.curve_to(-200, 20, -210, 80, -190, 120); ctx.stroke()
+        ctx.arc(200, -100, 8, 0, TAU); ctx.fill()
+        sun = ease(p / 0.2)
+        star(ctx, -220, -220, 40 * sun, '#FFD23F')
+        ctx.restore()
+        if p > 0.55:
+            a = ease((p - 0.55) / 0.12)
+            ctx.save(); ctx.translate(960, 880); ctx.rotate(-0.04); ctx.scale(a, a)
+            hand_text(ctx, 'pro meu irmão', -230, 0, 58, '#C9184A')
+            hand_text(ctx, 'MENOS chato ♥', -230, 70, 58, '#C9184A')
+            ctx.restore()
+    if 'placar_jogo' in fx:
+        a = ease(p / 0.2)
+        rrect(ctx, 660, 60, 600, 150, 20); ctx.set_source_rgba(0.05, 0.05, 0.08, 0.9 * a); ctx.fill()
+        text(ctx, 'NÓS  0  x  9  ELES', 960, 158, 64, '#FFD23F')
+    if 'notas' in fx:
+        random.seed(12)
+        for k in range(14):
+            x = 200 + random.random() * 1500
+            y = 700 - ((t * 80 + k * 70) % 600)
+            ctx.save(); ctx.translate(x, y); ctx.rotate(math.sin(t * 3 + k) * 0.3)
+            ctx.arc(0, 0, 16, 0, TAU); ctx.set_source_rgba(1, 1, 1, 0.9); ctx.fill()
+            ctx.rectangle(12, -60, 6, 60); ctx.fill()
+            ctx.restore()
+    if 'bipes' in fx:
+        k = int(u / 1.4)
+        if (u % 1.4) < 0.5:
+            a = 1 - (u % 1.4) / 0.5
+            for x in (620, 1300):
+                ctx.save(); ctx.translate(x + 150, 330)
+                text(ctx, 'BIP!', 0, 0, 70 + 20 * (1 - a), '#FFD23F', outline='#10002B', lw=10)
+                ctx.restore()
+    if 'estudo_bipe' in fx and p > 0.4:
+        a = ease((p - 0.4) / 0.12)
+        rrect(ctx, 460, 860, 1000, 130, 24); ctx.set_source_rgba(1, 1, 1, 0.92 * a); ctx.fill()
+        text(ctx, '"O que passa na sua cabeça AGORA?"', 960, 945, 46, '#3A0CA3')
+    if 'falas_internas' in fx:
+        random.seed(3)
+        frases = ['tô com fome', 'esqueci a senha', 'será que ela gostou?', 'que calor', 'ai, a prova', 'preciso ir no mercado']
+        for k, fr in enumerate(frases):
+            ts = k * 0.12
+            if p > ts:
+                a = ease((p - ts) / 0.1)
+                x = 300 + (k % 3) * 650
+                y = 180 + (k // 3) * 160
+                ctx.save(); ctx.translate(x, y); ctx.scale(a, a)
+                rrect(ctx, -200, -50, 400, 90, 40); fill_stroke(ctx, '#FFFFFF', 4)
+                text(ctx, fr, 0, 12, 34, '#3A0CA3')
+                ctx.restore()
+    if 'pensamento_completo' in fx:
+        text(ctx, 'O PENSAMENTO TODO', 960, 110, 64, '#FFD23F', outline='#10002B', lw=10)
+        rows = [('O bolo estava seco.', 'E tinha gosto da casa da vó.'), ('O Davi errou a embaixadinha.', 'E treinou sete dias seguidos.'), ('A Bia...', 'era tudo verdade.')]
+        for k, (a1, a2) in enumerate(rows):
+            y = 280 + k * 230
+            a = ease((p - k * 0.3) / 0.08)
+            b = ease((p - k * 0.3 - 0.12) / 0.08)
+            if a > 0:
+                rrect(ctx, 180, y - 70, 760, 120, 24); ctx.set_source_rgba(1, 1, 1, 0.1 * a); ctx.fill()
+                text(ctx, a1, 560, y + 8, 42, '#FFFFFF')
+            if b > 0:
+                rrect(ctx, 980, y - 70, 760, 120, 24); ctx.set_source_rgba(1, 0.3, 0.7, 0.35 * b); ctx.fill()
+                text(ctx, a2, 1360, y + 8, 42, '#FFFFFF')
+    if 'memorias' in fx:
+        mems = [('bicicleta', 0.0), ('café com leite', 0.33), ('bolo de fubá', 0.62)]
+        for k, (lbl, ts) in enumerate(mems):
+            if p > ts:
+                a = ease((p - ts) / 0.08)
+                x = 380 + k * 580
+                ctx.save(); ctx.translate(x, 240); ctx.rotate((k - 1) * 0.08); ctx.scale(a, a)
+                rrect(ctx, -170, -150, 340, 300, 8); fill_stroke(ctx, '#FFFFFF', 5)
+                ctx.rectangle(-145, -125, 290, 200); ctx.set_source_rgba(1, 0.85, 0.6, 1); ctx.fill()
+                if k == 0:
+                    for wx in (-60, 60):
+                        ctx.arc(wx, 20, 40, 0, TAU); ctx.set_source_rgba(0.2, 0.2, 0.25, 1); ctx.set_line_width(8); ctx.stroke()
+                    ctx.move_to(-60, 20); ctx.line_to(0, -30); ctx.line_to(60, 20); ctx.stroke()
+                elif k == 1:
+                    rrect(ctx, -40, -40, 80, 90, 10); fill_stroke(ctx, '#FFFFFF', 5)
+                    ctx.arc(45, 5, 22, -1.4, 1.4); ctx.set_source_rgba(*OUT); ctx.set_line_width(6); ctx.stroke()
+                else:
+                    ctx.save(); ctx.translate(0, 30); draw_prop_cake(ctx); ctx.restore()
+                text(ctx, lbl, 0, 125, 32, '#3A0CA3')
+                ctx.restore()
+    if 'cta2' in fx and p > 0.15:
+        a = ease((p - 0.15) / 0.12)
+        rrect(ctx, 960, 240, 860, 520, 40)
+        ctx.set_source_rgba(0, 0, 0, 0.35 * a); ctx.fill()
+        text(ctx, 'E VOCÊ?', 1390, 360, 96, '#FFD23F', outline='#10002B', lw=12)
+        text(ctx, 'qual pensamento você', 1390, 460, 50, '#FFFFFF')
+        text(ctx, 'nunca deixaria ouvir?', 1390, 525, 50, '#FFFFFF')
+        if p > 0.25:
+            b = ease((p - 0.25) / 0.08)
+            ctx.save(); ctx.translate(1390, 660); ctx.scale(b, b)
+            rrect(ctx, -260, -50, 520, 100, 50)
+            ctx.set_source_rgba(1, 0.25, 0.6, 1); ctx.fill()
+            text(ctx, 'COMENTA AQUI', 0, 18, 48, '#FFFFFF')
+            ctx.restore()
+        if p > 0.4:
+            b = ease((p - 0.4) / 0.08)
+            ctx.save(); ctx.translate(1390, 860); ctx.scale(b, b)
+            rrect(ctx, -330, -46, 660, 92, 46)
+            ctx.set_source_rgba(0.9, 0.1, 0.15, 1); ctx.fill()
+            text(ctx, 'INSCREVA-SE NO JÁ PENSOU?', 0, 16, 40, '#FFFFFF')
+            ctx.restore()
     if 'cta' in fx and p > 0.15:
         a = ease((p - 0.15) / 0.12)
         rrect(ctx, 960, 260, 860, 500, 40)
@@ -353,6 +474,88 @@ def overlay(ctx, fx, u, dur, t, shot):
             ctx.set_source_rgba(0.9, 0.1, 0.15, 1); ctx.fill()
             text(ctx, 'INSCREVA-SE NO JÁ PENSOU?', 0, 16, 40, '#FFFFFF')
             ctx.restore()
+
+
+def soccer(ctx, x, y, r, t):
+    ctx.save(); ctx.translate(x, y); ctx.rotate(t * 2)
+    ctx.arc(0, 0, r, 0, TAU); fill_stroke(ctx, '#FFFFFF', 4)
+    for k in range(5):
+        a = k * TAU / 5
+        ctx.arc(math.cos(a) * r * 0.62, math.sin(a) * r * 0.62, r * 0.2, 0, TAU)
+        ctx.set_source_rgba(0.1, 0.1, 0.12, 1); ctx.fill()
+    ctx.arc(0, 0, r * 0.25, 0, TAU); ctx.fill()
+    ctx.restore()
+
+
+def draw_prop_cake(ctx):
+    from .chars import draw_prop
+    draw_prop(ctx, 'bolo', 0, 0, 1)
+
+
+def wrap(s, width=24):
+    words, lines, cur = s.split(), [], ''
+    for w in words:
+        if len(cur) + len(w) + 1 > width and cur:
+            lines.append(cur); cur = w
+        else:
+            cur = (cur + ' ' + w).strip()
+    if cur:
+        lines.append(cur)
+    return lines
+
+
+def thought_chunks(txt):
+    import re
+    sents = [x for x in re.split(r'(?<=[.!?])\s+', txt.strip()) if x]
+    chunks, cur = [], ''
+    for se in sents:
+        if len(cur) + len(se) > 70 and cur:
+            chunks.append(cur); cur = se
+        else:
+            cur = (cur + ' ' + se).strip()
+    if cur:
+        chunks.append(cur)
+    return chunks
+
+
+def thought_bubble(ctx, x, y, txt, a, t, src=None):
+    lines = wrap(txt, 24)
+    lh = 52
+    w = max(len(l) for l in lines) * 25 + 120
+    h = len(lines) * lh + 80
+    ctx.save()
+    ctx.translate(x, y - h / 2)
+    ctx.scale(a, a)
+    # nuvem
+    random.seed(4)
+    n = 14
+    for k in range(n):
+        ang = k / n * TAU
+        cx = math.cos(ang) * w / 2
+        cy = math.sin(ang) * h / 2
+        ctx.arc(cx, cy, 46 + 8 * math.sin(k * 1.7), 0, TAU)
+    ctx.set_source_rgba(1, 1, 1, 1)
+    ctx.fill()
+    rrect(ctx, -w / 2, -h / 2, w, h, h / 2.4)
+    ctx.fill()
+    for k, l in enumerate(lines):
+        text(ctx, l, 0, -h / 2 + 60 + k * lh, 42, '#3A0CA3')
+    ctx.restore()
+    if src:
+        sx, sy = src
+        for k, (fx_, r) in enumerate(((0.35, 12), (0.62, 20))):
+            ctx.arc(sx + (x - sx) * fx_ * 0.6, sy + (y - sy) * fx_, r * a, 0, TAU)
+            ctx.set_source_rgba(1, 1, 1, a)
+            ctx.fill()
+
+
+def rings(ctx, x, y, r, t):
+    for k in range(3):
+        ph = ((t * 1.2) + k / 3) % 1
+        ctx.arc(x, y, r * (1 + ph * 1.6), 0, TAU)
+        ctx.set_source_rgba(1, 0.3, 0.7, 0.55 * (1 - ph))
+        ctx.set_line_width(10 * (1 - ph) + 2)
+        ctx.stroke()
 
 
 def bubble(ctx, x, y, r, label, small=None):
@@ -462,10 +665,24 @@ def draw_frame(ctx, ep, clips, shots, envs, t):
     dur = shot['t1'] - shot['t0']
     fx = sc.get('fx', [])
     bg, fg = SC.BG[sc['bg']]
+    # pensamento em curso
+    thinking = None
+    for c in clips:
+        if c['sp'] == 'pens' and c['t0'] - 0.1 <= t < c['t1'] + 0.35:
+            ch = thought_chunks(c['text'])
+            lens = [len(x) for x in ch]
+            tot = sum(lens)
+            el = (min(t, c['t1']) - c['t0']) / max(c['t1'] - c['t0'], 0.01) * tot
+            acc, idx = 0, 0
+            for idx, ln in enumerate(lens):
+                acc += ln
+                if el <= acc:
+                    break
+            thinking = dict(text=ch[idx], a=ease((t - c['t0'] + 0.1) / 0.2) * (1 - ease((t - c['t1']) / 0.35)))
     # quem está falando agora
     speaking = {}
     for c in clips:
-        if c['t0'] <= t < c['t1'] and c['sp'] != 'nar':
+        if c['t0'] <= t < c['t1'] and c['sp'] not in ('nar', 'pens'):
             fi = int((t - c['t0']) * FPS)
             e = envs[c['i']]
             speaking[c['sp']] = e[min(fi, len(e) - 1)]
@@ -513,6 +730,10 @@ def draw_frame(ctx, ep, clips, shots, envs, t):
             p.facing = -1 if u < dur / 2 else 1
         info = draw_char(ctx, cid, x, y, s, p)
         heads[cid] = (info, s)
+    if thinking and 'voce' in heads:
+        info, sv = heads['voce']
+        hx, hy = info['head']
+        rings(ctx, hx, hy, info['head_r'], t)
     # reflexo no espelho
     if sc['bg'] == 'banheiro':
         mirror(ctx, sc, t, u, dur, fx, heads)
@@ -520,6 +741,26 @@ def draw_frame(ctx, ep, clips, shots, envs, t):
         fg(ctx, t)
     if 'estojo' in fx:
         SC.fx_estojo(ctx, t)
+    if 'bola' in fx and 'voce' in heads:
+        info, sv = heads['voce']
+        bx = info['head'][0] + 90 * sv
+        soccer(ctx, bx, 985, 34, t)
+    if 'bola_gol' in fx:
+        k = ease(u / 0.6)
+        soccer(ctx, 1100 + (1680 - 1100) * k, 980 - 220 * math.sin(math.pi * k) - 60 * k, 34, t * 3)
+    if 'bola_fora' in fx:
+        k = ease(u / 0.9)
+        soccer(ctx, 1100 + 900 * k, 980 - 500 * math.sin(math.pi * k * 0.8), 34, t * 3)
+    if 'embaixadinha' in fx and 'davi' in heads:
+        info, sv = heads['davi']
+        n = int(u / 0.38)
+        ph = (u % 0.38) / 0.38
+        soccer(ctx, info['head'][0] + 70 * sv, 960 - 260 * math.sin(math.pi * ph) * sv, 32, t * 4)
+        if n > 0:
+            text(ctx, str(min(n, 13)), info['head'][0] + 260, info['head'][1] - 120, 90, '#FFD23F', outline='#1E1E24', lw=12)
+    if 'bolo' in fx and sc['bg'] == 'jantar':
+        from .chars import draw_prop
+        draw_prop(ctx, 'bolo', 1100, 752, 1)
     # barras
     for cid, (start, kf) in shot['bars'].items():
         info, s = heads[cid]
@@ -546,8 +787,23 @@ def draw_frame(ctx, ep, clips, shots, envs, t):
         for k in range(14):
             a = abs(math.sin(t * 2 + k))
             star(ctx, 100 + random.random() * 1700, 80 + random.random() * 380, 8 + 10 * a, '#FFF3B0')
+    tb = None
+    if thinking and thinking['a'] > 0.01:
+        if 'voce' in heads:
+            info, sv = heads['voce']
+            hx, hy = info['head']
+            # converte para tela
+            sxp, syp = ctx.user_to_device(hx, hy - info['head_r'])
+            tb = (sxp, syp)
     ctx.restore()
     overlay(ctx, fx, u, dur, t, shot)
+    if thinking and thinking['a'] > 0.01:
+        if tb:
+            bx = min(max(tb[0] + 330, 420), W - 420)
+            by = max(tb[1] - 40, 230)
+            thought_bubble(ctx, bx, by, thinking['text'], thinking['a'], t, src=tb)
+        else:
+            thought_bubble(ctx, W / 2, 260, thinking['text'], thinking['a'], t)
     SC.vignette(ctx, 0.22)
 
 
@@ -593,7 +849,7 @@ _G = {}
 
 def _init(ep_mod, ep_id):
     ep, clips, shots, total = build(ep_mod, ep_id)
-    envs = {c['i']: envelope(c['path'], c['t1'] - c['t0']) for c in clips if c['sp'] != 'nar'}
+    envs = {c['i']: envelope(c['path'], c['t1'] - c['t0']) for c in clips if c['sp'] not in ('nar', 'pens')}
     _G.update(ep=ep, clips=clips, shots=shots, envs=envs, total=total)
 
 
@@ -666,7 +922,8 @@ def build_audio(clips, shots, total, out):
     sr = 44100
     mix = np.zeros(int((total + 1) * sr), dtype=np.float32)
     for c in clips:
-        raw = subprocess.check_output(['ffmpeg', '-v', 'error', '-i', c['path'], '-ac', '1', '-ar', str(sr), '-f', 'f32le', '-'])
+        af = ['-af', 'aecho=0.85:0.6:70|140:0.35|0.18,volume=1.05'] if c['sp'] == 'pens' else []
+        raw = subprocess.check_output(['ffmpeg', '-v', 'error', '-i', c['path'], *af, '-ac', '1', '-ar', str(sr), '-f', 'f32le', '-'])
         a = np.frombuffer(raw, dtype=np.float32)
         i0 = int(c['t0'] * sr)
         mix[i0:i0 + len(a)] += a
