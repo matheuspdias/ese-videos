@@ -290,11 +290,11 @@ def overlay(ctx, fx, u, dur, t, shot):
         if p > 0.55:
             b = ease((p - 0.55) / 0.1)
             for x in (620, 1300):
-                bubble(ctx, x + 40, 330, 120 * b, '?%')
+                bubble(ctx, x + 230, 330, 110 * b, '?%')
     if 'lacuna' in fx:
         for x, achou in ((620, 38), (1300, 41)):
             a = ease((p - 0.05) / 0.12)
-            bubble(ctx, x + 70, 250, 120 * a, f'{achou}%', small='achou')
+            bubble(ctx, x + 230, 230, 110 * a, f'{achou}%', small='achou')
         if p > 0.55:
             a = ease((p - 0.55) / 0.1)
             rrect(ctx, 560, 900, 800, 110, 24)
