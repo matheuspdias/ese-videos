@@ -2,7 +2,7 @@
 
 Falante 'pens' = pensamento do protagonista (voz do protagonista com eco + balão de pensamento na tela).
 """
-from episodes.ep01_quanto_te_amam import S, C
+from engine.dsl import S, C
 
 TITLE = "E se todo mundo pudesse ouvir seus pensamentos?"
 

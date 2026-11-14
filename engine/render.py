@@ -454,6 +454,37 @@ def overlay(ctx, fx, u, dur, t, shot):
             ctx.set_source_rgba(0.9, 0.1, 0.15, 1); ctx.fill()
             text(ctx, 'INSCREVA-SE NO JÁ PENSOU?', 0, 16, 40, '#FFFFFF')
             ctx.restore()
+    if 'cta_ep' in fx and p > 0.15:
+        l1, l2 = getattr(_G['ep'], 'CTA', ('qual seria a sua', 'escolha?'))
+        a = ease((p - 0.15) / 0.12)
+        rrect(ctx, 960, 240, 860, 520, 40)
+        ctx.set_source_rgba(0, 0, 0, 0.35 * a); ctx.fill()
+        text(ctx, 'E VOCÊ?', 1390, 360, 96, '#FFD23F', outline='#10002B', lw=12)
+        text(ctx, l1, 1390, 460, 50, '#FFFFFF')
+        text(ctx, l2, 1390, 525, 50, '#FFFFFF')
+        if p > 0.2:
+            b = ease((p - 0.2) / 0.06)
+            ctx.save(); ctx.translate(1390, 660); ctx.scale(b, b)
+            rrect(ctx, -260, -50, 520, 100, 50); ctx.set_source_rgba(1, 0.25, 0.6, 1); ctx.fill()
+            text(ctx, 'COMENTA AQUI', 0, 18, 48, '#FFFFFF')
+            ctx.restore()
+        if p > 0.3:
+            b = ease((p - 0.3) / 0.06)
+            ctx.save(); ctx.translate(1390, 860); ctx.scale(b, b)
+            rrect(ctx, -330, -46, 660, 92, 46); ctx.set_source_rgba(0.9, 0.1, 0.15, 1); ctx.fill()
+            text(ctx, 'INSCREVA-SE NO JÁ PENSOU?', 0, 16, 40, '#FFFFFF')
+            ctx.restore()
+    for item in fx:
+        # textos livres: {'texto': ['linha 1', 'linha 2'], 'pos': 'topo'|'baixo'|'centro', 'cor': '#FFD23F'}
+        if isinstance(item, dict) and 'texto' in item and p > 0.08:
+            a = ease((p - 0.08) / 0.1)
+            ls = item['texto'] if isinstance(item['texto'], list) else [item['texto']]
+            y0 = {'topo': 120, 'baixo': 900, 'centro': 480}.get(item.get('pos', 'topo'), 120)
+            wmax = max(len(x) for x in ls) * 32 + 120
+            rrect(ctx, 960 - wmax / 2, y0 - 75, wmax, 70 * len(ls) + 60, 28)
+            ctx.set_source_rgba(0.06, 0.02, 0.12, 0.8 * a); ctx.fill()
+            for k, ln in enumerate(ls):
+                text(ctx, ln, 960, y0 + k * 70, 56, item.get('cor', '#FFFFFF') if k == 0 else '#FFFFFF')
     if 'cta' in fx and p > 0.15:
         a = ease((p - 0.15) / 0.12)
         rrect(ctx, 960, 260, 860, 500, 40)
