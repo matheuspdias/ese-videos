@@ -35,6 +35,7 @@ jobs:
         run: |
           git config user.name "fetch-bot"
           git config user.email "actions@github.com"
+          git rm -q assets_in/*.json || true
           git add -A media || true
           git diff --cached --quiet || git commit -m "assets baixados"
           git push
