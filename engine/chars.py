@@ -308,6 +308,19 @@ def draw_head(ctx, cid, c, p, hx, hy, r):
         ctx.arc(hx, hy - r * 1.02, r * 0.38, 0, TAU)
         fill_stroke(ctx, hc)
 
+    if p.veil:
+        ctx.move_to(hx - r * 0.85, hy - r * 0.6)
+        ctx.curve_to(hx - r * 1.6, hy + r * 0.4, hx - r * 1.4, hy + r * 1.6, hx - r * 1.1, hy + r * 1.9)
+        ctx.line_to(hx + r * 1.1, hy + r * 1.9)
+        ctx.curve_to(hx + r * 1.4, hy + r * 1.6, hx + r * 1.6, hy + r * 0.4, hx + r * 0.85, hy - r * 0.6)
+        ctx.curve_to(hx + r * 0.4, hy - r * 1.15, hx - r * 0.4, hy - r * 1.15, hx - r * 0.85, hy - r * 0.6)
+        ctx.close_path()
+        ctx.set_source_rgba(1, 1, 1, 0.7)
+        ctx.fill_preserve()
+        ctx.set_source_rgba(1, 1, 1, 0.9)
+        ctx.set_line_width(4)
+        ctx.stroke()
+
     # cabeça
     ctx.arc(hx, hy, r, 0, TAU)
     fill_stroke(ctx, '#141418', LW + 1)
@@ -570,21 +583,9 @@ def draw_head(ctx, cid, c, p, hx, hy, r):
             ctx.set_line_width(6)
             ctx.stroke()
     if p.veil:
-        ctx.move_to(hx - r * 0.85, hy - r * 0.6)
-        ctx.curve_to(hx - r * 1.6, hy + r * 0.4, hx - r * 1.4, hy + r * 1.6, hx - r * 1.1, hy + r * 1.9)
-        ctx.line_to(hx + r * 1.1, hy + r * 1.9)
-        ctx.curve_to(hx + r * 1.4, hy + r * 1.6, hx + r * 1.6, hy + r * 0.4, hx + r * 0.85, hy - r * 0.6)
-        ctx.curve_to(hx + r * 0.4, hy - r * 1.15, hx - r * 0.4, hy - r * 1.15, hx - r * 0.85, hy - r * 0.6)
-        ctx.close_path()
-        ctx.set_source_rgba(1, 1, 1, 0.45)
-        ctx.fill_preserve()
-        ctx.set_source_rgba(1, 1, 1, 0.9)
-        ctx.set_line_width(4)
-        ctx.stroke()
         for i in range(5):
-            ctx.arc(hx - r * 0.6 + i * r * 0.3, hy - r * 0.85, r * 0.1, 0, TAU)
-            fill_stroke(ctx, '#FFFFFF', 3)
-
+            ctx.arc(hx - r * 0.6 + i * r * 0.3, hy - r * 0.9 + abs(i - 2) * r * 0.06, r * 0.13, 0, TAU)
+            fill_stroke(ctx, ['#FFFFFF', '#FFB3C6', '#FFFFFF', '#FFB3C6', '#FFFFFF'][i], 3)
     if p.sweat:
         sx = hx + f * r * 0.95
         sy = hy - r * 0.55

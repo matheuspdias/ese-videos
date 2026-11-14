@@ -11,12 +11,13 @@ TITLE = "E se você pudesse ver o quanto cada pessoa te ama de verdade?"
 
 VOICES = {
     'nar': 'bced1ec9731240068f358c2ff535b420',   # ESE Narrador
-    'davi': '67d365fbb0f14e19862a7e5891e4f4e5',
-    'bia': 'ab1d5d6ed5184262aa967c044805f910',
+    'davi': '336828260ba148aab9d5d47768cdbc11',
+    'bia': '4a4acf945bc14c42a69559ed381f2194',
     'vo': '045e4a2e57434943bd3bb5db714aad75',
-    'lari': '7947591cc80f48a2ba8c51bae456b867',
+    'lari': 'a8c7b58e38c44719b3ab36342f080e95',
     'tia': 'd903526edc8945139b1b114f609c6bc8',
     'voce': 'd703f08d1ef34302a36945aa3efc7b3f',  # Murilo (público)
+    # vozes efetivamente usadas após falhas de design: davi v2, bia v2, lari = Thaís (pública)
 }
 
 
@@ -47,7 +48,7 @@ def jantar(bars=None, **over):
 LINES = [
     # ---------------------------------------------------------------- ABERTURA
     ('nar', "Domingo. Almoço na casa da vó Cida.",
-     S('jantar', *jantar(voce=dict(arms='hold', prop='frango', mouth='grin', eyes='happy')), cam=dict(zoom=1.0, to=1.05))),
+     S('jantar', *jantar(voce=dict(arms='hold', prop='frango', mouth='grin', eyes='happy')), cam=dict(zoom=1.15, to=1.25, cy=620))),
     ('nar', "Você pega a segunda coxa de frango quando percebe uma coisa estranha."),
     ('nar', "Tem um número brilhando em cima da cabeça da sua vó.",
      S('jantar', *jantar(dict(vo=100), voce=dict(eyes='wide', mouth='o', prop='frango', arms='hold')), cam=dict(focus='vo', zoom=1.7, to=1.8))),
@@ -68,7 +69,7 @@ LINES = [
     ('nar', "Três. Por cento.",
      S('jantar', *jantar(dict(vo=100, mae=100, lari=87, tia=3), voce=dict(eyes='half', mouth='flat', sweat=True)), cam=dict(focus='voce', zoom=1.9, to=2.0))),
     ('nar', "Você pode ver o quanto cada pessoa te ama. De verdade.",
-     S('jantar', *jantar(dict(vo=100, mae=100, lari=87, tia=3), voce=dict(eyes='wide', mouth='o')), cam=dict(zoom=1.0, to=1.08), fx=['title'])),
+     S('jantar', *jantar(dict(vo=100, mae=100, lari=87, tia=3), voce=dict(eyes='wide', mouth='o')), cam=dict(zoom=1.1, to=1.18, cy=600), fx=['title'])),
 
     # ---------------------------------------------------------------- FASE BOA
     ('nar', "No começo, é a melhor coisa que já te aconteceu.",
@@ -118,11 +119,11 @@ LINES = [
     ('nar', "Na terça, você descobre que os números não são fixos.",
      S('corredor', C('bia', 'a', 41, eyes='wide', mouth='o', arms='up'), C('voce', 'b', None, facing=-1), fx=['estojo'])),
     ('nar', "A Bia derruba o estojo no corredor. Você ajuda a juntar as canetas. Quando você devolve a última, a barra dela sobe. Quarenta e quatro.",
-     S('corredor', C('bia', 'a', 44, eyes='happy', mouth='smile', blush=True), C('voce', 'b', None, facing=-1, arms='hold', prop='caneta', mouth='smile'), cam=dict(zoom=1.15, to=1.25))),
+     S('corredor', C('bia', 'a', [(0, 41), (0.82, 44)], eyes='happy', mouth='smile', blush=True), C('voce', 'b', None, facing=-1, arms='hold', prop='caneta', mouth='smile'), cam=dict(zoom=1.15, to=1.25))),
     ('nar', "Você quase grita.",
      S('corredor', C('bia', 'a', 44, mouth='smile'), C('voce', 'b', None, facing=-1, eyes='wide', mouth='grin', arms='up'), cam=dict(focus='voce', zoom=1.8, to=1.9), fx=['shake'])),
     ('nar', "Na quarta, você empresta o carregador. Quarenta e sete. Na quinta, você ri da piada dela, que nem foi tão boa. Quarenta e oito.",
-     S('patio', C('bia', 'a', 48, eyes='happy', mouth='grin'), C('voce', 'b', None, facing=-1, eyes='happy', mouth='grin'))),
+     S('patio', C('bia', 'a', [(0, 44), (0.3, 47), (0.86, 48)], eyes='happy', mouth='grin'), C('voce', 'b', None, facing=-1, eyes='happy', mouth='grin'))),
     ('nar', "Você começa a anotar tudo num caderno. Coluna de ações. Coluna de pontos.",
      S('caderno', fx=['tabela'])),
 
@@ -142,9 +143,9 @@ LINES = [
     ('nar', "Você diz que não dá. A Bia vai estar na biblioteca, e biblioteca vale dois pontos.",
      S('biblioteca', C('bia', 'a', 50, sit=True, mouth='smile', arms='hold', prop='caderno'), C('voce', 'b', None, facing=-1, mouth='grin'))),
     ('nar', "Na saída, você passa pelo Davi sem perceber. A barra dele pisca. Noventa e cinco.",
-     S('portao', C('davi', 'a', 95, eyes='sad', mouth='flat'), C('voce', 'b', None, facing=1, eyes='side', look=1), fx=['flicker'])),
+     S('portao', C('davi', 'a', [(0, 98), (0.7, 95)], eyes='sad', mouth='flat'), C('voce', 'b', None, facing=1, eyes='side', look=1), fx=['flicker'])),
     ('nar', "Você não vê. Você está olhando pra Bia. Cinquenta e dois.",
-     S('portao', C('voce', 'a', None, facing=1, eyes='happy', mouth='grin'), C('bia', 'b', 52, facing=-1, mouth='smile'))),
+     S('portao', C('voce', 'a', None, facing=1, eyes='happy', mouth='grin'), C('bia', 'b', [(0, 50), (0.75, 52)], facing=-1, mouth='smile'))),
     ('nar', "No sábado, a vó Cida liga.",
      S('quarto', C('voce', 'a', None, arms='hold', prop='celular', eyes='half'), fx=['ligacao'])),
     ('vo', "Alô? Meu filho, me ensina a mandar esse tal de áudio?",
@@ -154,7 +155,7 @@ LINES = [
     ('nar', "E esse é o problema de ver os números. Você começa a tratar as pessoas como pontuação.",
      S('placar', fx=['placar'])),
     ('nar', "Na segunda, o Davi está em oitenta e um. Na terça, setenta e quatro. Ele almoça com outro grupo. Ele para de te chamar de cabeção.",
-     S('patio', C('davi', 'c', 74, facing=-1, eyes='sad', mouth='flat'), C('aluno1', 'd', None, facing=-1), C('voce', 'a', None, facing=1, eyes='side', look=1), fx=['drop'])),
+     S('patio', C('davi', 'c', [(0, 95), (0.12, 81), (0.32, 74)], facing=-1, eyes='sad', mouth='flat'), C('aluno1', 'd', None, facing=-1), C('voce', 'a', None, facing=1, eyes='side', look=1), fx=['drop'])),
     ('nar', "Você percebe só na quarta, quando ele passa e não come metade do seu lanche.",
      S('patio', C('voce', 'b', None, arms='hold', prop='lanche', eyes='sad', mouth='frown', facing=-1), cam=dict(focus='voce', zoom=1.5, to=1.6))),
 
@@ -190,7 +191,7 @@ LINES = [
     ('nar', "A barra dela continua em cem. Mas a sua, no espelho do banheiro dela, sobe pra vinte e nove.",
      S('banheiro', C('voce', 'a', None, eyes='happy', mouth='smile'), fx=['espelho_29'])),
     ('nar', "Você até pega um prato de pudim pra tia Marta. Três por cento. Quatro.",
-     S('jantar', *jantar(dict(tia=4), voce=dict(arms='hold', prop='pudim', mouth='smile'), tia=dict(eyes='half', mouth='smile')), cam=dict(focus='tia', zoom=1.4, to=1.5))),
+     S('jantar', *jantar(dict(tia=[(0, 3), (0.8, 4)]), voce=dict(arms='hold', prop='pudim', mouth='smile'), tia=dict(eyes='half', mouth='smile')), cam=dict(focus='tia', zoom=1.4, to=1.5))),
     ('nar', "Ela agradece meio sem graça. Você descobre que tem gente que não é sobre você. E tá tudo bem.",
      S('jantar', *jantar(dict(tia=4), voce=dict(mouth='smile', eyes='happy'), tia=dict(eyes='half', mouth='wavy')), cam=dict(zoom=1.0, to=1.06))),
 
@@ -200,7 +201,7 @@ LINES = [
     ('nar', "A professora anuncia a quadrilha. Todo mundo precisa de um par.",
      S('festa', C('aluno1', 'f1', None), C('aluno2', 'f2', None, facing=-1), C('voce', 'c', None, eyes='wide', mouth='o', sweat=True), fx=['quadrilha'])),
     ('nar', "A Bia está sozinha perto da barraca da pescaria. Cinquenta e oito. É agora.",
-     S('festa', C('bia', 'f4', 58, facing=-1, mouth='smile', blush=True), C('voce', 'c', None, eyes='happy', blush=True), cam=dict(focus='bia', zoom=1.4, to=1.5), fx=['hearts'])),
+     S('festa', C('bia', 'f4', [(0, 52), (0.45, 58)], facing=-1, mouth='smile', blush=True), C('voce', 'c', None, eyes='happy', blush=True), cam=dict(focus='bia', zoom=1.4, to=1.5), fx=['hearts'])),
     ('nar', "Mas, do outro lado da quadra, você vê o Davi.",
      S('festa', C('davi', 'f1', 79, mustache=True, eyes='sad', mouth='wavy', sweat=True), C('voce', 'c', None, facing=-1, eyes='wide'), cam=dict(zoom=1.0, to=1.05))),
     ('nar', "Ele está vestido de noivo da quadrilha, com bigode pintado de canetinha. A noiva dele faltou. Ele está parado no meio da quadra, e as pessoas estão rindo.",
