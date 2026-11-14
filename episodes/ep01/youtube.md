@@ -15,10 +15,12 @@ E você? Se pudesse ver esse número agora, em cima da cabeça de quem você olh
 
 Baseado num estudo real de 2018 sobre a "lacuna do gostar": a gente quase sempre acha que as pessoas gostam menos da gente do que elas realmente gostam.
 
-#ESeVocê #Animação #Histórias
+Toda semana uma pergunta nova: e se você...? Se inscreve no Já Pensou? pra não perder a próxima.
+
+#JáPensou #ESeVocê #Animação #Histórias
 
 **Tags**
-e se você, e se, what if, animação, história animada, poder, curiosidades, festa junina, vó, crush
+já pensou, e se você, e se, what if, animação, história animada, poder, curiosidades, festa junina, vó, crush
 
 **Ao publicar**
 - Marcar "Conteúdo alterado ou sintético: Sim" (vozes geradas por IA).

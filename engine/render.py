@@ -346,6 +346,13 @@ def overlay(ctx, fx, u, dur, t, shot):
             ctx.set_source_rgba(1, 0.25, 0.6, 1); ctx.fill()
             text(ctx, 'COMENTA AQUI', 0, 18, 48, '#FFFFFF')
             ctx.restore()
+        if p > 0.75:
+            b = ease((p - 0.75) / 0.1)
+            ctx.save(); ctx.translate(1390, 880); ctx.scale(b, b)
+            rrect(ctx, -330, -46, 660, 92, 46)
+            ctx.set_source_rgba(0.9, 0.1, 0.15, 1); ctx.fill()
+            text(ctx, 'INSCREVA-SE NO JÁ PENSOU?', 0, 16, 40, '#FFFFFF')
+            ctx.restore()
 
 
 def bubble(ctx, x, y, r, label, small=None):
