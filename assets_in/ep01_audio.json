@@ -1,0 +1,364 @@
+{
+"files": [
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=a229c556aa2f4c2c824d74dc8177afd3.mp3",
+"dest": "media/ep01/audio/000.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=afe1f5942d934c0caf4e8d58089cadf4.mp3",
+"dest": "media/ep01/audio/001.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=5b318ad2cbd14eb39859c38938e9c8b1.mp3",
+"dest": "media/ep01/audio/002.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=3e2172a2385a47f5b3d5e69d46818890.mp3",
+"dest": "media/ep01/audio/003.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=51588d96015b4ef18f01637c90a534bb.mp3",
+"dest": "media/ep01/audio/004.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=aa573fc236aa4d0ca090cb39e31b377f.mp3",
+"dest": "media/ep01/audio/005.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=4bb3d5141b3e496c8e7a952517cdd4cf.mp3",
+"dest": "media/ep01/audio/006.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=710a6cedf19244868b134f25eb2576be.mp3",
+"dest": "media/ep01/audio/007.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=c75ed8dc50bd4720bde6bef1289665fa.mp3",
+"dest": "media/ep01/audio/008.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=7297f3d74e024bc19800f614a0376d63.mp3",
+"dest": "media/ep01/audio/009.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/d903526edc8945139b1b114f609c6bc8/id=a5d1ae514f3941b588189587aa203d52.mp3",
+"dest": "media/ep01/audio/010.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=15ae1052fecb4a72a9dbb4de9fa9bd39.mp3",
+"dest": "media/ep01/audio/011.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=77a8e30e75074768a15a22d85525a58f.mp3",
+"dest": "media/ep01/audio/012.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=094daed123954177a10ab64b9a267afc.mp3",
+"dest": "media/ep01/audio/013.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=ade89f451b0e444ca1dc8d37b2feef2a.mp3",
+"dest": "media/ep01/audio/015.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=49147e0c40aa43e2b824a9b7a8bb624e.mp3",
+"dest": "media/ep01/audio/016.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=0e70455e6e1c480a83b3eda75feed9c5.mp3",
+"dest": "media/ep01/audio/017.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=b57a231ab5c840468064236ad857cf91.mp3",
+"dest": "media/ep01/audio/018.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=05b45836dccb410fad0f6e82af2d55e9.mp3",
+"dest": "media/ep01/audio/019.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=1ad3aeabf73948e4a5ce4dea2e8a396e.mp3",
+"dest": "media/ep01/audio/020.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=90f905e2fd834a22b9a0001dd31bea45.mp3",
+"dest": "media/ep01/audio/021.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=8b775ae455334753a3c33604bf919158.mp3",
+"dest": "media/ep01/audio/022.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=b198b936f1784ef28558d6551d6ccbfe.mp3",
+"dest": "media/ep01/audio/023.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=a0bb09cc53eb4ae7bfc8b0712b7e899a.mp3",
+"dest": "media/ep01/audio/024.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=08759f39c72f48c29290480657c95cc9.mp3",
+"dest": "media/ep01/audio/026.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=7e5d8b6490b841af9e59bc9dc57fc382.mp3",
+"dest": "media/ep01/audio/027.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=555fa10aa0064584b3b7f8afd3b932c9.mp3",
+"dest": "media/ep01/audio/028.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=10a479844cc2479698285414fe7ace0d.mp3",
+"dest": "media/ep01/audio/029.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=6831e824cc1747fdbd67e224484515c4.mp3",
+"dest": "media/ep01/audio/030.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=d4184470c45b40e281dd800fa8a07cfe.mp3",
+"dest": "media/ep01/audio/031.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=18e6df578d524b9b8d35fd5fdca98dab.mp3",
+"dest": "media/ep01/audio/032.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=076379120206468db778314272896684.mp3",
+"dest": "media/ep01/audio/033.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=39e2e5a66ba243bb980b8729673cd6d9.mp3",
+"dest": "media/ep01/audio/034.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=f0d16ed67e4f47219319271dcc0c402d.mp3",
+"dest": "media/ep01/audio/035.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=3e6fed0d843a4612ba8e3bacb12da11a.mp3",
+"dest": "media/ep01/audio/036.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=f5408b10fd334f0087313ee32e62edc7.mp3",
+"dest": "media/ep01/audio/037.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=f004d3c7e8274221a50cceceff177eac.mp3",
+"dest": "media/ep01/audio/038.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=df82108cc41e4b0888c2c28c41c6a723.mp3",
+"dest": "media/ep01/audio/039.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=2d84145a50f346b7b6044125c55a84ed.mp3",
+"dest": "media/ep01/audio/040.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=b04e192401b344f4aa735f5cd6538fc4.mp3",
+"dest": "media/ep01/audio/041.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=2700acd8d091486fa4d76656b832a4ad.mp3",
+"dest": "media/ep01/audio/043.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=5a89ba0cdb9545a48d89e5e6f09294a8.mp3",
+"dest": "media/ep01/audio/044.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=e0625b4395424748a7ad25d21a202939.mp3",
+"dest": "media/ep01/audio/045.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=40b79840c5df4478ba6a7a39cff4e640.mp3",
+"dest": "media/ep01/audio/046.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/045e4a2e57434943bd3bb5db714aad75/id=3afa87b34ee94cd5ab16545ea0ae280a.mp3",
+"dest": "media/ep01/audio/047.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=853465da794c439caf72ab73441c3598.mp3",
+"dest": "media/ep01/audio/048.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=d201b7e90e6047ec972ae61620c5efd6.mp3",
+"dest": "media/ep01/audio/049.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=698606767f2e47089294158c0eccceda.mp3",
+"dest": "media/ep01/audio/050.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=58ae0e0214894fc29a930f71d109e5e1.mp3",
+"dest": "media/ep01/audio/051.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=d642d73c6e4348d8853029edd2b3b80f.mp3",
+"dest": "media/ep01/audio/052.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=b556cb1f2e594ff0a9731a2cecc28afe.mp3",
+"dest": "media/ep01/audio/053.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=df7845ff422e4972b52c50c553f5a043.mp3",
+"dest": "media/ep01/audio/054.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=3fc1e8f44df249e79d5950874f4e213d.mp3",
+"dest": "media/ep01/audio/055.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=4c777ed7ea12489aa50524e72090a448.mp3",
+"dest": "media/ep01/audio/056.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/d703f08d1ef34302a36945aa3efc7b3f/id=7800ee00c03943f2bd9dee2b4d49669c.mp3",
+"dest": "media/ep01/audio/057.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=903539363d674a9f8959b22a2e970529.mp3",
+"dest": "media/ep01/audio/059.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=aa5be8a043d6457f8c5436f0bc7fc3e7.mp3",
+"dest": "media/ep01/audio/060.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=b2e861e320864b0a9dbf7a1d604acabf.mp3",
+"dest": "media/ep01/audio/061.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=f6c740937a2b4f8ba4aa77d128d6c020.mp3",
+"dest": "media/ep01/audio/062.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=f12ca95f9aed498c9d1248667570073a.mp3",
+"dest": "media/ep01/audio/063.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=09fc81ca9188440cb655c9d4cc9d819c.mp3",
+"dest": "media/ep01/audio/064.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=0eb0cd214c924880bb287ca37ce164c7.mp3",
+"dest": "media/ep01/audio/065.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=8270470f7812468aa75c1b17f81a4f19.mp3",
+"dest": "media/ep01/audio/066.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=7fd0145261a148b0a997b6ee779d6677.mp3",
+"dest": "media/ep01/audio/067.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=8e32d7ddd2034308a1920bf44a2715bd.mp3",
+"dest": "media/ep01/audio/068.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=ae65070a19674055b1905c168cb26744.mp3",
+"dest": "media/ep01/audio/069.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=4caf33a3c2e94036bf37314afe38f98f.mp3",
+"dest": "media/ep01/audio/070.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=bfe72f4c5d39428c9f6291e497e975d4.mp3",
+"dest": "media/ep01/audio/071.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=524cd5e40243472ea21ef22ab00fd727.mp3",
+"dest": "media/ep01/audio/072.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=0baefe1db9bc49b49a9a77bec5b43e77.mp3",
+"dest": "media/ep01/audio/073.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=1d7228167269418baee022dadf67d95e.mp3",
+"dest": "media/ep01/audio/074.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=6bd306f60847410e9a56e33b1412ad5e.mp3",
+"dest": "media/ep01/audio/075.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/d703f08d1ef34302a36945aa3efc7b3f/id=4d9ae9c10b2d40058e684a729eb34323.mp3",
+"dest": "media/ep01/audio/076.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=d5ddf9487ff845fb8b32d98b427e4a7b.mp3",
+"dest": "media/ep01/audio/077.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=de92aa3b23b34ff9ae880893b1915bea.mp3",
+"dest": "media/ep01/audio/078.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=cd82ff84143649c48efb86a0ef5f0994.mp3",
+"dest": "media/ep01/audio/079.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=2bd04528ced9403b960df91545610bbe.mp3",
+"dest": "media/ep01/audio/080.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=1c410eaf67bc4ba78800791aee81a2bd.mp3",
+"dest": "media/ep01/audio/082.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=c6f6c7bf35354cf9b9c786fa969822e2.mp3",
+"dest": "media/ep01/audio/084.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=d1aa4f4ab98d4c439a435d40c92dbfec.mp3",
+"dest": "media/ep01/audio/085.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=3eed5df5ef084e729672eb8b1287cba7.mp3",
+"dest": "media/ep01/audio/086.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=f3b4f41051f64447a2aa086b3f43bd97.mp3",
+"dest": "media/ep01/audio/087.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=ef12a2d3a4124a2a87c5e438cc4f503f.mp3",
+"dest": "media/ep01/audio/088.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/bced1ec9731240068f358c2ff535b420/id=10f272f6821e4105b6d638c8d40e42f5.mp3",
+"dest": "media/ep01/audio/089.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/a8c7b58e38c44719b3ab36342f080e95/id=9225e77a0f484da6976caad8e9c38db7.mp3",
+"dest": "media/ep01/audio/014.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/336828260ba148aab9d5d47768cdbc11/id=f6e83f30bfc149a8a84710a56a59c708.mp3",
+"dest": "media/ep01/audio/025.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/336828260ba148aab9d5d47768cdbc11/id=c436e8d4fd934997a0457abf1f9a3aa7.mp3",
+"dest": "media/ep01/audio/042.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/336828260ba148aab9d5d47768cdbc11/id=e97d5df27c344056a974cbba5ed896d2.mp3",
+"dest": "media/ep01/audio/058.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/4a4acf945bc14c42a69559ed381f2194/id=acd4cf2c25714084b19993a330b07593.mp3",
+"dest": "media/ep01/audio/081.mp3"
+},
+{
+"url": "https://resource2.heygen.ai/text_to_speech/cdea5e656a244864a1032edcb4fae01d/4a4acf945bc14c42a69559ed381f2194/id=da15d133b00145e3b2c953c47b2c40f5.mp3",
+"dest": "media/ep01/audio/083.mp3"
+}
+]
+}
