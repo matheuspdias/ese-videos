@@ -19,10 +19,10 @@ from . import scenes as SC
 from .scenes import W, H, text
 
 FPS = 24
-GAP_NAR = 0.22
+GAP_NAR = 0.28
 GAP_DIALOG = 0.35
 LEAD = 0.4
-TAIL = 2.5
+TAIL = 14.0
 
 
 def ease(x):
@@ -359,7 +359,8 @@ def overlay(ctx, fx, u, dur, t, shot):
             a = ease((p - 0.55) / 0.12)
             ctx.save(); ctx.translate(960, 880); ctx.rotate(-0.04); ctx.scale(a, a)
             hand_text(ctx, 'pro meu irmão', -230, 0, 58, '#C9184A')
-            hand_text(ctx, 'MENOS chato ♥', -230, 70, 58, '#C9184A')
+            hand_text(ctx, 'MENOS chato', -230, 70, 58, '#C9184A')
+            heart(ctx, 200, 52, 30, (0.79, 0.09, 0.29, 1))
             ctx.restore()
     if 'placar_jogo' in fx:
         a = ease(p / 0.2)
@@ -396,7 +397,7 @@ def overlay(ctx, fx, u, dur, t, shot):
                 x = 300 + (k % 3) * 650
                 y = 180 + (k // 3) * 160
                 ctx.save(); ctx.translate(x, y); ctx.scale(a, a)
-                rrect(ctx, -200, -50, 400, 90, 40); fill_stroke(ctx, '#FFFFFF', 4)
+                rrect(ctx, -250, -50, 500, 90, 40); fill_stroke(ctx, '#FFFFFF', 4)
                 text(ctx, fr, 0, 12, 34, '#3A0CA3')
                 ctx.restore()
     if 'pensamento_completo' in fx:
@@ -417,8 +418,8 @@ def overlay(ctx, fx, u, dur, t, shot):
         for k, (lbl, ts) in enumerate(mems):
             if p > ts:
                 a = ease((p - ts) / 0.08)
-                x = 380 + k * 580
-                ctx.save(); ctx.translate(x, 240); ctx.rotate((k - 1) * 0.08); ctx.scale(a, a)
+                x = (260, 640, 1730)[k]
+                ctx.save(); ctx.translate(x, 230); ctx.rotate((k - 1) * 0.08); ctx.scale(a * 0.85, a * 0.85)
                 rrect(ctx, -170, -150, 340, 300, 8); fill_stroke(ctx, '#FFFFFF', 5)
                 ctx.rectangle(-145, -125, 290, 200); ctx.set_source_rgba(1, 0.85, 0.6, 1); ctx.fill()
                 if k == 0:

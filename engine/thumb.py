@@ -55,5 +55,41 @@ def main(out):
     surf.write_to_png(out)
 
 
+def ep02(out):
+    from .scenes import bg_classe
+    from .render import rings, thought_bubble
+    surf = cairo.ImageSurface(cairo.FORMAT_RGB24, W, H)
+    ctx = cairo.Context(surf)
+    ctx.save()
+    ctx.translate(W / 2, H / 2); ctx.scale(1.3, 1.3); ctx.translate(-W / 2, -H / 2 - 30)
+    bg_classe(ctx, 0)
+    ctx.restore()
+    ctx.rectangle(0, 0, W, H); ctx.set_source_rgba(0.1, 0.0, 0.15, 0.55); ctx.fill()
+    voce = draw_char(ctx, 'voce', 560, 1380, 1.7, Pose(eyes='wide', mouth='wavy', arms='face', sweat=True, blush=True, facing=1))
+    hx, hy = voce['head']
+    rings(ctx, hx, hy, voce['head_r'], 0.15)
+    rings(ctx, hx, hy, voce['head_r'], 0.5)
+    bia = draw_char(ctx, 'bia', 1450, 1380, 1.6, Pose(eyes='wide', mouth='o', blush=True, arms='face', facing=-1))
+    # balão de pensamento com coração
+    bx, by = 1000, 380
+    for k, (fx_, r) in enumerate(((0.3, 16), (0.55, 26))):
+        ctx.arc(hx + (bx - hx) * fx_, hy - 150 + (by - hy + 150) * fx_, r, 0, TAU); ctx.set_source_rgba(1, 1, 1, 1); ctx.fill()
+    ctx.save(); ctx.translate(bx, by); ctx.scale(1.4, 1.0); ctx.arc(0, 0, 110, 0, TAU); ctx.restore()
+    ctx.set_source_rgba(1, 1, 1, 1); ctx.fill()
+    heart(ctx, bx, by + 20, 80, (1, 0.25, 0.6, 1))
+    ctx.select_font_face('Poppins', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+    ctx.set_font_size(180)
+    w1 = ctx.text_extents('ela ').x_advance
+    w2 = ctx.text_extents('ouviu..').x_advance
+    x0 = W / 2 - (w1 + w2) / 2
+    text(ctx, 'ela ', x0, 200, 180, '#FFFFFF', align='left', outline='#120018', lw=24)
+    text(ctx, 'ouviu..', x0 + w1, 200, 180, '#FFD23F', align='left', outline='#120018', lw=24)
+    vignette(ctx, 0.45)
+    surf.write_to_png(out)
+
+
 if __name__ == '__main__':
-    main(sys.argv[1])
+    if len(sys.argv) > 2 and sys.argv[2] == 'ep02':
+        ep02(sys.argv[1])
+    else:
+        main(sys.argv[1])
