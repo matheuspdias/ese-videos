@@ -130,7 +130,14 @@ def bar_value(start, kf, u, dur):
 
 
 # ---------------------------------------------------------------- barra neon
-def neon_bar(ctx, x, y, s, value, pop=0.0, alpha=1.0, flicker=False, t=0):
+def neon_bar(ctx, x, y, s, value, pop=0.0, alpha=1.0, flicker=False, t=0, style=None):
+    """barra neon. style (opcional, ou BAR no módulo do episódio): dict(max=100, fmt='{v}%', icon='heart'|'star',
+    glow=(r,g,b), fill=((r,g,b),(r,g,b)), stroke=(r,g,b), label='TEXTO acima da barra')."""
+    if style is None and _G.get('ep') is not None:
+        style = getattr(_G['ep'], 'BAR', None)
+    st = dict(max=100, fmt='{v}%', icon='heart', glow=(1, 0.24, 0.65), fill=((1, 0.3, 0.75), (1, 0.1, 0.45)),
+              stroke=(1, 0.75, 0.92), label=None)
+    st.update(style or {})
     w, h = 230 * s, 60 * s
     sc = 1 + 0.22 * pop
     ctx.save()
@@ -141,31 +148,45 @@ def neon_bar(ctx, x, y, s, value, pop=0.0, alpha=1.0, flicker=False, t=0):
     # brilho
     for k in range(6, 0, -1):
         rrect(ctx, -w / 2 - k * 5 * s, -h / 2 - k * 5 * s, w + k * 10 * s, h + k * 10 * s, h / 2 + k * 5 * s)
-        ctx.set_source_rgba(1, 0.24, 0.65, 0.05 * alpha * (1 + pop))
+        ctx.set_source_rgba(*st['glow'], 0.05 * alpha * (1 + pop))
         ctx.fill()
     rrect(ctx, -w / 2, -h / 2, w, h, h / 2)
     ctx.set_source_rgba(0.12, 0.02, 0.12, 0.85 * alpha)
     ctx.fill()
-    frac = max(0.0, min(1.0, value / 100))
+    frac = max(0.0, min(1.0, value / st['max']))
     if frac > 0:
         ctx.save()
         rrect(ctx, -w / 2, -h / 2, w, h, h / 2)
         ctx.clip()
         g = cairo.LinearGradient(-w / 2, 0, w / 2, 0)
-        g.add_color_stop_rgba(0, 1, 0.3, 0.75, alpha)
-        g.add_color_stop_rgba(1, 1, 0.1, 0.45, alpha)
+        g.add_color_stop_rgba(0, *st['fill'][0], alpha)
+        g.add_color_stop_rgba(1, *st['fill'][1], alpha)
         ctx.rectangle(-w / 2, -h / 2, w * frac, h)
         ctx.set_source(g)
         ctx.fill()
         ctx.restore()
     rrect(ctx, -w / 2, -h / 2, w, h, h / 2)
-    ctx.set_source_rgba(1, 0.75, 0.92, alpha)
+    ctx.set_source_rgba(*st['stroke'], alpha)
     ctx.set_line_width(5 * s)
     ctx.stroke()
-    # coração
+    # ícone
     hx = -w / 2 - 6 * s
-    heart(ctx, hx, 0, 34 * s, (1, 0.25, 0.6, alpha))
-    label = f'{int(round(value))}%'
+    if st['icon'] == 'star':
+        star(ctx, hx, 0, 40 * s, '#FFD23F')
+    else:
+        heart(ctx, hx, 0, 34 * s, (1, 0.25, 0.6, alpha))
+    if st['label']:
+        ctx.select_font_face('Poppins', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+        ctx.set_font_size(26 * s)
+        e = ctx.text_extents(st['label'])
+        ctx.move_to(-e.width / 2 - e.x_bearing, -h / 2 - 12 * s)
+        ctx.text_path(st['label'])
+        ctx.set_source_rgba(0.1, 0, 0.1, alpha)
+        ctx.set_line_width(6 * s)
+        ctx.stroke_preserve()
+        ctx.set_source_rgba(*st['stroke'], alpha)
+        ctx.fill()
+    label = st['fmt'].format(v=int(round(value)))
     ctx.select_font_face('Poppins', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
     ctx.set_font_size(42 * s)
     e = ctx.text_extents(label)
