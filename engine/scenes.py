@@ -619,6 +619,32 @@ def bg_salao(ctx, t):
     text(ctx, '80', 1650, 610, 70, '#C9184A')
 
 
+def bg_salao_posse(ctx, t):
+    """ep04: salão da escola na posse do representante de turma (faixa azul, bandeirinhas, púlpito)."""
+    wall(ctx, '#EAF4FF', 780, '#BBD3EE', 560)
+    rr(ctx, 380, 70, 1160, 120, 16, '#1D4E89')
+    text(ctx, 'POSSE DO REPRESENTANTE', 960, 152, 62, '#FFFFFF', outline='#0B2545', lw=10)
+    # bandeirinhas
+    cols = ['#E63946', '#FFB703', '#2A9D8F', '#8338EC', '#06D6A0']
+    for row, y0 in ((0, 250), (1, 330)):
+        ctx.set_source_rgba(0.3, 0.3, 0.3, 1); ctx.set_line_width(3)
+        ctx.move_to(0, y0); ctx.curve_to(640, y0 + 50, 1280, y0 + 50, 1920, y0); ctx.stroke()
+        for k in range(16):
+            x = 40 + k * 120 + row * 60
+            y = y0 + 50 * math.sin(math.pi * x / 1920) * 0.75
+            ctx.move_to(x - 28, y); ctx.line_to(x + 28, y); ctx.line_to(x, y + 50 + 3 * math.sin(t * 2 + k)); ctx.close_path()
+            fill_stroke(ctx, cols[(k + row) % len(cols)], 3)
+    floor(ctx, 780, '#C9A27E', tiles=True)
+    # palco ao fundo
+    rect(ctx, 0, 700, 1920, 80, '#8D5A3B')
+    # púlpito com microfone
+    rect(ctx, 1590, 560, 140, 220, '#A47148')
+    rect(ctx, 1570, 540, 180, 30, '#7F5539')
+    ctx.set_source_rgba(0.15, 0.15, 0.18, 1); ctx.set_line_width(6)
+    ctx.move_to(1660, 540); ctx.line_to(1640, 470); ctx.stroke()
+    ctx.arc(1636, 462, 14, 0, TAU); fill_stroke(ctx, '#495057', 3)
+
+
 def bg_quarto_noite(ctx, t):
     wall(ctx, '#3C3A6B', 780)
     window(ctx, 1300, 140, 360, 300, night=True)
@@ -684,6 +710,7 @@ BG = {
     'onibus': (bg_onibus, fg_onibus),
     'quadra': (bg_quadra, None),
     'salao': (bg_salao, None),
+    'salao_posse': (bg_salao_posse, None),
     'quarto_noite': (bg_quarto_noite, None),
     'desenho': (bg_plain('#6D4C41', '#4E342E'), None),
     'lista': (bg_plain('#1B1B3A', '#3A0CA3'), None),
@@ -708,6 +735,7 @@ SLOTS = {
     'feira': dict(a=(560, 1010, 0.95), b=(980, 1010, 0.95), c=(1560, 1010, 0.95)),
     'quadra': dict(a=(500, 1010, 0.9), b=(1000, 1010, 0.95), gol=(1720, 1000, 0.85), gol2=(1640, 980, 0.85)),
     'salao': dict(a=(330, 1010, 0.9), b=(700, 1010, 0.9), c=(1060, 1010, 0.95), d=(1400, 1010, 0.8), e=(1700, 1010, 0.9)),
+    'salao_posse': dict(a=(330, 1010, 0.9), b=(700, 1010, 0.9), c=(1060, 1010, 0.95), d=(1400, 1010, 0.8), e=(1700, 1010, 0.9)),
     'quarto_noite': dict(a=(760, 1010, 1.0)),
     'onibus': dict(a=(300, 870, 0.85), b=(1030, 870, 0.9), c=(1290, 870, 0.9)),
 }

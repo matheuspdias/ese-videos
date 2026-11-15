@@ -8,7 +8,7 @@ Texto da thumb é sugestão; pode melhorar mantendo o padrão "consequência + .
 | 1 | E se você pudesse ver o quanto cada pessoa te ama de verdade? | Primer Nivel, 1,8 mi | só 3%.. | barra de amor sobre a cabeça | feito — ep01, 14/11 |
 | 2 | E se todo mundo pudesse ouvir seus pensamentos? | IFNation, 871 mil | ela ouviu.. | pensamentos em voz alta | feito — ep02, 15/11 |
 | 3 | E se você ficasse preso num bunker com seu crush? | Questionverse, 824 mil | DIA 1 / DIA 30 | você e a Bia trancados no porão da escola depois de uma simulação de incêndio; comida contada, segredos, amizade | feito — ep03, 16/11 |
-| 4 | E se você tivesse carisma nível 500? | IFNation, 795 mil | ela pediu meu zap.. | todo mundo te adora; você não sabe quem gosta de você de verdade (Davi) | pendente |
+| 4 | E se você tivesse carisma nível 500? | IFNation, 795 mil | ela pediu meu zap.. | todo mundo te adora; você não sabe quem gosta de você de verdade (Davi) | feito — ep04, 17/11 |
 | 5 | E se você crescesse 1 cm toda vez que pedisse desculpa? | IFNation, 501 mil | foi mal.. | medidor de altura na parede; ônibus, porta da sala | pendente |
 | 6 | E se você ficasse preso num shopping com seu crush por 30 dias? | Questionverse, 110 mil | DIA 1 / DIA 30 | shopping fechado na quarentena da enchente; praça de alimentação | pendente |
 | 7 | E se você pudesse ver quem te acha bonito? | WhatIfVerse, 359 mil | até ele?.. | ícone de coração sobre as pessoas | pendente |

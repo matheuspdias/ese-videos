@@ -5,6 +5,7 @@
 | ep01 | sáb 14/11/2026 | E se você pudesse ver o quanto cada pessoa te ama de verdade? | agendado |
 | ep02 | dom 15/11/2026 | E se todo mundo pudesse ouvir seus pensamentos? | entregue |
 | ep03 | seg 16/11/2026 | E se você ficasse preso num bunker com seu crush? | entregue |
+| ep04 | ter 17/11/2026 | E se você tivesse carisma nível 500? | entregue |
 
-Próximo: **ep04 — ter 17/11/2026**. Cada execução produz o próximo episódio e acrescenta uma linha aqui
+Próximo: **ep05 — qua 18/11/2026**. Cada execução produz o próximo episódio e acrescenta uma linha aqui
 (status `entregue`). O próximo depois de cada um é sempre o dia seguinte à última data da tabela.
