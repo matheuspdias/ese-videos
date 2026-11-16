@@ -14,9 +14,9 @@ BAR = dict(max=250, fmt='{v} cm', icon='star', glow=(0.2, 0.85, 1), fill=((0.35,
            stroke=(0.75, 0.97, 1), label='ALTURA')
 GROW = dict(cid='voce', base=152, k=1.8)     # escala visual do protagonista acompanha a barra
 THUMB = dict(bg='onibus', text=('foi', 'mal..'),
-             left=('voce', dict(eyes='wide', mouth='wavy', arms='face', sweat=True, blush=True)),
+             left=('voce', dict(eyes='wide', mouth='wavy', arms='face', sweat=True, blush=True, tall=1.8)),
              right=('davi', dict(eyes='sad', mouth='frown', arms='cross')),
-             link='neon', bar_left=222, left_s=1.9)
+             link='neon', bar_left=222, left_s=1.3, left_x=380)
 
 VOICES = {
     'nar': 'bced1ec9731240068f358c2ff535b420',   # ESE Narrador
@@ -136,7 +136,7 @@ LINES = [
     ('feirante', "Ô, garoto! Já que tá aí em cima, pendura a minha placa de promoção?",
      S('feira', C('feirante', 'c', None, facing=-1, arms='point', eyes='happy', mouth='grin'), cam=dict(focus='feirante', zoom=1.55, to=1.65))),
     ('nar', "Você pendura a placa. Fica torta. E o seu Valdir diz que nunca ficou tão bonita.",
-     S('feira', V('b', 180, arms='up', eyes='happy', mouth='grin'), C('feirante', 'c', None, facing=-1, arms='up', eyes='happy', mouth='grin'), fx=[placa('PROMOÇÃO', 'laranja 3 por 5', cor='#FF4FAE')])),
+     S('feira', V('b', 180, arms='up', eyes='happy', mouth='grin'), C('feirante', 'c', None, facing=-1, arms='up', eyes='happy', mouth='grin'))),
     ('nar', "No portão da escola, o seu Jorge, que nunca sorri antes das oito, te olha de baixo pra cima.",
      S('portao', C('jorge', 'a', None, facing=-1, eyes='wide', mouth='o'), V('b', 180, arms='wave', mouth='smile'))),
     ('jorge', "Meu filho, você tá crescendo ou eu tô afundando?",
@@ -188,7 +188,7 @@ LINES = [
     ('nar', "No grupo da família, a tia Marta manda foto sua com uma régua do lado. Quarenta e dois comentários.",
      S('whatsapp', fx=[placa('FAMÍLIA', 'Tia Marta: olha o tamanho dele!', 'Vó Cida: é o pudim', 'Mãe: quem vai pagar o uniforme?', cor='#06D6A0', pos='centro')])),
     ('nar', "Na quinta, você está com dois metros e vinte. E sexta tem a final do interclasse.",
-     quadra(220, voce=dict(eyes='happy', mouth='smile'), davi=dict(arms='hold', prop='bola', eyes='happy', mouth='grin'), slot_voce='b', slot_davi='a',
+     quadra(220, voce=dict(eyes='happy', mouth='smile', facing=1), davi=dict(arms='hold', prop='bola', eyes='happy', mouth='grin', facing=-1), slot_voce='a', slot_davi='b',
             prof=dict(eyes='wide', mouth='o', arms='down'), fx=[placa('QUINTA')])),
     ('nar', "O Davi treina pra ser goleiro do time faz um mês. Ficava até mais tarde. Pedia pra todo mundo chutar nele.",
      quadra(220, voce=dict(eyes='happy', mouth='smile', facing=1), davi=dict(eyes='angry', mouth='grin', arms='up'), slot_voce='a', slot_davi='gol')),
@@ -267,7 +267,7 @@ LINES = [
     ('nar', "O chute sai forte. E o Davi voa. Pega com as duas mãos.",
      quadra(222, voce=dict(eyes='wide', mouth='o', arms='up', facing=1), davi=dict(eyes='closed', mouth='grin', arms='up', facing=-1), slot_voce='a', slot_davi='gol', fx=['shake', 'zoom_punch'])),
     ('davi', "Pegueeei! Cabeção, eu peguei!",
-     quadra(222, davi=dict(eyes='happy', mouth='grin', arms='up', prop='bola', facing=-1), slot_voce='a', slot_davi='gol', cam=dict(focus='davi', zoom=1.5, to=1.6), fx=['confete'])),
+     S('quadra', V('a', 222, eyes='happy', mouth='grin', arms='up'), C('davi', 'gol', None, eyes='happy', mouth='grin', arms='up', prop='bola', facing=-1), cam=dict(zoom=1.3, to=1.38, cx=1450, cy=620), fx=['confete'])),
     ('nar', "A vó Cida pula da arquibancada. A tia Marta perde a faixa. O seu Valdir abraça um desconhecido.",
      S('quadra', C('vo', 'a', None, arms='up', eyes='happy', mouth='grin'), C('feirante', 'b', None, arms='up', eyes='happy', mouth='grin'), C('tia', 'gol2', None, facing=-1, arms='up', eyes='happy', mouth='grin'), fx=['confete', 'danca'])),
     ('nar', "Lá no alto da arquibancada, a Bia levanta um cartaz. Um cachorrinho girafa. De luvas de goleiro.",

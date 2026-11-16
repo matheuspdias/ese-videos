@@ -880,6 +880,8 @@ def draw_frame(ctx, ep, clips, shots, envs, t):
         v, pop = bar_value(start, kf, u, dur)
         tx, ty = info['top']
         by = max(ty - 60 * s, cy - vh / 2 + 70 * max(0.75, s))   # não deixa a barra sair do quadro
+        if 'title' in fx and (by - (cy - vh / 2)) * z < 230:
+            continue   # não briga com o título no topo
         neon_bar(ctx, tx, by, max(0.75, s), v, pop, flicker=('flicker' in fx and cid == 'davi'), t=t)
     if 'hearts' in fx:
         random.seed(2)
