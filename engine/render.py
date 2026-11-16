@@ -14,7 +14,7 @@ from multiprocessing import Pool
 import cairo
 import numpy as np
 
-from .chars import draw_char, Pose, CAST, hexc, setc, rrect, fill_stroke, OUT, TAU, star
+from .chars import draw_char, head_height, Pose, CAST, hexc, setc, rrect, fill_stroke, OUT, TAU, star
 from . import scenes as SC
 from .scenes import W, H, text
 
@@ -127,6 +127,47 @@ def bar_value(start, kf, u, dur):
         else:
             break
     return v, pop
+
+
+def grow_factor(ep, cid, shot, u, dur):
+    """escala extra de um personagem que cresce com a barra (GROW = dict(cid, base, k) no módulo do episódio)."""
+    g = getattr(ep, 'GROW', None)
+    if not g or cid != g['cid'] or cid not in shot.get('bars', {}):
+        return 1.0
+    start, kf = shot['bars'][cid]
+    v, _ = bar_value(start, kf, u, dur)
+    return grow_scale(g, v)
+
+
+def grow_scale(g, v):
+    return 1 + (v - g['base']) / g['base'] * g.get('k', 1.0)
+
+
+def regua(ctx, ep, x, y, s, facing=1):
+    """régua de altura (fx 'regua') ao lado do personagem que cresce; marcas batem com a escala visual."""
+    g = getattr(ep, 'GROW', None) or dict(base=150, k=1.0)
+    rx = x - 150 * s * facing
+
+    def htop(cm):
+        tl = grow_scale(g, cm)
+        hs = CAST['voce']['h'] * tl
+        return s * (head_height('voce', tl) + 118 * (0.92 + 0.08 * hs) * 1.18)
+    top = htop(250)
+    rrect(ctx, rx - 22 * s, y - top - 10, 44 * s, top + 10, 6)
+    setc(ctx, '#F4D58D'); ctx.fill_preserve()
+    ctx.set_source_rgba(0.07, 0.07, 0.09, 1); ctx.set_line_width(4); ctx.stroke()
+    ctx.select_font_face('Poppins', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+    for cm in range(100, 251, 10):
+        hy = y - htop(cm)
+        if hy > y - 10:
+            continue
+        big = cm % 50 == 0
+        ctx.move_to(rx - 22 * s, hy); ctx.line_to(rx + (10 if big else -4) * s, hy)
+        ctx.set_line_width(4 if big else 2.5); ctx.stroke()
+        if big:
+            ctx.set_font_size(22 * s)
+            lab = f'{cm // 100},{cm % 100:02d}'
+            ctx.move_to(rx - 18 * s, hy - 6 * s); ctx.show_text(lab)
 
 
 # ---------------------------------------------------------------- barra neon
@@ -759,9 +800,12 @@ def draw_frame(ctx, ep, clips, shots, envs, t):
         for cid, slot, pose, bar in sc['cast']:
             if cid == cam['focus']:
                 x, y, s = slots[slot]
-                hs = CAST[cid]['h']
+                g = grow_factor(ep, cid, shot, u, dur)
                 cx = x
-                cy = y - 470 * hs * s
+                if g != 1.0:
+                    cy = y - head_height(cid, g, pose.get('sit', False)) * s + 40 * s
+                else:
+                    cy = y - 470 * CAST[cid]['h'] * s
     vw, vh = W / z, H / z
     cx = min(max(cx, vw / 2), W - vw / 2)
     cy = min(max(cy, vh / 2), H - vh / 2)
@@ -781,6 +825,9 @@ def draw_frame(ctx, ep, clips, shots, envs, t):
         if 'look_lr' in fx and cid == 'voce':
             p.look = -1 if u < dur / 2 else 1
             p.facing = -1 if u < dur / 2 else 1
+        if 'regua' in fx and cid == 'voce':
+            regua(ctx, ep, x, y, s, facing=p.facing)
+        p.tall = grow_factor(ep, cid, shot, u, dur)
         info = draw_char(ctx, cid, x, y, s, p)
         heads[cid] = (info, s)
     if thinking and 'voce' in heads:
@@ -832,7 +879,8 @@ def draw_frame(ctx, ep, clips, shots, envs, t):
         info, s = heads[cid]
         v, pop = bar_value(start, kf, u, dur)
         tx, ty = info['top']
-        neon_bar(ctx, tx, ty - 60 * s, max(0.75, s), v, pop, flicker=('flicker' in fx and cid == 'davi'), t=t)
+        by = max(ty - 60 * s, cy - vh / 2 + 70 * max(0.75, s))   # não deixa a barra sair do quadro
+        neon_bar(ctx, tx, by, max(0.75, s), v, pop, flicker=('flicker' in fx and cid == 'davi'), t=t)
     if 'hearts' in fx:
         random.seed(2)
         for k in range(10):

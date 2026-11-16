@@ -113,6 +113,7 @@ def generic(spec, out):
     right: (cid, dict_pose) ou None
     link: 'bar' | 'neon' | 'thought' | 'rings' | None
     bar: valor da barra neon sobre o personagem da direita (se link='bar')
+    left_s / left_x: escala e posição do personagem da esquerda (opcional; ex.: protagonista gigante)
     bar_left: valor de uma barra neon sobre o personagem da esquerda (opcional, usa o BAR do episódio)
     """
     from .scenes import BG
@@ -127,7 +128,7 @@ def generic(spec, out):
     ctx.rectangle(0, 0, W, H); ctx.set_source_rgba(0.1, 0.0, 0.15, 0.55); ctx.fill()
     lid, lpose = spec['left']
     lp = dict(lpose); lp.setdefault('facing', 1)
-    L = draw_char(ctx, lid, 560, 1380, 1.7, Pose(**lp))
+    L = draw_char(ctx, lid, spec.get('left_x', 560), 1380, spec.get('left_s', 1.7), Pose(**lp))
     R = None
     if spec.get('right'):
         rid, rpose = spec['right']

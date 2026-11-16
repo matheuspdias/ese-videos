@@ -87,6 +87,15 @@ class Pose:
         self.veil = kw.get('veil', False)
         self.mustache = kw.get('mustache', False)
         self.sit = kw.get('sit', False)
+        self.tall = kw.get('tall', 1.0)        # estica pernas e tronco (personagem que cresce)
+
+
+def head_height(cid, tall=1.0, sit=False):
+    """distância (em unidades do personagem, s=1) dos pés até o centro da cabeça."""
+    hs = CAST[cid]['h'] * tall
+    H = 520 * hs
+    head_r = 118 * (0.92 + 0.08 * hs) if cid != 'lari' else 104
+    return H * (0.12 if sit else 0.22) + H * 0.36 + head_r * 0.82
 
 
 def draw_char(ctx, cid, x, y, s=1.0, pose=None):
@@ -94,7 +103,7 @@ def draw_char(ctx, cid, x, y, s=1.0, pose=None):
     p = pose or Pose()
     ctx.save()
     ctx.translate(x, y)
-    hs = c['h']
+    hs = c['h'] * p.tall
     ctx.scale(s, s)
     f = p.facing
     by = -p.bob * 6
