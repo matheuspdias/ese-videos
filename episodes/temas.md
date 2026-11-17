@@ -10,7 +10,7 @@ Texto da thumb é sugestão; pode melhorar mantendo o padrão "consequência + .
 | 3 | E se você ficasse preso num bunker com seu crush? | Questionverse, 824 mil | DIA 1 / DIA 30 | você e a Bia trancados no porão da escola depois de uma simulação de incêndio; comida contada, segredos, amizade | feito — ep03, 16/11 |
 | 4 | E se você tivesse carisma nível 500? | IFNation, 795 mil | ela pediu meu zap.. | todo mundo te adora; você não sabe quem gosta de você de verdade (Davi) | feito — ep04, 17/11 |
 | 5 | E se você crescesse 1 cm toda vez que pedisse desculpa? | IFNation, 501 mil | foi mal.. | medidor de altura na parede; ônibus, porta da sala | feito — ep05, 18/11 |
-| 6 | E se você ficasse preso num shopping com seu crush por 30 dias? | Questionverse, 110 mil | DIA 1 / DIA 30 | shopping fechado na quarentena da enchente; praça de alimentação | pendente |
+| 6 | E se você ficasse preso num shopping com seu crush por 30 dias? | Questionverse, 110 mil | DIA 1 / DIA 30 | shopping fechado na quarentena da enchente; praça de alimentação | feito — ep06, 19/11 |
 | 7 | E se você pudesse ver quem te acha bonito? | WhatIfVerse, 359 mil | até ele?.. | ícone de coração sobre as pessoas | pendente |
 | 8 | E se você fosse a pessoa mais forte do Brasil? | Questionverse, 326 mil | segura aí.. | levantar ônibus, mudança da vó, campeonato de queda de braço | pendente |
 | 9 | E se você pudesse ver as mensagens que apagaram antes de te mandar? | nova (padrão "ver o que escondem") | digitando.. | grupo da família, conversa com a Bia | pendente |

@@ -7,6 +7,7 @@
 | ep03 | seg 16/11/2026 | E se você ficasse preso num bunker com seu crush? | entregue |
 | ep04 | ter 17/11/2026 | E se você tivesse carisma nível 500? | entregue |
 | ep05 | qua 18/11/2026 | E se você crescesse 1 cm toda vez que pedisse desculpa? | entregue |
+| ep06 | qui 19/11/2026 | E se você ficasse preso num shopping com seu crush por 30 dias? | entregue |
 
-Próximo: **ep06 — qui 19/11/2026**. Cada execução produz o próximo episódio e acrescenta uma linha aqui
+Próximo: **ep07 — sex 20/11/2026**. Cada execução produz o próximo episódio e acrescenta uma linha aqui
 (status `entregue`). O próximo depois de cada um é sempre o dia seguinte à última data da tabela.

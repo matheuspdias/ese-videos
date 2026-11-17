@@ -74,7 +74,7 @@ def cine(voce=None, bia=None, osv=None, **kw):
 LINES = [
     # ---------------------------------------------------------------- ABERTURA (DIA 9)
     ('nar', "Dia nove. Sete da manhã. Você acorda num colchão que custa nove mil reais. Ainda com a etiqueta.",
-     colchao(voce=dict(eyes='half', mouth='flat'), cam=dict(zoom=1.05, to=1.12), fx=[dia(9)])),
+     colchao(voce=dict(eyes='half', mouth='flat'), cam=dict(zoom=1.05, to=1.12, cy=480), fx=[dia(9)])),
     ('nar', "Ontem foi o colchão número treze. Hoje, o catorze. Você está testando todos. Por ciência.",
      colchao(voce=dict(eyes='happy', mouth='smile', arms='up'), cam=dict(focus='voce', zoom=1.45, to=1.55))),
     ('bia', "Atenção, cliente de moletom verde. Favor comparecer à praça de alimentação. Seu pastel está esfriando.",
@@ -249,7 +249,7 @@ LINES = [
     ('bia', "Essa aqui é a da família do Davi. Cachorrinho com bola de futebol.",
      S('shopping', C('bia', 'a', None, arms='hold', prop='sacola', eyes='happy', mouth='smile', blush=True), cam=dict(focus='bia', zoom=1.5, to=1.6))),
     ('nar', "E toda semana, o barco da Defesa Civil sai do shopping mais cheio do que chegou.",
-     S('enchente', C('voce', 'a', None, arms='wave', eyes='happy', mouth='grin'), C('bia', 'b', None, arms='wave', eyes='happy', mouth='grin'), C('osvaldo', 'c', None, facing=-1, arms='wave', mouth='smile'), C('moco', 'barco', None, facing=-1, arms='hold', prop='sacola', eyes='wide', mouth='o'), fx=[dia(17)])),
+     S('enchente', C('voce', 'a', None, arms='wave', eyes='happy', mouth='grin'), C('bia', 'b', None, arms='wave', eyes='happy', mouth='grin'), C('osvaldo', 'c', None, facing=-1, arms='wave', mouth='smile'), C('moco', 'barco', None, facing=-1, arms='hold', prop='sacola', eyes='wide', mouth='o'), fx=[dia(17)], cam=dict(zoom=1.0, to=1.05))),
     ('moco', "Primeira vez que eu saio de um lugar alagado mais carregado do que cheguei.",
      S('enchente', C('moco', 'barco', None, facing=-1, arms='hold', prop='sacola', eyes='happy', mouth='grin'), cam=dict(focus='moco', zoom=1.6, to=1.7))),
     ('nar', "No último barco, vai o colchão número catorze. Com um bilhete colado.",
