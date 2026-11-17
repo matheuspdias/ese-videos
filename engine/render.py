@@ -537,6 +537,19 @@ def overlay(ctx, fx, u, dur, t, shot):
             text(ctx, 'INSCREVA-SE NO JÁ PENSOU?', 0, 16, 40, '#FFFFFF')
             ctx.restore()
     for item in fx:
+        # ep06: videochamada genérica {'chamada': cid, 'nome': 'Davi', 'x': 1450}
+        if isinstance(item, dict) and 'chamada' in item:
+            video_call(ctx, item, p, t)
+        # ep06: caderninho com lista {'anota': ['linha', ...], 'titulo': 'ANOTA AÍ'}
+        if isinstance(item, dict) and 'anota' in item:
+            notebook(ctx)
+            if item.get('titulo'):
+                hand_text(ctx, item['titulo'], 520, 260, 66, '#C9184A')
+            for k, s_ in enumerate(item['anota']):
+                a = ease((p - 0.08 - k * (0.7 / max(1, len(item['anota'])))) / 0.1)
+                if a > 0:
+                    hand_text(ctx, s_, 520, 380 + k * 105, 54, '#1D3557', a)
+    for item in fx:
         # textos livres: {'texto': ['linha 1', 'linha 2'], 'pos': 'topo'|'baixo'|'centro', 'cor': '#FFD23F'}
         if isinstance(item, dict) and 'texto' in item and p > 0.08:
             a = ease((p - 0.08) / 0.1)
@@ -689,6 +702,43 @@ def phone_ui(ctx, p, talking, t):
     for dx, col in ((-100, '#E63946'), (100, '#06D6A0')):
         ctx.arc(dx, 280, 46, 0, TAU)
         fill_stroke(ctx, col, 5)
+    ctx.restore()
+
+
+def video_call(ctx, item, p, t):
+    """celular com videochamada de qualquer personagem; a boca mexe quando ele está falando."""
+    cid = item['chamada']
+    talk = 0.0
+    for c in _G.get('clips', []):
+        if c['sp'] == cid and c['t0'] <= t < c['t1']:
+            e = _G['envs'].get(c['i'])
+            if e is not None:
+                talk = float(e[min(int((t - c['t0']) * FPS), len(e) - 1)])
+    a = ease(p / 0.08)
+    ctx.save()
+    ctx.translate(item.get('x', 1450), 540 + (1 - a) * 300)
+    rrect(ctx, -230, -420, 460, 840, 50)
+    fill_stroke(ctx, '#1E1E24', 8)
+    rrect(ctx, -205, -390, 410, 780, 36)
+    g = cairo.LinearGradient(0, -390, 0, 390)
+    top, bot = item.get('fundo', ((0.55, 0.75, 0.95), (0.85, 0.92, 1.0)))
+    g.add_color_stop_rgb(0, *top)
+    g.add_color_stop_rgb(1, *bot)
+    ctx.set_source(g); ctx.fill()
+    ctx.save(); rrect(ctx, -205, -390, 410, 780, 36); ctx.clip()
+    ctx.save(); ctx.translate(0, 60); ctx.scale(1.0, 1.0)
+    from .chars import draw_head
+    pose = dict(mouth='smile', eyes='normal'); pose.update(item.get('pose', {}))
+    pose['talk'] = talk
+    draw_head(ctx, cid, CAST[cid], Pose(**pose), 0, 0, 118)
+    ctx.restore()
+    ctx.move_to(-205, 390); ctx.curve_to(-160, 200, 160, 200, 205, 390); ctx.close_path()
+    setc(ctx, CAST[cid]['shirt']); ctx.fill_preserve(); ctx.set_source_rgba(*OUT); ctx.set_line_width(5); ctx.stroke()
+    ctx.restore()
+    rrect(ctx, -170, -370, 340, 70, 30); ctx.set_source_rgba(0, 0, 0, 0.45); ctx.fill()
+    text(ctx, item.get('nome', CAST[cid]['name']), 0, -320, 40, '#FFFFFF')
+    ctx.arc(-150, -335, 9, 0, TAU); ctx.set_source_rgba(0.9, 0.15, 0.2, 1); ctx.fill()
+    ctx.arc(0, 330, 40, 0, TAU); fill_stroke(ctx, '#E63946', 5)
     ctx.restore()
 
 

@@ -62,6 +62,7 @@ CAST = {
     'neide':  dict(skin='#A86B3C', name='Prof. Neide', shirt='#4361EE', pants='#4361EE', shoes='#2B2D42', kind='dress', hair='bun', hair_c='#2B1B12', extra='oculos', h=0.98),
     'feirante': dict(skin='#D69E74', name='Seu Valdir', shirt='#E9C46A', pants='#495057', shoes='#3A2A22', kind='tee', hair='cap', hair_c='#C1121F', extra='bigode', h=1.02),
     'moco':   dict(skin='#8D5524', name='Moço', shirt='#F77F00', pants='#264653', shoes='#3A2A22', kind='tee', hair='short', hair_c='#1B1B1B', extra=None, h=1.02),
+    'osvaldo': dict(skin='#A0663C', name='Seu Osvaldo', shirt='#1D3557', pants='#22223B', shoes='#111111', kind='shirt', hair='cap', hair_c='#14213D', extra='bigode', h=1.0),  # ep06: vigia do shopping
     'aluno1': dict(skin='#FFDCB8', name='Aluno', shirt='#F77F00', pants='#264653', shoes='#FFFFFF', kind='tee', hair='short', hair_c='#2A1C14', extra=None, h=0.98),
     'aluno2': dict(skin='#8D5524', name='Aluna', shirt='#8AC926', pants='#3D405B', shoes='#FFFFFF', kind='tee', hair='long', hair_c='#1B1B1B', extra=None, h=0.95),
     'aluno3': dict(skin='#C68642', name='Aluno', shirt='#6A4C93', pants='#22333B', shoes='#FFFFFF', kind='hoodie', hair='short', hair_c='#4A2C17', extra=None, h=1.0),
@@ -715,6 +716,17 @@ def draw_prop(ctx, prop, x, y, f):
     elif prop == 'coxinha':
         ctx.move_to(0, -50); ctx.curve_to(40, -10, 40, 30, 0, 32); ctx.curve_to(-40, 30, -40, -10, 0, -50); ctx.close_path()
         fill_stroke(ctx, '#D98E32', 4)
+    elif prop == 'pastel':   # ep06
+        ctx.move_to(-48, 10); ctx.curve_to(-46, -46, 46, -46, 48, 10); ctx.close_path()
+        fill_stroke(ctx, '#F2B84B', 4)
+        ctx.set_source_rgba(0.75, 0.5, 0.15, 1); ctx.set_line_width(3)
+        for k in range(-3, 4):
+            ctx.move_to(k * 13, 10); ctx.line_to(k * 13, 2); ctx.stroke()
+    elif prop == 'sorvete':  # ep06
+        ctx.move_to(-22, -10); ctx.line_to(22, -10); ctx.line_to(0, 46); ctx.close_path()
+        fill_stroke(ctx, '#D9A066', 4)
+        for k, (dx, dy, c) in enumerate(((-12, -24, '#FFB5C2'), (12, -24, '#7FD1AE'), (0, -46, '#6B3E26'))):
+            ctx.arc(dx, dy, 19, 0, TAU); fill_stroke(ctx, c, 4)
     elif prop == 'bola':
         ctx.arc(0, -10, 34, 0, TAU); fill_stroke(ctx, '#FFFFFF', 4)
         for k in range(5):

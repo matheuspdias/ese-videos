@@ -887,3 +887,313 @@ SLOTS['porao_meio'] = SLOTS['porao']
 for _k in ('porao_cortina', 'porao_rotina', 'porao_noite'):
     SLOTS[_k] = dict(a=(620, 960, 0.92), b=(1300, 960, 0.92))
 SLOTS['porao_mural'] = dict(SLOTS['porao'], d=(360, 1000, 0.9), e=(1560, 1000, 0.9), f=(1780, 1010, 0.85), g=(160, 1010, 0.85))
+
+
+# ---------------------------------------------------------------- ep06: shopping ilhado pela enchente
+def rain(ctx, t, x0, y0, x1, y1, n=70, a=0.45, seed=21):
+    random.seed(seed)
+    ctx.set_source_rgba(0.85, 0.92, 1, a); ctx.set_line_width(3)
+    for k in range(n):
+        x = x0 + random.random() * (x1 - x0)
+        y = y0 + ((random.random() * (y1 - y0) + t * 900) % (y1 - y0))
+        ctx.move_to(x, y); ctx.line_to(x - 8, y + 34)
+    ctx.stroke()
+
+
+def storefront(ctx, x, y, w, h, col, name, kind):
+    """vitrine de loja do shopping (sem marca)."""
+    rect(ctx, x, y, w, h, '#FFFFFF', lw=5)
+    rr(ctx, x + 14, y + 12, w - 28, 74, 12, col)
+    text(ctx, name, x + w / 2, y + 66, 40 if len(name) < 11 else 34, '#FFFFFF', outline='#1B1B1E', lw=6)
+    gx, gy, gw, gh = x + 20, y + 100, w - 40, h - 110
+    g = cairo.LinearGradient(gx, gy, gx + gw, gy + gh)
+    g.add_color_stop_rgb(0, 0.78, 0.9, 0.97); g.add_color_stop_rgb(1, 0.62, 0.78, 0.9)
+    ctx.rectangle(gx, gy, gw, gh); ctx.set_source(g); ctx.fill()
+    if kind == 'colchao':
+        for k in range(3):
+            rr(ctx, gx + 20, gy + gh - 60 - k * 52, gw - 40, 46, 14, ('#4CC9F0', '#F72585', '#FFFFFF')[k], 4)
+    elif kind == 'brinquedo':
+        for k, c in enumerate(('#FFD23F', '#8338EC', '#06D6A0', '#FF5D8F')):
+            ctx.arc(gx + 45 + k * (gw - 90) / 3, gy + gh - 50, 30, 0, TAU); fill_stroke(ctx, c, 4)
+        star(ctx, gx + gw / 2, gy + 70, 34, '#FFD23F')
+    elif kind == 'pastel':
+        rr(ctx, gx + 10, gy + gh - 90, gw - 20, 90, 8, '#F4A261', 4)
+        for k in range(4):
+            ctx.save(); ctx.translate(gx + 50 + k * (gw - 100) / 3, gy + gh - 110); ctx.scale(0.7, 0.7)
+            ctx.move_to(-48, 10); ctx.curve_to(-46, -46, 46, -46, 48, 10); ctx.close_path(); fill_stroke(ctx, '#F2B84B', 4)
+            ctx.restore()
+    elif kind == 'cinema':
+        rect(ctx, gx, gy, gw, gh, '#3C1053', lw=4)
+        for k in range(10):
+            ctx.arc(gx + 20 + k * (gw - 40) / 9, gy + 16, 7, 0, TAU)
+            ctx.set_source_rgba(1, 0.85, 0.3, 1); ctx.fill()
+        rr(ctx, gx + 30, gy + 50, gw - 60, gh - 90, 8, '#FFFFFF', 4)
+        text(ctx, 'O PINGUIM', gx + gw / 2, gy + gh / 2, 30, '#3C1053')
+        text(ctx, 'BOMBEIRO', gx + gw / 2, gy + gh / 2 + 36, 30, '#E63946')
+    elif kind == 'roupa':
+        for k, c in enumerate(('#E76F51', '#2A9D8F', '#E9C46A', '#8338EC')):
+            cx = gx + 40 + k * (gw - 80) / 3
+            ctx.move_to(cx - 30, gy + 60); ctx.line_to(cx + 30, gy + 60); ctx.line_to(cx + 36, gy + 150); ctx.line_to(cx - 36, gy + 150); ctx.close_path()
+            fill_stroke(ctx, c, 4)
+    # moldura do vidro
+    ctx.rectangle(gx, gy, gw, gh); ctx.set_source_rgba(*OUT); ctx.set_line_width(4); ctx.stroke()
+    ctx.set_source_rgba(1, 1, 1, 0.3)
+    ctx.move_to(gx + 30, gy); ctx.line_to(gx + 80, gy); ctx.line_to(gx + 10, gy + gh); ctx.line_to(gx - 40 if gx > 40 else gx, gy + gh); ctx.close_path(); ctx.fill()
+
+
+def shopping(night=False):
+    def f(ctx, t):
+        wall(ctx, '#F3E9DC', 800)
+        # claraboia com chuva
+        g = cairo.LinearGradient(0, 0, 0, 70)
+        if night:
+            g.add_color_stop_rgb(0, 0.1, 0.12, 0.25); g.add_color_stop_rgb(1, 0.2, 0.22, 0.35)
+        else:
+            g.add_color_stop_rgb(0, 0.55, 0.6, 0.68); g.add_color_stop_rgb(1, 0.72, 0.76, 0.82)
+        ctx.rectangle(0, 0, W, 70); ctx.set_source(g); ctx.fill()
+        rain(ctx, t, 0, 0, W, 70, n=40, a=0.5)
+        for x in range(0, W, 160):
+            rect(ctx, x, 0, 10, 70, '#ADB5BD', lw=2)
+        rect(ctx, 0, 66, W, 14, '#ADB5BD', lw=3)
+        # andar de cima: lojas pequenas + guarda-corpo de vidro
+        for k, c in enumerate(('#90BE6D', '#F9844A', '#577590', '#F94144', '#43AA8B', '#F8961E')):
+            rect(ctx, 20 + k * 320, 110, 300, 190, '#FFFFFF', lw=4)
+            rr(ctx, 34 + k * 320, 120, 272, 46, 8, c, 4)
+            ctx.rectangle(40 + k * 320, 176, 260, 116); ctx.set_source_rgba(0.7, 0.85, 0.95, 1); ctx.fill()
+        rect(ctx, 0, 300, W, 26, '#D6CCC2', lw=4)
+        ctx.rectangle(0, 326, W, 70); ctx.set_source_rgba(0.7, 0.88, 0.95, 0.55); ctx.fill()
+        rect(ctx, 0, 326, W, 8, '#ADB5BD', lw=2)
+        for x in range(0, W, 120):
+            rect(ctx, x, 326, 6, 70, '#ADB5BD', lw=1)
+        rect(ctx, 0, 396, W, 24, '#D6CCC2', lw=4)
+        # lojas do térreo
+        lojas = (('PASTELARIA', '#E76F51', 'pastel'), ('COLCHÕES', '#3A86FF', 'colchao'),
+                 ('BRINQUEDOS', '#8338EC', 'brinquedo'), ('CINEMA', '#C9184A', 'cinema'))
+        for k, (n, c, kd) in enumerate(lojas):
+            storefront(ctx, 30 + k * 360, 440, 345, 360, c, n, kd)
+        # escada rolante (parada)
+        ctx.move_to(1500, 800); ctx.line_to(1580, 800); ctx.line_to(1920, 420); ctx.line_to(1920, 360); ctx.line_to(1840, 360); ctx.close_path()
+        fill_stroke(ctx, '#ADB5BD', 5)
+        ctx.set_source_rgba(0.3, 0.3, 0.35, 0.5); ctx.set_line_width(3)
+        for k in range(1, 12):
+            px = 1540 + k * 32; py = 800 - k * 36
+            ctx.move_to(px - 30, py); ctx.line_to(px + 30, py)
+        ctx.stroke()
+        ctx.move_to(1490, 780); ctx.line_to(1860, 340); ctx.set_source_rgba(*OUT); ctx.set_line_width(10); ctx.stroke()
+        rr(ctx, 1620, 560, 150, 44, 8, '#FFD23F', 3)
+        text(ctx, 'PARADA', 1695, 594, 28, '#1B1B1E')
+        floor(ctx, 800, '#E9E3D5', tiles=True)
+        # vaso de planta
+        rr(ctx, 1450, 860, 90, 90, 10, '#BC6C25', 4)
+        for a in (-0.6, -0.2, 0.2, 0.6):
+            ctx.save(); ctx.translate(1495, 860); ctx.rotate(a); ctx.scale(0.35, 1)
+            ctx.arc(0, -70, 70, 0, TAU); ctx.restore(); fill_stroke(ctx, '#2D6A4F', 3)
+        if night:
+            ctx.rectangle(0, 0, W, H); ctx.set_source_rgba(0.03, 0.04, 0.2, 0.62); ctx.fill()
+            for x in (300, 960, 1620):
+                rg = cairo.RadialGradient(x, 70, 10, x, 70, 500)
+                rg.add_color_stop_rgba(0, 0.6, 1, 0.7, 0.25); rg.add_color_stop_rgba(1, 0.6, 1, 0.7, 0)
+                ctx.rectangle(0, 0, W, H); ctx.set_source(rg); ctx.fill()
+    return f
+
+
+def bg_praca(ctx, t):
+    """praça de alimentação vazia."""
+    wall(ctx, '#FFE8D6', 780, '#FFD6BA', 560)
+    balcoes = (('PASTEL', '#E76F51'), ('SUCO', '#2A9D8F'), ('PRATO FEITO', '#F4A261'), ('SORVETE', '#FF8FAB'))
+    for k, (n, c) in enumerate(balcoes):
+        x = 40 + k * 470
+        rect(ctx, x, 120, 440, 440, '#FFFFFF', lw=5)
+        rr(ctx, x + 16, 136, 408, 80, 12, c)
+        text(ctx, n, x + 220, 194, 46, '#FFFFFF', outline='#1B1B1E', lw=7)
+        rect(ctx, x + 30, 236, 380, 120, '#22223B', lw=4)
+        for r in range(3):
+            ctx.rectangle(x + 50, 256 + r * 34, 200, 14); ctx.set_source_rgba(1, 1, 1, 0.75); ctx.fill()
+            text(ctx, 'R$ ' + str(6 + r * 3 + k), x + 360, 272 + r * 34, 24, '#FFD23F')
+        rect(ctx, x + 10, 470, 420, 110, c, lw=5)
+    floor(ctx, 780, '#E9E3D5', tiles=True)
+    # mesas ao fundo
+    for x in (260, 760, 1660):
+        ctx.save(); ctx.translate(x, 800); ctx.scale(1, 0.3); ctx.arc(0, 0, 110, 0, TAU); ctx.restore()
+        fill_stroke(ctx, '#FFFFFF', 4)
+        rect(ctx, x - 8, 800, 16, 80, '#6C757D', lw=3)
+
+
+def fg_praca(ctx, t):
+    # mesa no primeiro plano, entre os dois
+    ctx.save(); ctx.translate(960, 900); ctx.scale(1, 0.32); ctx.arc(0, 0, 230, 0, TAU); ctx.restore()
+    fill_stroke(ctx, '#FFFFFF', 5)
+    rect(ctx, 945, 920, 30, 160, '#6C757D', lw=4)
+    for dx in (-60, 60):
+        ctx.save(); ctx.translate(960 + dx, 880); ctx.scale(0.75, 0.75)
+        ctx.move_to(-48, 10); ctx.curve_to(-46, -46, 46, -46, 48, 10); ctx.close_path(); fill_stroke(ctx, '#F2B84B', 4)
+        ctx.restore()
+
+
+def bg_colchoes(ctx, t):
+    wall(ctx, '#CFE8FF', 780, '#A9D2FF', 600)
+    rr(ctx, 600, 185, 720, 84, 18, '#3A86FF')
+    text(ctx, 'COLCHÕES', 960, 247, 58, '#FFFFFF', outline='#0B2545', lw=9)
+    # colchões em pé encostados na parede
+    for k, c in enumerate(('#FFFFFF', '#F72585', '#4CC9F0', '#FFD23F', '#FFFFFF', '#06D6A0')):
+        x = 60 + k * 310
+        if 560 < x + 125 < 1360:
+            rr(ctx, x, 290, 250, 440, 30, c, 5)
+        else:
+            rr(ctx, x, 200, 250, 530, 30, c, 5)
+        ctx.set_source_rgba(0, 0, 0, 0.08); ctx.set_line_width(3)
+        for r in range(1, 6):
+            ctx.move_to(x + 20, 260 + r * 78); ctx.line_to(x + 230, 260 + r * 78)
+        ctx.stroke()
+        rr(ctx, x + 60, 300, 130, 56, 8, '#FFFFFF', 3)
+        text(ctx, str(8 + k * 3), x + 125, 342, 34, '#C9184A')
+    floor(ctx, 780, '#B08968', tiles=True)
+    # colchões deitados (onde se senta)
+    for x, n, preco in ((380, '14', 'R$ 9.000'), (1060, '20', 'R$ 15.000')):
+        rr(ctx, x, 870, 520, 90, 24, '#FFFFFF', 5)
+        rr(ctx, x, 860, 520, 30, 14, '#E0E7FF', 4)
+        rr(ctx, x + 380, 900, 120, 44, 8, '#FFD23F', 3)
+        text(ctx, n, x + 440, 934, 30, '#1B1B1E')
+        rr(ctx, x + 20, 900, 150, 44, 8, '#FFFFFF', 3)
+        text(ctx, preco, x + 95, 932, 24, '#C9184A')
+
+
+def bg_cinema(ctx, t):
+    wall(ctx, '#3C1053', 1080)
+    for x in range(0, W, 120):
+        ctx.rectangle(x, 0, 60, 760); ctx.set_source_rgba(0, 0, 0, 0.12); ctx.fill()
+    # tela com o desenho do pinguim bombeiro
+    rr(ctx, 330, 70, 1260, 560, 10, '#E0F2FF', 8)
+    g = cairo.RadialGradient(960, 350, 50, 960, 350, 800)
+    g.add_color_stop_rgba(0, 1, 1, 1, 0.0); g.add_color_stop_rgba(1, 0.2, 0.4, 0.8, 0.35)
+    ctx.rectangle(340, 80, 1240, 540); ctx.set_source(g); ctx.fill()
+    bob = 8 * math.sin(t * 3)
+    ctx.save(); ctx.translate(960, 380 + bob)
+    ctx.save(); ctx.scale(0.8, 1); ctx.arc(0, 0, 150, 0, TAU); ctx.restore(); fill_stroke(ctx, '#1B1B2F', 6)
+    ctx.save(); ctx.translate(0, 30); ctx.scale(0.55, 0.8); ctx.arc(0, 0, 140, 0, TAU); ctx.restore(); fill_stroke(ctx, '#FFFFFF', 4)
+    for dx in (-36, 36):
+        ctx.arc(dx, -60, 16, 0, TAU); fill_stroke(ctx, '#FFFFFF', 3)
+        ctx.arc(dx + 3, -58, 7, 0, TAU); ctx.set_source_rgba(0, 0, 0, 1); ctx.fill()
+    ctx.move_to(-22, -28); ctx.line_to(22, -28); ctx.line_to(0, 0); ctx.close_path(); fill_stroke(ctx, '#F4A261', 4)
+    # capacete de bombeiro
+    ctx.move_to(-110, -100); ctx.curve_to(-100, -200, 100, -200, 110, -100); ctx.close_path(); fill_stroke(ctx, '#E63946', 6)
+    rect(ctx, -130, -108, 260, 20, '#E63946', lw=5)
+    ctx.restore()
+    floor(ctx, 760, '#240046')
+    # fileira de trás
+    for x in range(-40, W, 190):
+        rr(ctx, x, 690, 170, 150, 26, '#9D0208', 5)
+
+
+def fg_cinema(ctx, t):
+    for x in range(-100, W, 200):
+        rr(ctx, x, 900, 180, 200, 30, '#D00000', 5)
+    ctx.rectangle(0, 0, W, H); ctx.set_source_rgba(0.05, 0.0, 0.15, 0.18); ctx.fill()
+
+
+def enchente(dry=False):
+    def f(ctx, t):
+        g = cairo.LinearGradient(0, 0, 0, 700)
+        if dry:
+            g.add_color_stop_rgb(0, 0.5, 0.78, 0.98); g.add_color_stop_rgb(1, 0.85, 0.94, 1)
+        else:
+            g.add_color_stop_rgb(0, 0.42, 0.47, 0.55); g.add_color_stop_rgb(1, 0.66, 0.7, 0.76)
+        ctx.rectangle(0, 0, W, 900); ctx.set_source(g); ctx.fill()
+        if dry:
+            ctx.arc(1700, 140, 70, 0, TAU); ctx.set_source_rgba(1, 0.85, 0.3, 1); ctx.fill()
+        else:
+            for x, y, r in ((300, 110, 80), (420, 90, 100), (560, 120, 70), (1300, 100, 90), (1450, 80, 110), (1600, 110, 80)):
+                ctx.arc(x, y, r, 0, TAU); ctx.set_source_rgba(0.55, 0.58, 0.64, 1); ctx.fill()
+        # morro e prédio do shopping
+        ctx.move_to(-50, 900); ctx.curve_to(300, 650, 1600, 650, 1970, 900); ctx.close_path()
+        fill_stroke(ctx, '#6A994E' if dry else '#52734D', 5)
+        rect(ctx, 360, 260, 1200, 470, '#E9D8A6', lw=6)
+        rect(ctx, 360, 260, 1200, 60, '#CA6702', lw=6)
+        rr(ctx, 720, 205, 480, 100, 16, '#005F73')
+        text(ctx, 'SHOPPING', 960, 278, 68, '#FFFFFF', outline='#001219', lw=10)
+        for k in range(5):
+            window(ctx, 420 + k * 230, 360, 150, 130)
+        # porta de vidro
+        rect(ctx, 820, 540, 280, 190, '#94D2BD', lw=6)
+        rect(ctx, 955, 540, 10, 190, '#ADB5BD', lw=2)
+        rect(ctx, 300, 730, 1320, 40, '#ADB5BD', lw=5)   # calçada da entrada
+        if dry:
+            floor(ctx, 770, '#8D6E63')
+            for x, y, w in ((200, 900, 260), (900, 980, 340), (1500, 920, 220)):
+                ctx.save(); ctx.translate(x, y); ctx.scale(1, 0.25); ctx.arc(0, 0, w / 2, 0, TAU); ctx.restore()
+                ctx.set_source_rgba(0.42, 0.3, 0.2, 0.8); ctx.fill()
+        else:
+            ctx.rectangle(0, 860, W, H - 860); setc(ctx, '#7F5539'); ctx.fill()
+            ctx.set_source_rgba(0.85, 0.7, 0.5, 0.6); ctx.set_line_width(5)
+            for r in range(5):
+                y = 880 + r * 45
+                ctx.move_to(0, y)
+                for x in range(0, W + 40, 40):
+                    ctx.line_to(x, y + 8 * math.sin(x / 60 + t * 2 + r))
+                ctx.stroke()
+            # placa meio submersa
+            rect(ctx, 150, 760, 12, 140, '#6C757D', lw=3)
+            rr(ctx, 70, 700, 180, 70, 8, '#2D6A4F', 4)
+            text(ctx, 'RUA 7', 160, 748, 34, '#FFFFFF')
+            rain(ctx, t, 0, 0, W, H, n=120, a=0.4)
+    return f
+
+
+def fg_barco(ctx, t):
+    bob = 6 * math.sin(t * 2)
+    ctx.save(); ctx.translate(1560, 960 + bob)
+    ctx.move_to(-270, -120); ctx.line_to(270, -120); ctx.line_to(210, 50); ctx.line_to(-210, 50); ctx.close_path()
+    fill_stroke(ctx, '#F77F00', 6)
+    rect(ctx, -270, -132, 540, 22, '#FFFFFF', lw=4)
+    text(ctx, 'DEFESA CIVIL', 0, -20, 46, '#FFFFFF', outline='#1B1B1E', lw=6)
+    ctx.restore()
+    ctx.set_source_rgba(0.85, 0.7, 0.5, 0.7); ctx.set_line_width(5)
+    ctx.move_to(1280, 1012 + bob); ctx.line_to(1840, 1012 + bob); ctx.stroke()
+
+
+def bg_abrigo(ctx, t):
+    """ginásio da escola virado abrigo."""
+    wall(ctx, '#EADBC8', 780, '#D5BDAF', 520)
+    for x in range(120, W, 330):
+        window(ctx, x, 70, 200, 110)
+    rr(ctx, 610, 220, 700, 100, 14, '#2A9D8F')
+    text(ctx, 'ABRIGO • GINÁSIO DA ESCOLA', 960, 286, 40, '#FFFFFF', outline='#14213D', lw=7)
+    # tabela de basquete
+    rect(ctx, 1640, 200, 180, 120, '#FFFFFF', lw=5)
+    ctx.arc(1730, 340, 34, 0, math.pi); ctx.set_source_rgba(0.9, 0.35, 0.1, 1); ctx.set_line_width(6); ctx.stroke()
+    # varal de roupas
+    ctx.set_source_rgba(*OUT); ctx.set_line_width(3)
+    ctx.move_to(60, 420); ctx.curve_to(400, 470, 800, 470, 1100, 420); ctx.stroke()
+    for k, c in enumerate(('#E76F51', '#8AC926', '#1982C4', '#FFCA3A', '#6A4C93', '#FF595E')):
+        x = 120 + k * 160
+        y = 420 + 45 * math.sin(math.pi * (x - 60) / 1040) * 0.9
+        ctx.move_to(x - 40, y); ctx.line_to(x + 40, y); ctx.line_to(x + 46, y + 110); ctx.line_to(x - 46, y + 110); ctx.close_path()
+        fill_stroke(ctx, c, 4)
+    floor(ctx, 780, '#C68B59')
+    ctx.set_source_rgba(1, 1, 1, 0.6); ctx.set_line_width(6)
+    ctx.move_to(0, 830); ctx.line_to(W, 830); ctx.stroke()
+    # colchonetes no chão
+    for x, y, c in ((40, 800, '#3A86FF'), (420, 800, '#FF5D8F'), (1500, 800, '#06D6A0'), (180, 1000, '#FFBE0B'), (1600, 1000, '#8338EC')):
+        rr(ctx, x, y + 40, 330, 50, 12, c, 4)
+
+
+BG.update({
+    'shopping': (shopping(), None),
+    'shopping_noite': (shopping(night=True), None),
+    'praca': (bg_praca, fg_praca),
+    'colchoes': (bg_colchoes, None),
+    'cinema': (bg_cinema, fg_cinema),
+    'enchente': (enchente(), fg_barco),
+    'frente': (enchente(dry=True), None),
+    'abrigo': (bg_abrigo, None),
+})
+SLOTS.update({
+    'shopping': dict(a=(560, 1000, 0.95), b=(1000, 1000, 0.95), c=(1330, 1000, 0.95), d=(250, 1000, 0.9)),
+    'praca': dict(a=(600, 980, 0.95), b=(1320, 980, 0.95), c=(1700, 1000, 0.9), d=(240, 1000, 0.9)),
+    'colchoes': dict(a=(620, 950, 0.92), b=(1300, 950, 0.92), c=(1720, 1000, 0.9), d=(200, 1000, 0.9)),
+    'cinema': dict(a=(760, 1000, 0.9), b=(1160, 1000, 0.9), c=(1560, 1000, 0.9)),
+    'enchente': dict(a=(620, 790, 0.62), b=(960, 790, 0.62), c=(1300, 790, 0.62), barco=(1560, 990, 0.8)),
+    'frente': dict(a=(330, 1010, 0.9), b=(700, 1010, 0.9), c=(1060, 1010, 0.95), d=(1400, 1010, 0.85), e=(1700, 1010, 0.9), f=(560, 840, 0.6), g=(1300, 840, 0.6)),
+    'abrigo': dict(a=(620, 980, 0.92), b=(1250, 980, 0.92), c=(960, 1000, 0.9), d=(300, 1010, 0.9), e=(1650, 1010, 0.9)),
+})
+SLOTS['shopping_noite'] = SLOTS['shopping']
