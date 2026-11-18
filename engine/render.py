@@ -242,6 +242,27 @@ def neon_bar(ctx, x, y, s, value, pop=0.0, alpha=1.0, flicker=False, t=0, style=
     ctx.restore()
 
 
+def heart_icon(ctx, x, y, s, value, pop=0.0, t=0, alpha=1.0):
+    """ep07: coraçãozinho rosa flutuando sobre a cabeça (BAR = dict(mode='coracao')). value 0 = some, 1 = normal,
+    2 = gigante (ex.: vó)."""
+    if value <= 0.02:
+        return
+    k = min(value, 1.0)
+    size = 1.0 + 0.6 * max(0.0, value - 1.0)
+    pulse = 1 + 0.06 * math.sin(t * 6 + x * 0.01)
+    r = 58 * s * size * k * pulse * (1 + 0.35 * pop)
+    yy = y - 8 * s * math.sin(t * 2.4 + x * 0.013)
+    for g in range(5, 0, -1):
+        ctx.arc(x, yy - r * 0.3, r * (1.0 + g * 0.22), 0, TAU)
+        ctx.set_source_rgba(1, 0.24, 0.65, 0.05 * alpha * k * (1 + pop))
+        ctx.fill()
+    heart(ctx, x, yy + r * 0.25, r, (1, 0.25, 0.6, alpha * k))
+    # brilho
+    ctx.arc(x - r * 0.42, yy - r * 0.32, r * 0.13, 0, TAU)
+    ctx.set_source_rgba(1, 1, 1, 0.8 * alpha * k)
+    ctx.fill()
+
+
 def heart(ctx, x, y, r, col):
     ctx.save()
     ctx.translate(x, y)
@@ -536,6 +557,36 @@ def overlay(ctx, fx, u, dur, t, shot):
             rrect(ctx, -330, -46, 660, 92, 46); ctx.set_source_rgba(0.9, 0.1, 0.15, 1); ctx.fill()
             text(ctx, 'INSCREVA-SE NO JÁ PENSOU?', 0, 16, 40, '#FFFFFF')
             ctx.restore()
+    if 'fotos_espelho' in fx:
+        # ep07: duas fotos do mesmo rosto, normal e espelhada; 'fotos_eu' / 'fotos_amigos' destacam a preferida
+        text(ctx, 'ESTUDO • ANOS 70', 960, 120, 60, '#FFD23F', outline='#10002B', lw=10)
+        for k, (lbl, mir) in enumerate((('NORMAL', False), ('ESPELHADA', True))):
+            a = ease((p - 0.05 - k * 0.15) / 0.12)
+            if a <= 0:
+                continue
+            x = 640 + k * 640
+            ctx.save(); ctx.translate(x, 560); ctx.rotate((k - 0.5) * 0.08); ctx.scale(a, a)
+            rrect(ctx, -230, -260, 460, 540, 10); fill_stroke(ctx, '#FFFFFF', 6)
+            ctx.rectangle(-200, -230, 400, 400); ctx.set_source_rgba(0.75, 0.88, 0.95, 1); ctx.fill()
+            ctx.save(); ctx.rectangle(-200, -230, 400, 400); ctx.clip()
+            ctx.translate(0, -10)
+            if mir:
+                ctx.scale(-1, 1)
+            from .chars import draw_head
+            draw_head(ctx, 'voce', CAST['voce'], Pose(mouth='smile', look=0.6), 0, 0, 150)
+            ctx.restore()
+            text(ctx, lbl, 0, 235, 44, '#3A0CA3')
+            ctx.restore()
+        for key, k, lab in (('fotos_eu', 1, 'a própria pessoa'), ('fotos_amigos', 0, 'os amigos')):
+            if key in fx and p > 0.5:
+                a = ease((p - 0.5) / 0.1)
+                x = 640 + k * 640
+                ctx.save(); ctx.translate(x, 930); ctx.scale(a, a)
+                rrect(ctx, -250, -50, 500, 90, 45); ctx.set_source_rgba(1, 0.25, 0.6, 1); ctx.fill()
+                text(ctx, 'preferida por', 0, -62, 34, '#FFFFFF', outline='#10002B', lw=6)
+                text(ctx, lab, 0, 14, 42, '#FFFFFF')
+                ctx.restore()
+                heart(ctx, x + 200, 330, 40 * a, (1, 0.25, 0.6, 1))
     for item in fx:
         # ep06: videochamada genérica {'chamada': cid, 'nome': 'Davi', 'x': 1450}
         if isinstance(item, dict) and 'chamada' in item:
@@ -932,6 +983,9 @@ def draw_frame(ctx, ep, clips, shots, envs, t):
         by = max(ty - 60 * s, cy - vh / 2 + 70 * max(0.75, s))   # não deixa a barra sair do quadro
         if 'title' in fx and (by - (cy - vh / 2)) * z < 230:
             continue   # não briga com o título no topo
+        if (getattr(ep, 'BAR', None) or {}).get('mode') == 'coracao':
+            heart_icon(ctx, tx, by - 10 * s, max(0.75, s), v, pop, t)
+            continue
         neon_bar(ctx, tx, by, max(0.75, s), v, pop, flicker=('flicker' in fx and cid == 'davi'), t=t)
     if 'hearts' in fx:
         random.seed(2)
@@ -997,6 +1051,11 @@ def mirror(ctx, sc, t, u, dur, fx, heads):
     if val:
         tx, ty = info['top']
         neon_bar(ctx, tx, ty - 50, 0.85, val[0], val[1])
+    if 'espelho_coracao' in fx or 'espelho_coracao_fixo' in fx:
+        # ep07: coração aparece em cima do próprio reflexo na segunda metade do plano ('_fixo': já aceso)
+        v, pop = bar_value(0, [(0.45, 1)], u, dur) if 'espelho_coracao' in fx else (1, 0)
+        tx, ty = info['top']
+        heart_icon(ctx, tx, ty - 60, 0.85, v, pop, t)
     # brilho do vidro
     ctx.set_source_rgba(1, 1, 1, 0.25)
     for k in range(2):

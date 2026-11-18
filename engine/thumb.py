@@ -114,6 +114,7 @@ def generic(spec, out):
     link: 'bar' | 'neon' | 'thought' | 'rings' | None
     bar: valor da barra neon sobre o personagem da direita (se link='bar')
     left_s / left_x: escala e posição do personagem da esquerda (opcional; ex.: protagonista gigante)
+    heart_right: True para um coraçãozinho neon sobre o personagem da direita (ep07)
     bar_left: valor de uma barra neon sobre o personagem da esquerda (opcional, usa o BAR do episódio)
     """
     from .scenes import BG
@@ -151,6 +152,9 @@ def generic(spec, out):
         neon_line(ctx, [(hx + 120, hy - 10), (hx + 400, hy - 260), (tx - 420, ty - 300), (tx - 150, ty - 120)])
     if link == 'bar' and R:
         neon_bar(ctx, R['head'][0], R['top'][1] - 70, 2.0, spec.get('bar', 50), style=spec.get('bar_style'))
+    if spec.get('heart_right') and R:
+        from .render import heart_icon
+        heart_icon(ctx, R['head'][0], R['top'][1] - 110, 2.2, 1.0, 0.0, 0.3)
     if spec.get('bar_left') is not None:
         neon_bar(ctx, hx, L['top'][1] - 70, 1.9, spec['bar_left'], style=spec.get('bar_style'))
     a, b = spec['text']

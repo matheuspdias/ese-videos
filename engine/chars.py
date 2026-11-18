@@ -566,7 +566,10 @@ def draw_head(ctx, cid, c, p, hx, hy, r):
             ctx.close_path()
             ctx.restore()
         ctx.restore()
-        ctx.set_source_rgba(0.55, 0.36, 0.2, 1) if p.mustache else ctx.set_source_rgba(0.85, 0.85, 0.85, 1)
+        if p.mustache == 'preto':   # ep07: bigode de rolha queimada
+            ctx.set_source_rgba(0.08, 0.06, 0.06, 1)
+        else:
+            ctx.set_source_rgba(0.55, 0.36, 0.2, 1) if p.mustache else ctx.set_source_rgba(0.85, 0.85, 0.85, 1)
         ctx.fill()
 
     if p.blush:
