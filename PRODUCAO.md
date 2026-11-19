@@ -39,6 +39,20 @@ python3 tools/catalogo.py   # cenários, posições, elenco, poses, objetos e ef
 7. **Resolução emocional** curta (muitas vezes com a Bia) + frase de fechamento.
 8. **CTA** final: "E você? <pergunta>? Escreve aqui nos comentários." com `fx=['cta_ep']` e `CTA` no módulo.
 
+**Lições da retenção dos nossos vídeos** (YouTube Analytics, 19/11/2026 — vale mais que a estrutura acima quando conflitar):
+- **Os primeiros 25 s perdem ~35–40% do público.** A 1ª frase já tem que mostrar o poder acontecendo (ex.: "Tem um
+  número brilhando em cima da cabeça da sua vó."), não uma cena comum antes dele ("Você pega a segunda coxa de frango…").
+  Nada de 2–3 frases de ambientação antes do estranho aparecer.
+- **Um fio central que só se resolve no fim segura o público.** No ep01 (melhor retenção, acima da média do YouTube do
+  começo ao fim), a pergunta "qual é o número da Bia/do Davi?" atravessa o vídeo e a revelação vem no final.
+  No ep02, o meio virou uma **lista de esquetes soltas** (bairro, futebol, ônibus) e a retenção despencou abaixo da média
+  entre 2:00 e 3:30. Cada cena do meio tem que **avançar o fio central** (o que o protagonista quer descobrir, ganhar
+  ou evitar), não só mostrar mais um uso engraçado do poder.
+- **Plante a pergunta-gancho até 1:00** ("e qual será o número da Bia?", "e se a Bia ouvir *aquilo*?") e prometa a
+  resposta; entregue só no clímax.
+- **Números e contadores na tela** (porcentagens, R$, dias) prendem: use o efeito de número sempre que o tema permitir.
+- Depois do CTA o vídeo acaba: não deixe mais de ~5 s de fala depois da pergunta final (no ep02, 7% saiu ali).
+
 **Regras de texto**
 - Segunda pessoa ("você"), tempo presente, frases curtas (5–14 palavras), linguagem falada brasileira ("pra", "tá").
 - **Tamanho: 1.300 a 1.450 palavras no total** → vídeo de 8 min ou mais (o mínimo para anúncios no meio). Confira com

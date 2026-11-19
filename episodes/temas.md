@@ -3,6 +3,11 @@
 Pegue sempre o primeiro `pendente`. Referência = vídeo gringo que validou a pergunta (views em 14/11/2026).
 Texto da thumb é sugestão; pode melhorar mantendo o padrão "consequência + ..".
 
+**Prioridade (dados de 19/11/2026, 5 vídeos):** os temas sobre **o que os outros sentem/pensam/escondem de você**
+("quanto cada pessoa te ama", "ouvir seus pensamentos") tiveram o dobro de cliques (1,6–1,9%) e a melhor retenção.
+Poderes/mecânicas abstratas ("carisma nível 500": 0,78%; "1 cm por desculpa": 1,43%) e "preso com o crush"
+(0,86%) foram mal. Ao acrescentar temas novos, coloque os do primeiro tipo no topo.
+
 | # | Título | Referência | Thumb | Ideia de cenário/conflito (sugestão) | Status |
 | --- | --- | --- | --- | --- | --- |
 | 1 | E se você pudesse ver o quanto cada pessoa te ama de verdade? | Primer Nivel, 1,8 mi | só 3%.. | barra de amor sobre a cabeça | feito — ep01, 14/11 |
@@ -13,12 +18,12 @@ Texto da thumb é sugestão; pode melhorar mantendo o padrão "consequência + .
 | 6 | E se você ficasse preso num shopping com seu crush por 30 dias? | Questionverse, 110 mil | DIA 1 / DIA 30 | shopping fechado na quarentena da enchente; praça de alimentação | feito — ep06, 19/11 |
 | 7 | E se você pudesse ver quem te acha bonito? | WhatIfVerse, 359 mil | até ele?.. | ícone de coração sobre as pessoas | feito — ep07, 20/11 |
 | 8 | E se você fosse a pessoa mais forte do Brasil? | Questionverse, 326 mil | segura aí.. | levantar ônibus, mudança da vó, campeonato de queda de braço | feito — ep08, 21/11 |
-| 9 | E se você pudesse ver as mensagens que apagaram antes de te mandar? | nova (padrão "ver o que escondem") | digitando.. | grupo da família, conversa com a Bia | pendente |
-| 10 | E se você ganhasse R$ 1 toda vez que alguém falasse mal de você? | nova (padrão "toda vez que") | R$ 4.832.. | contador de dinheiro; descobrir quem fala | pendente |
-| 11 | E se você acordasse no Brasil de 1500 com seu crush? | Questionverse, 151 mil | VOCÊ / SEU CRUSH | praia, caravelas, sobreviver com a Bia | pendente |
-| 12 | E se você pudesse ver quem viria no seu velório? | IFNation, 95 mil | só ele veio.. | tom emocional; amizades verdadeiras (sem morte real) | pendente |
-| 13 | E se você pudesse ouvir o que falam de você pelas costas? | IFNation, 296 mil | ele disse isso?.. | churrasco de família, escola | pendente |
-| 14 | E se ninguém no Brasil pudesse mentir por um dia? | nova (padrão "ver o que escondem") | seu chefe.. | escola, família, vendedor, propaganda | pendente |
-| 15 | E se você envelhecesse 1 ano toda vez que risse? | IFNation (recente) | haha.. | protagonista tenta não rir na festa da tia | pendente |
+| 9 | E se você pudesse ouvir o que falam de você pelas costas? | IFNation, 296 mil | ele disse isso?.. | churrasco de família, escola | pendente |
+| 10 | E se você pudesse ver as mensagens que apagaram antes de te mandar? | nova (padrão "ver o que escondem") | digitando.. | grupo da família, conversa com a Bia | pendente |
+| 11 | E se você pudesse ver quem viria no seu velório? | IFNation, 95 mil | só ele veio.. | tom emocional; amizades verdadeiras (sem morte real) | pendente |
+| 12 | E se ninguém no Brasil pudesse mentir por um dia? | nova (padrão "ver o que escondem") | seu chefe.. | escola, família, vendedor, propaganda | pendente |
+| 13 | E se você ganhasse R$ 1 toda vez que alguém falasse mal de você? | nova (padrão "toda vez que") | R$ 4.832.. | contador de dinheiro; descobrir quem fala | pendente |
+| 14 | E se você envelhecesse 1 ano toda vez que risse? | IFNation (recente) | haha.. | protagonista tenta não rir na festa da tia | pendente |
+| 15 | E se você acordasse no Brasil de 1500 com seu crush? | Questionverse, 151 mil | VOCÊ / SEU CRUSH | praia, caravelas, sobreviver com a Bia | pendente |
 
 Quando restarem 3 pendentes, avise o Matheus na mensagem de entrega para fazermos uma nova pesquisa de temas.
