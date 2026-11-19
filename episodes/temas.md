@@ -18,12 +18,12 @@ Poderes/mecânicas abstratas ("carisma nível 500": 0,78%; "1 cm por desculpa": 
 | 6 | E se você ficasse preso num shopping com seu crush por 30 dias? | Questionverse, 110 mil | DIA 1 / DIA 30 | shopping fechado na quarentena da enchente; praça de alimentação | feito — ep06, 19/11 |
 | 7 | E se você pudesse ver quem te acha bonito? | WhatIfVerse, 359 mil | até ele?.. | ícone de coração sobre as pessoas | feito — ep07, 20/11 |
 | 8 | E se você fosse a pessoa mais forte do Brasil? | Questionverse, 326 mil | segura aí.. | levantar ônibus, mudança da vó, campeonato de queda de braço | feito — ep08, 21/11 |
-| 9 | E se você pudesse ouvir o que falam de você pelas costas? | IFNation, 296 mil | ele disse isso?.. | churrasco de família, escola | pendente |
-| 10 | E se você pudesse ver as mensagens que apagaram antes de te mandar? | nova (padrão "ver o que escondem") | digitando.. | grupo da família, conversa com a Bia | pendente |
-| 11 | E se você pudesse ver quem viria no seu velório? | IFNation, 95 mil | só ele veio.. | tom emocional; amizades verdadeiras (sem morte real) | pendente |
-| 12 | E se ninguém no Brasil pudesse mentir por um dia? | nova (padrão "ver o que escondem") | seu chefe.. | escola, família, vendedor, propaganda | pendente |
-| 13 | E se você ganhasse R$ 1 toda vez que alguém falasse mal de você? | nova (padrão "toda vez que") | R$ 4.832.. | contador de dinheiro; descobrir quem fala | pendente |
-| 14 | E se você envelhecesse 1 ano toda vez que risse? | IFNation (recente) | haha.. | protagonista tenta não rir na festa da tia | pendente |
-| 15 | E se você acordasse no Brasil de 1500 com seu crush? | Questionverse, 151 mil | VOCÊ / SEU CRUSH | praia, caravelas, sobreviver com a Bia | pendente |
+| 9 | E se você pudesse ouvir o que falam de você pelas costas? | IFNation, 296 mil | ele disse isso?.. | churrasco de família, escola; fio central: o que a Bia fala de você? | pendente |
+| 10 | E se você pudesse ver as mensagens que apagaram antes de te mandar? | nova (padrão "ver o que escondem") | digitando.. | grupo da família, conversa com a Bia; fio central: o que a Bia apagou? | pendente |
+| 11 | E se você pudesse ver quantas vezes cada pessoa pensou em você hoje? | nova (fórmula do ep01: número sobre a cabeça) | só 1 vez?.. | contador sobre a cabeça de cada um; fio central: qual é o número da Bia? | pendente |
+| 12 | E se ninguém pudesse mentir pra você por um dia? | nova (padrão "ver o que escondem") | ela disse que.. | escola, família, vendedor; fio central: a pergunta que você tem coragem de fazer pra Bia | pendente |
+| 13 | E se você soubesse quem está guardando um segredo de você? | nova (padrão "ver o que escondem") | até a vó?.. | ícone de cadeado sobre quem esconde algo; fio central: o segredo da vó/da Bia (final bonito, ex.: festa surpresa) | pendente |
+| 14 | E se você pudesse ver quem sente saudade de você? | nova (fórmula do ep01: número na tela) | 97%.. | barra de saudade; final emocional com a vó Cida | pendente |
+| 15 | E se você ganhasse R$ 1 toda vez que alguém falasse mal de você? | nova (padrão "toda vez que") | R$ 4.832.. | contador de dinheiro; descobrir quem fala (não colocar logo depois do nº 9) | pendente |
 
 Quando restarem 3 pendentes, avise o Matheus na mensagem de entrega para fazermos uma nova pesquisa de temas.
