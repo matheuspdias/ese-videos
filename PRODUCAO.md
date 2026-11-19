@@ -118,7 +118,7 @@ python3 tools/verify_audio.py episodes.epNN_<slug> epNN        # TEM que dar "ok
 A Action gera 4 falas por vez (um episódio leva 1–3 min), salva `media/epNN/audio/NNN.mp3`, preenche
 `episodes/epNN/tts.tsv` e apaga o pedido. Se uma fala falhar, o pedido fica em `tts_in/` e o erro em `tts_out/`:
 leia o erro; se for temporário, apague `tts_out/`, faça commit e dispare de novo com
-`gh api -X POST repos/matheuspdias/<repo>/actions/workflows/tts.yml/dispatches -f ref=main` (só refaz as que faltam).
+`gh api -X POST repos/matheuspdias/ese-videos/actions/workflows/tts.yml/dispatches -f ref=main` (só refaz as que faltam).
 Se for falta de saldo ("insufficient"/"balance"/402), pare e avise o Matheus para colocar saldo na API do HeyGen.
 
 ## 5. Conferir antes de renderizar
