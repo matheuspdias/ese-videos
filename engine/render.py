@@ -957,8 +957,8 @@ def freio(ctx, stage, p):
         ctx.arc(-20, 10, 34, math.pi, TAU); fill_stroke(ctx, '#E0A96D', 5)
         ctx.arc(34, -50, 24, 0, TAU); fill_stroke(ctx, '#E0A96D', 5)
         ctx.restore()
-    if stage >= 3:
-        a = ease((p - 0.1) / 0.15)
+    if stage >= 3 and p > 0.1:
+        a = max(ease((p - 0.1) / 0.15), 0.01)
         y = 860 - 560 * 0.58 - 10
         ctx.set_source_rgba(1, 0.82, 0.25, a); ctx.set_line_width(8); ctx.set_dash([26, 16])
         ctx.move_to(560, y); ctx.line_to(1360, y); ctx.stroke(); ctx.set_dash([])

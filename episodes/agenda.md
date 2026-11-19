@@ -9,6 +9,7 @@
 | ep05 | qua 18/11/2026 | E se você crescesse 1 cm toda vez que pedisse desculpa? | entregue |
 | ep06 | qui 19/11/2026 | E se você ficasse preso num shopping com seu crush por 30 dias? | entregue |
 | ep07 | sex 20/11/2026 | E se você pudesse ver quem te acha bonito? | entregue |
+| ep08 | sáb 21/11/2026 | E se você fosse a pessoa mais forte do Brasil? | entregue |
 
-Próximo: **ep08 — sáb 21/11/2026**. Cada execução produz o próximo episódio e acrescenta uma linha aqui
+Próximo: **ep09 — dom 22/11/2026**. Cada execução produz o próximo episódio e acrescenta uma linha aqui
 (status `entregue`). O próximo depois de cada um é sempre o dia seguinte à última data da tabela.
