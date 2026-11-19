@@ -591,6 +591,10 @@ def overlay(ctx, fx, u, dur, t, shot):
         # ep06: videochamada genérica {'chamada': cid, 'nome': 'Davi', 'x': 1450}
         if isinstance(item, dict) and 'chamada' in item:
             video_call(ctx, item, p, t)
+        if isinstance(item, dict) and 'queda' in item:
+            queda(ctx, item, p, t)
+        if isinstance(item, dict) and 'freio' in item:
+            freio(ctx, item['freio'], p)
         # ep06: caderninho com lista {'anota': ['linha', ...], 'titulo': 'ANOTA AÍ'}
         if isinstance(item, dict) and 'anota' in item:
             notebook(ctx)
@@ -848,6 +852,122 @@ def char_pose(cid, pose, speaking_amp, t, fx, k):
     return Pose(**kw)
 
 
+LIFT_H = {'onibus': 330, 'bolo3': 290, 'mudanca': 520}
+
+
+def lifted(ctx, kind, x, yb, s, t, u):
+    """ep08: objeto grande erguido acima da cabeça; (x, yb) = centro da base do objeto."""
+    wob = math.sin(t * 9) * 3 * s
+    ctx.save(); ctx.translate(x, yb + wob); ctx.scale(s, s)
+    rise = 1 - ease(min(u / 0.6, 1))
+    ctx.translate(0, 60 * rise)
+    if kind == 'onibus':
+        SC.onibus_escolar(ctx, 0, 30, w=900, h=320, tilt=-0.03)
+    elif kind == 'bolo3':
+        rr = SC.rr
+        rr(ctx, -190, -16, 380, 22, 8, '#ADB5BD')
+        SC.draw_bolo3(ctx, 0, -16, 1.0)
+    elif kind == 'mudanca':
+        # sofá + geladeira + TV + gaiola do periquito, tudo empilhado
+        SC.rr(ctx, -230, -120, 460, 110, 24, '#E76F51')
+        SC.rr(ctx, -250, -150, 70, 140, 20, '#E76F51'); SC.rr(ctx, 180, -150, 70, 140, 20, '#E76F51')
+        SC.rr(ctx, -200, -190, 400, 80, 18, '#F4A261')
+        SC.geladeira(ctx, -70, -190, w=150, h=280)
+        SC.rr(ctx, 30, -300, 160, 110, 10, '#343A40')
+        SC.rr(ctx, 44, -288, 132, 86, 6, '#8ECAE6')
+        # gaiola
+        ctx.save(); ctx.translate(110, -300)
+        ctx.arc(0, -70, 50, math.pi, TAU); ctx.line_to(50, 0); ctx.line_to(-50, 0); ctx.close_path()
+        ctx.set_source_rgba(0.9, 0.75, 0.2, 1); ctx.set_line_width(5); ctx.stroke()
+        for k in range(-2, 3):
+            ctx.move_to(k * 20, 0); ctx.line_to(k * 20, -110 + abs(k) * 8); ctx.stroke()
+        ctx.arc(0, -40, 16, 0, TAU); fill_stroke(ctx, '#80ED99', 3)
+        ctx.arc(6, -44, 3, 0, TAU); ctx.set_source_rgba(0, 0, 0, 1); ctx.fill()
+        ctx.restore()
+    ctx.restore()
+
+
+def queda(ctx, item, p, t):
+    """ep08: close de queda de braço. item = {'queda': (cid_esq, cid_dir), 'a0': 0, 'a1': 1.25, 'quebra': bool,
+    'treme': bool}. Ângulo positivo = a mão da direita perde (vai pra mesa)."""
+    le, ri = item['queda']
+    a0, a1 = item.get('a0', 0.0), item.get('a1', 0.0)
+    ts = item.get('t', 0.45)            # quando o braço começa a descer
+    k = ease(max(0.0, min(1.0, (p - ts) / 0.12))) if a1 != a0 else 0
+    ang = a0 + (a1 - a0) * k
+    if item.get('treme', True) and k < 1:
+        ang += math.sin(t * 40) * 0.025
+    hit = k >= 1 and a1 != a0
+    # mesa
+    ctx.rectangle(0, 820, W, H - 820); setc(ctx, '#A47148'); ctx.fill()
+    ctx.set_source_rgba(*OUT); ctx.set_line_width(6); ctx.move_to(0, 820); ctx.line_to(W, 820); ctx.stroke()
+    if item.get('quebra') and hit:
+        ctx.set_line_width(8)
+        ctx.move_to(960, 820); ctx.line_to(930, 900); ctx.line_to(990, 960); ctx.line_to(950, 1080); ctx.stroke()
+    cx, cy = 960, 840
+    L = 420
+    px, py = cx + math.sin(ang) * L, cy - math.cos(ang) * L
+    for cid, ex, sgn in ((le, 640, -1), (ri, 1280, 1)):
+        c = CAST[cid]
+        # manga (do canto até o cotovelo)
+        for lw, col in ((120, OUT), (104, None)):
+            ctx.set_line_width(lw); ctx.set_line_cap(cairo.LINE_CAP_ROUND)
+            ctx.set_source_rgba(*col) if col else setc(ctx, c['shirt'])
+            ctx.move_to(ex + sgn * 380, 1160); ctx.line_to(ex, cy); ctx.stroke()
+        # antebraço
+        for lw, col in ((92, OUT), (78, None)):
+            ctx.set_line_width(lw)
+            ctx.set_source_rgba(*col) if col else setc(ctx, c['skin'])
+            ctx.move_to(ex, cy); ctx.line_to(px - sgn * 30, py + 20); ctx.stroke()
+    # mãos fechadas
+    ctx.arc(px, py, 70, 0, TAU); fill_stroke(ctx, CAST[le]['skin'], 6)
+    ctx.arc(px + 22, py - 18, 52, 0, TAU); fill_stroke(ctx, CAST[ri]['skin'], 6)
+    for k2 in range(3):
+        ctx.set_source_rgba(*OUT); ctx.set_line_width(5)
+        ctx.move_to(px - 10 + k2 * 22, py - 60); ctx.line_to(px - 10 + k2 * 22, py - 30); ctx.stroke()
+    if hit and p - ts - 0.12 < 0.12:
+        a = 1 - (p - ts - 0.12) / 0.12
+        text(ctx, 'BAM!', px, py - 120, 140, '#FFD23F', outline='#10002B', lw=14)
+    for cid, x in ((le, 380), (ri, 1540)):
+        ctx.save(); ctx.translate(x, 230); ctx.scale(1.0, 1.0); mini_head(ctx, cid, 0, 0, 118); ctx.restore()
+        nm = 'VOCÊ' if cid == 'voce' else CAST[cid]['name'].upper()
+        text(ctx, nm, x, 440, 60, '#FFFFFF', outline='#10002B', lw=10)
+    text(ctx, 'x', 960, 260, 110, '#FFD23F', outline='#10002B', lw=14)
+
+
+def freio(ctx, stage, p):
+    """ep08: gancho de ciência. stage 1: força que você consegue usar; 2: + força com estímulo elétrico; 3: + FREIO."""
+    text(ctx, 'O MÚSCULO E O CÉREBRO', 960, 120, 60, '#FFD23F', outline='#10002B', lw=10)
+    cols = [('você tentando', 0.58, '#4CC9F0'), ('com choquinho elétrico', 0.9, '#F72585')]
+    for k, (lab, hgt, col) in enumerate(cols):
+        if k == 1 and stage < 2:
+            continue
+        a = ease((p - 0.05) / 0.25) if (k + 1) == stage else 1.0
+        x = 700 + k * 520
+        top = 860 - 560 * hgt * a
+        rrect(ctx, x - 110, top, 220, 860 - top, 18); fill_stroke(ctx, col, 6)
+        text(ctx, lab, x, 930, 40, '#FFFFFF')
+        # bracinho flexionado em cima da barra
+        ctx.save(); ctx.translate(x, top - 70); ctx.scale(0.9, 0.9)
+        ctx.set_line_cap(cairo.LINE_CAP_ROUND)
+        for lw, cc in ((58, OUT), (44, None)):
+            ctx.set_line_width(lw)
+            ctx.set_source_rgba(*cc) if cc else setc(ctx, '#E0A96D')
+            ctx.move_to(-80, 30); ctx.line_to(0, 30); ctx.line_to(30, -40); ctx.stroke()
+        ctx.arc(-20, 10, 34, math.pi, TAU); fill_stroke(ctx, '#E0A96D', 5)
+        ctx.arc(34, -50, 24, 0, TAU); fill_stroke(ctx, '#E0A96D', 5)
+        ctx.restore()
+    if stage >= 3:
+        a = ease((p - 0.1) / 0.15)
+        y = 860 - 560 * 0.58 - 10
+        ctx.set_source_rgba(1, 0.82, 0.25, a); ctx.set_line_width(8); ctx.set_dash([26, 16])
+        ctx.move_to(560, y); ctx.line_to(1360, y); ctx.stroke(); ctx.set_dash([])
+        ctx.save(); ctx.translate(1530, y); ctx.scale(a, a)
+        rrect(ctx, -150, -50, 300, 100, 30); fill_stroke(ctx, '#E63946', 6)
+        text(ctx, 'FREIO', 0, 22, 62, '#FFFFFF')
+        ctx.restore()
+
+
 def draw_frame(ctx, ep, clips, shots, envs, t):
     # shot atual
     si = 0
@@ -975,11 +1095,22 @@ def draw_frame(ctx, ep, clips, shots, envs, t):
         n = 11 if 'bolachas_11' in fx else 12
         for k in range(n):
             ctx.arc(855 + (k % 6) * 42, 922 + (k // 6) * 28, 17, 0, TAU); fill_stroke(ctx, '#C68B59', 3)
+    # ep08: objetos erguidos {'ergue': 'onibus'|'mudanca'|'bolo3', 'quem': 'voce'} e mesa do bolo {'mesa_bolo': 'ok'|'cai'}
+    for item in fx:
+        if isinstance(item, dict) and 'mesa_bolo' in item:
+            mx, my = item.get('x', 1480), item.get('y', 1000)
+            SC.mesa_bolo(ctx, mx, my, item['mesa_bolo'], bolo=item.get('bolo', True), k=ease(min(u / 0.8, 1)))
+        if isinstance(item, dict) and 'ergue' in item and item.get('quem', 'voce') in heads:
+            info, sv = heads[item.get('quem', 'voce')]
+            lifted(ctx, item['ergue'], info['top'][0], info['top'][1] - 40 * sv, sv, t, u)
     # barras
     for cid, (start, kf) in shot['bars'].items():
         info, s = heads[cid]
         v, pop = bar_value(start, kf, u, dur)
         tx, ty = info['top']
+        for item in fx:   # ep08: barra acima do objeto erguido
+            if isinstance(item, dict) and 'ergue' in item and item.get('quem', 'voce') == cid:
+                ty -= LIFT_H.get(item['ergue'], 300) * s + 40 * s
         by = max(ty - 60 * s, cy - vh / 2 + 70 * max(0.75, s))   # não deixa a barra sair do quadro
         if 'title' in fx and (by - (cy - vh / 2)) * z < 230:
             continue   # não briga com o título no topo

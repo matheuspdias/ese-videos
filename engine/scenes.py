@@ -1197,3 +1197,187 @@ SLOTS.update({
     'abrigo': dict(a=(620, 980, 0.92), b=(1250, 980, 0.92), c=(960, 1000, 0.9), d=(300, 1010, 0.9), e=(1650, 1010, 0.9)),
 })
 SLOTS['shopping_noite'] = SLOTS['shopping']
+
+
+# ---------------------------------------------------------------- ep08: cozinha, rua, quermesse
+def geladeira(ctx, x, y, w=240, h=440, porta=True):
+    """geladeira com os pés em y (x = centro). porta=False: sem a porta de baixo (arrancada)."""
+    rr(ctx, x - w / 2, y - h, w, h, 22, '#F1F3F5')
+    ctx.set_source_rgba(*OUT); ctx.set_line_width(5)
+    ctx.move_to(x - w / 2, y - h * 0.68); ctx.line_to(x + w / 2, y - h * 0.68); ctx.stroke()
+    rect(ctx, x + w / 2 - 34, y - h * 0.92, 12, 70, '#ADB5BD', lw=3)
+    if porta:
+        rect(ctx, x + w / 2 - 34, y - h * 0.6, 12, 110, '#ADB5BD', lw=3)
+    else:
+        # interior à mostra: prateleiras, leite, ovos, pote
+        rr(ctx, x - w / 2 + 14, y - h * 0.66, w - 28, h * 0.62, 10, '#CFE8F3')
+        for k in range(3):
+            yy = y - h * 0.66 + (k + 1) * h * 0.155
+            rect(ctx, x - w / 2 + 14, yy, w - 28, 8, '#FFFFFF', lw=3)
+        rect(ctx, x - w / 2 + 34, y - h * 0.66 + h * 0.155 - 70, 40, 70, '#FFFFFF', lw=3)
+        ctx.arc(x + 30, y - h * 0.66 + h * 0.31 - 22, 22, 0, TAU); fill_stroke(ctx, '#E63946', 3)
+        rr(ctx, x - 40, y - h * 0.66 + h * 0.465 - 46, 90, 46, 8, '#FFD166', 3)
+        # dobradiças tortas
+        for yy in (y - h * 0.62, y - h * 0.1):
+            rect(ctx, x - w / 2 - 12, yy, 18, 28, '#868E96', lw=3)
+
+
+def cozinha(porta=True):
+    def f(ctx, t):
+        wall(ctx, '#FDF0D5', 780)
+        # azulejos
+        ctx.set_source_rgba(0.55, 0.75, 0.8, 0.35); ctx.set_line_width(3)
+        for x in range(0, W, 70):
+            ctx.move_to(x, 380); ctx.line_to(x, 780)
+        for y in range(380, 780, 70):
+            ctx.move_to(0, y); ctx.line_to(W, y)
+        ctx.stroke()
+        window(ctx, 640, 120, 380, 230)
+        # pia e armários
+        rect(ctx, 80, 560, 1200, 220, '#E07A5F')
+        for k in range(4):
+            rect(ctx, 100 + k * 295, 590, 270, 170, '#F2CC8F', lw=4)
+            ctx.arc(235 + k * 295, 640, 9, 0, TAU); fill_stroke(ctx, '#3D405B', 3)
+        rect(ctx, 60, 530, 1240, 40, '#ADB5BD')
+        rect(ctx, 760, 500, 14, 40, '#868E96', lw=3)
+        # armário de cima
+        rect(ctx, 120, 120, 420, 190, '#81B29A')
+        rect(ctx, 330, 120, 4, 190, '#3D405B', lw=2)
+        # filtro de barro na bancada
+        rr(ctx, 1110, 400, 120, 130, 30, '#C1665A')
+        rr(ctx, 1130, 360, 80, 50, 18, '#C1665A')
+        geladeira(ctx, 1600, 790, porta=porta)
+        floor(ctx, 780, '#B5838D', tiles=True)
+    return f
+
+
+def onibus_escolar(ctx, x, y, w=820, h=300, tilt=0.0, buraco=False):
+    """ônibus amarelo de lado; (x, y) = centro da base das rodas."""
+    ctx.save(); ctx.translate(x, y); ctx.rotate(tilt)
+    rr(ctx, -w / 2, -h, w, h * 0.86, 30, '#FFC300')
+    rect(ctx, -w / 2, -h * 0.42, w, h * 0.1, '#1B1B1E', lw=3)
+    for k in range(6):
+        rr(ctx, -w / 2 + 40 + k * (w - 120) / 6, -h * 0.9, (w - 120) / 6 - 18, h * 0.32, 8, '#BDE0FE', 4)
+    rr(ctx, w / 2 - 70, -h * 0.9, 50, h * 0.6, 8, '#BDE0FE', 4)   # porta/para-brisa
+    text(ctx, 'ESCOLAR', -60, -h * 0.47, 44 * w / 820, '#1B1B1E')
+    for wx in (-w * 0.3, w * 0.32):
+        ctx.arc(wx, -h * 0.12, h * 0.15, 0, TAU); fill_stroke(ctx, '#2B2D42', 5)
+        ctx.arc(wx, -h * 0.12, h * 0.06, 0, TAU); fill_stroke(ctx, '#ADB5BD', 3)
+    rect(ctx, w / 2 - 8, -h * 0.3, 22, 30, '#FFF3B0', lw=3)   # farol
+    ctx.restore()
+
+
+def rua(bus=False):
+    def f(ctx, t):
+        g = cairo.LinearGradient(0, 0, 0, 700)
+        g.add_color_stop_rgb(0, 0.52, 0.8, 0.98); g.add_color_stop_rgb(1, 0.86, 0.95, 1)
+        ctx.rectangle(0, 0, W, 760); ctx.set_source(g); ctx.fill()
+        for x, y, r in ((300, 120, 50), (360, 105, 60), (1500, 140, 55), (1570, 125, 45)):
+            ctx.arc(x, y, r, 0, TAU); ctx.set_source_rgba(1, 1, 1, 0.95); ctx.fill()
+        # casinhas (ladeira)
+        cols = ('#F4A261', '#2A9D8F', '#E76F51', '#8AB17D', '#E9C46A', '#A06CD5')
+        for i, col in enumerate(cols):
+            x0 = i * 330 - 30
+            top = 300 + i * 22
+            rect(ctx, x0, top, 310, 760 - top, col)
+            window(ctx, x0 + 60, top + 70, 90, 80)
+            rect(ctx, x0 + 190, 760 - 170, 80, 170, '#7F5539', lw=4)
+        # ponto de ônibus
+        rect(ctx, 1640, 520, 14, 240, '#495057', lw=3)
+        rr(ctx, 1600, 470, 120, 70, 10, '#1D3557')
+        text(ctx, 'PONTO', 1660, 517, 30, '#FFFFFF')
+        # calçada e rua
+        rect(ctx, 0, 760, W, 70, '#ADB5BD')
+        rect(ctx, 0, 830, W, H - 830, '#495057', outline=False)
+        ctx.set_source_rgba(1, 0.85, 0.2, 0.9)
+        for i in range(0, W, 240):
+            ctx.rectangle(i, 1010, 130, 14)
+        ctx.fill()
+        if bus:
+            # buraco e ônibus atolado ao fundo
+            ctx.save(); ctx.translate(1180, 905); ctx.scale(1, 0.22); ctx.arc(0, 0, 130, 0, TAU); ctx.restore()
+            ctx.set_source_rgba(0.15, 0.12, 0.1, 1); ctx.fill()
+            onibus_escolar(ctx, 960, 900, tilt=0.06)
+    return f
+
+
+def bg_quermesse(ctx, t):
+    wall(ctx, '#FFF3E0', 780, '#F4D6B0', 560)
+    rr(ctx, 500, 60, 920, 120, 16, '#2D6A4F')
+    text(ctx, 'QUERMESSE DA PARÓQUIA', 960, 142, 58, '#FFFFFF', outline='#081C15', lw=10)
+    cols = ['#E63946', '#FFB703', '#2A9D8F', '#8338EC', '#06D6A0', '#FB5607']
+    for row, y0 in ((0, 230), (1, 310)):
+        ctx.set_source_rgba(0.3, 0.3, 0.3, 1); ctx.set_line_width(3)
+        ctx.move_to(0, y0); ctx.curve_to(640, y0 + 50, 1280, y0 + 50, 1920, y0); ctx.stroke()
+        for k in range(16):
+            x = 40 + k * 120 + row * 60
+            y = y0 + 50 * math.sin(math.pi * x / 1920) * 0.75
+            ctx.move_to(x - 28, y); ctx.line_to(x + 28, y); ctx.line_to(x, y + 50 + 3 * math.sin(t * 2 + k)); ctx.close_path()
+            fill_stroke(ctx, cols[(k + row) % len(cols)], 3)
+    # barraquinhas ao fundo
+    for x, lab, c in ((70, 'PESCARIA', '#E63946'), (1530, 'BINGO', '#3A86FF')):
+        rect(ctx, x, 470, 320, 310, '#FFFFFF', lw=5)
+        for k in range(5):
+            ctx.move_to(x + k * 64, 470); ctx.line_to(x + k * 64 + 32, 430); ctx.line_to(x + k * 64 + 64, 470); ctx.close_path()
+            fill_stroke(ctx, c, 3)
+        rr(ctx, x + 40, 500, 240, 56, 10, c, 4)
+        text(ctx, lab, x + 160, 541, 34, '#FFFFFF')
+    floor(ctx, 780, '#C9A27E', tiles=True)
+
+
+def mesa_bolo(ctx, x, y, estado='ok', bolo=True, k=1.0):
+    """mesa velha do salão com o bolo de três andares. estado: 'ok' | 'cai' (perna quebrada, k = 0..1)."""
+    tilt = 0.0 if estado == 'ok' else 0.22 * k
+    ctx.save(); ctx.translate(x, y)
+    # pernas
+    rect(ctx, -170, -230, 24, 230, '#7F5539', lw=4)
+    if estado == 'ok':
+        rect(ctx, 146, -230, 24, 230, '#7F5539', lw=4)
+    else:
+        rect(ctx, 146, -60, 24, 60, '#7F5539', lw=4)
+        ctx.save(); ctx.translate(200, -10); ctx.rotate(1.2); rect(ctx, -12, -80, 24, 90, '#7F5539', lw=4); ctx.restore()
+    ctx.translate(-158, -230); ctx.rotate(tilt); ctx.translate(158, 0)
+    rect(ctx, -200, -26, 400, 30, '#A47148', lw=5)
+    if bolo:
+        ctx.translate(0, -26)
+        draw_bolo3(ctx, 0, 0, 1.0)
+    ctx.restore()
+
+
+def draw_bolo3(ctx, x, y, s):
+    """bolo de três andares com a base em (x, y)."""
+    ctx.save(); ctx.translate(x, y); ctx.scale(s, s)
+    ctx.save(); ctx.scale(1, 0.22); ctx.arc(0, -10, 170, 0, TAU); ctx.restore()
+    fill_stroke(ctx, '#E9ECEF', 4)
+    for k, (w, h, c) in enumerate(((280, 92, '#FFFFFF'), (210, 82, '#FFC8DD'), (140, 74, '#FFFFFF'))):
+        yb = -10 - sum((92, 82, 74)[:k])
+        rr(ctx, -w / 2, yb - h, w, h, 14, c, 5)
+        # glacê escorrendo
+        ctx.set_source_rgba(1, 0.55, 0.7, 1) if c == '#FFFFFF' else ctx.set_source_rgba(1, 1, 1, 1)
+        ctx.move_to(-w / 2 + 6, yb - h + 8)
+        for j in range(8):
+            xx = -w / 2 + 6 + (j + 0.5) * (w - 12) / 8
+            ctx.line_to(xx, yb - h + 26 + 10 * (j % 2))
+        ctx.line_to(w / 2 - 6, yb - h + 8); ctx.close_path(); ctx.fill()
+        for j in range(5):
+            ctx.arc(-w / 2 + 20 + j * (w - 40) / 4, yb - h * 0.35, 8, 0, TAU); fill_stroke(ctx, '#E63946', 3)
+    # cereja no topo
+    ctx.arc(0, -10 - 248 - 14, 16, 0, TAU); fill_stroke(ctx, '#C1121F', 4)
+    ctx.restore()
+
+
+BG.update({
+    'cozinha': (cozinha(), None),
+    'cozinha_sem_porta': (cozinha(porta=False), None),
+    'rua': (rua(), None),
+    'rua_onibus': (rua(bus=True), None),
+    'quermesse': (bg_quermesse, None),
+    'braco': (bg_plain('#2B1B3A', '#5A189A'), None),
+})
+SLOTS.update({
+    'cozinha': dict(a=(420, 1010, 0.95), b=(900, 1010, 0.95), c=(1280, 1010, 0.92)),
+    'rua': dict(a=(330, 1010, 0.9), b=(760, 1010, 0.95), c=(1200, 1010, 0.9), d=(1600, 1010, 0.9)),
+    'quermesse': dict(a=(300, 1010, 0.9), b=(660, 1010, 0.95), c=(1000, 1010, 0.9), d=(1320, 1010, 0.9), e=(1700, 1010, 0.88)),
+})
+SLOTS['cozinha_sem_porta'] = SLOTS['cozinha']
+SLOTS['rua_onibus'] = dict(a=(260, 1030, 0.9), b=(560, 1030, 0.95), c=(1560, 1030, 0.9), d=(1780, 1030, 0.88))

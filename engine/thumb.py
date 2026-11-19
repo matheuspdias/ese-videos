@@ -114,6 +114,8 @@ def generic(spec, out):
     link: 'bar' | 'neon' | 'thought' | 'rings' | None
     bar: valor da barra neon sobre o personagem da direita (se link='bar')
     left_s / left_x: escala e posição do personagem da esquerda (opcional; ex.: protagonista gigante)
+    lift: objeto erguido pelo personagem da esquerda ('onibus' | 'mudanca' | 'bolo3'; ep08), lift_s: escala dele
+    left_y: altura dos pés do personagem da esquerda (padrão 1380)
     heart_right: True para um coraçãozinho neon sobre o personagem da direita (ep07)
     bar_left: valor de uma barra neon sobre o personagem da esquerda (opcional, usa o BAR do episódio)
     """
@@ -129,12 +131,16 @@ def generic(spec, out):
     ctx.rectangle(0, 0, W, H); ctx.set_source_rgba(0.1, 0.0, 0.15, 0.55); ctx.fill()
     lid, lpose = spec['left']
     lp = dict(lpose); lp.setdefault('facing', 1)
-    L = draw_char(ctx, lid, spec.get('left_x', 560), 1380, spec.get('left_s', 1.7), Pose(**lp))
+    L = draw_char(ctx, lid, spec.get('left_x', 560), spec.get('left_y', 1380), spec.get('left_s', 1.7), Pose(**lp))
     R = None
     if spec.get('right'):
         rid, rpose = spec['right']
         rp = dict(rpose); rp.setdefault('facing', -1)
         R = draw_char(ctx, rid, 1450, 1380, 1.6, Pose(**rp))
+    if spec.get('lift'):
+        from .render import lifted
+        ls = spec.get('lift_s', 1.0)
+        lifted(ctx, spec['lift'], L['top'][0], L['top'][1] - 40 * spec.get('left_s', 1.7), ls, 0.3, 5.0)
     hx, hy = L['head']
     link = spec.get('link')
     if link in ('rings', 'thought'):

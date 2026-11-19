@@ -182,6 +182,8 @@ def draw_char(ctx, cid, x, y, s=1.0, pose=None):
                 pts = [(ax, ay), (ax + side * 22, ay + 80), (ax + side * 18, ay + 150)]
         elif kind == 'up':
             pts = [(ax, ay), (ax + side * 60, ay - 70), (ax + side * 70, ay - 170)]
+        elif kind == 'lift':   # ep08: braços esticados acima da cabeça (segurando algo grande)
+            pts = [(ax, ay), (ax + side * 70, ay - 120), (ax + side * 62, ay - 262)]
         elif kind == 'face':
             pts = [(ax, ay), (ax + side * 60, ay + 30), (side * 50, head_cy + head_r * 0.45)]
         elif kind == 'point':
@@ -215,7 +217,7 @@ def draw_char(ctx, cid, x, y, s=1.0, pose=None):
         return pts[2]
 
     hands = {}
-    front_kinds = ('face', 'cross', 'hold', 'point', 'wave', 'up', 'shrug', 'down', 'hip')
+    front_kinds = ('face', 'cross', 'hold', 'point', 'wave', 'up', 'shrug', 'down', 'hip', 'lift')
     for side in (-1, 1):
         if p.arms not in front_kinds:
             hands[side] = arm(side, p.arms)
@@ -736,6 +738,38 @@ def draw_prop(ctx, prop, x, y, f):
             a = k * TAU / 5
             ctx.arc(math.cos(a) * 21, -10 + math.sin(a) * 21, 7, 0, TAU)
             ctx.set_source_rgba(0.1, 0.1, 0.12, 1); ctx.fill()
+    elif prop == 'porta':    # ep08: porta da geladeira arrancada
+        ctx.rotate(-0.12 * f)
+        rrect(ctx, -70, -190, 140, 300, 18); fill_stroke(ctx, '#F1F3F5', 5)
+        rrect(ctx, 40 * f - 6, -120, 12, 110, 5); fill_stroke(ctx, '#ADB5BD', 3)
+        for k in range(3):
+            rrect(ctx, -55, -150 + k * 80, 110, 14, 4); fill_stroke(ctx, '#FFFFFF', 3)
+    elif prop == 'pote':     # ep08: vidro de doce de leite
+        rrect(ctx, -32, -66, 64, 76, 14); fill_stroke(ctx, '#C68B59', 5)
+        rrect(ctx, -36, -80, 72, 20, 6); fill_stroke(ctx, '#E63946', 4)
+        rrect(ctx, -22, -46, 44, 26, 4); fill_stroke(ctx, '#FFF3B0', 3)
+    elif prop == 'ovo':      # ep08
+        ctx.save(); ctx.translate(0, -24); ctx.scale(0.78, 1); ctx.arc(0, 0, 30, 0, TAU); ctx.restore()
+        fill_stroke(ctx, '#FFF8E7', 5)
+    elif prop == 'biscuit':  # ep08: cachorrinho de biscuit da Bia
+        ctx.save(); ctx.translate(0, -30)
+        ctx.save(); ctx.scale(1.3, 0.8); ctx.arc(0, 8, 26, 0, TAU); ctx.restore(); fill_stroke(ctx, '#F6E7CB', 4)
+        ctx.arc(26 * f, -16, 20, 0, TAU); fill_stroke(ctx, '#F6E7CB', 4)
+        ctx.save(); ctx.translate(16 * f, -30); ctx.scale(0.6, 1); ctx.arc(0, 0, 12, 0, TAU); ctx.restore(); fill_stroke(ctx, '#C68B59', 3)
+        ctx.arc(32 * f, -18, 4, 0, TAU); ctx.set_source_rgba(0.1, 0.1, 0.1, 1); ctx.fill()
+        ctx.arc(44 * f, -12, 5, 0, TAU); ctx.fill()
+        ctx.restore()
+    elif prop == 'cacos':    # ep08: o cachorrinho virou pó
+        for k, (dx, dy, r) in enumerate(((-18, -10, 9), (4, -16, 7), (18, -6, 8), (-4, -2, 6), (10, -28, 5), (-26, -24, 5))):
+            ctx.arc(dx, dy, r, 0, TAU); fill_stroke(ctx, '#F6E7CB', 3)
+        ctx.set_source_rgba(0.96, 0.9, 0.8, 0.8)
+        for k in range(10):
+            ctx.arc(-30 + k * 7, 8 + (k % 3) * 6, 3, 0, TAU); ctx.fill()
+    elif prop == 'trofeu':   # ep08
+        ctx.move_to(-34, -86); ctx.line_to(34, -86); ctx.curve_to(34, -30, 10, -26, 6, -20); ctx.line_to(6, -6)
+        ctx.line_to(-6, -6); ctx.line_to(-6, -20); ctx.curve_to(-10, -26, -34, -30, -34, -86); ctx.close_path()
+        fill_stroke(ctx, '#FFC300', 4)
+        rrect(ctx, -26, -8, 52, 22, 4); fill_stroke(ctx, '#7F5539', 4)
     elif prop == 'veu':
         ctx.save()
         ctx.scale(1, 0.6)
