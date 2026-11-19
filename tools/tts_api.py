@@ -44,10 +44,12 @@ def main():
         done = set()
         if os.path.exists(tsv):
             done = {int(r.split('\t')[0]) for r in open(tsv) if r.strip()}
-        for j in spec['jobs']:
+        from concurrent.futures import ThreadPoolExecutor
+        import threading
+        lock = threading.Lock()
+
+        def one(j):
             i = j['i']
-            if i in done:
-                continue
             try:
                 d = speech(j['voice'], j['text'])
                 dest = f'media/{ep}/audio/{i:03d}.mp3'
@@ -56,12 +58,17 @@ def main():
                         urllib.request.urlretrieve(d['audio_url'], dest); break
                     except Exception:
                         time.sleep(3)
-                with open(tsv, 'a') as fh:
-                    fh.write(f"{i}\t{j['voice']}\t{d.get('request_id', 'api')}\t{d['duration']}\n")
-                print('ok', ep, i, round(d['duration'], 2))
+                with lock:
+                    with open(tsv, 'a') as fh:
+                        fh.write(f"{i}\t{j['voice']}\t{d.get('request_id', 'api')}\t{d['duration']}\n")
+                    print('ok', ep, i, round(d['duration'], 2), flush=True)
             except Exception as e:
-                errors.append(f'{ep} fala {i} ({j["voice"]}): {e}')
-                print('ERRO', errors[-1])
+                with lock:
+                    errors.append(f'{ep} fala {i} ({j["voice"]}): {e}')
+                    print('ERRO', errors[-1], flush=True)
+
+        with ThreadPoolExecutor(max_workers=4) as ex:
+            list(ex.map(one, [j for j in spec['jobs'] if j['i'] not in done]))
         if not errors:
             os.remove(f'tts_in/{f}')
     if errors:

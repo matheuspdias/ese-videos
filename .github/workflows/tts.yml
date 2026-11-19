@@ -17,12 +17,12 @@ jobs:
         id: gen
         env:
           HEYGEN_API_KEY: ${{ secrets.HEYGEN_API_KEY }}
-        run: python3 tools/tts_api.py || echo "falhou=1" >> "$GITHUB_OUTPUT"
+        run: python3 -u tools/tts_api.py || echo "falhou=1" >> "$GITHUB_OUTPUT"
       - name: Commit
         run: |
           git config user.name "tts-bot"
           git config user.email "actions@github.com"
-          git add -A media episodes tts_in tts_out || true
+          for d in media episodes tts_in tts_out; do [ -e "$d" ] && git add -A "$d"; done; true
           git diff --cached --quiet || git commit -m "vozes geradas pela API"
           git pull --rebase -q && git push
       - name: Falhou?
