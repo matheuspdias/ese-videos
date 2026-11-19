@@ -83,7 +83,7 @@ LINES = [ (falante, texto, S(bg, C(id, slot, barra, **pose), cam=dict(...), fx=[
 título (ex.: "só 3%..", "ela ouviu.."). Parte branca + parte amarela terminando em "..". Protagonista em choque à
 esquerda, outro personagem à direita, ligação visual (barra neon, linha neon, balão).
 
-## 3. Vozes (HeyGen) — gerar uma chamada por fala
+## 3. Vozes (HeyGen, pela API)
 
 | falante | voz | voice_id |
 | --- | --- | --- |
@@ -97,31 +97,29 @@ esquerda, outro personagem à direita, ligação visual (barra neon, linha neon,
 | mae, neide, outras mulheres adultas | Lucilene (público) | e808da2329754929803c8bd98dc36857 |
 | feirante, jorge, outros homens adultos | Afonso (público) | 9ce5f601f9e04382bb26141d5a3f839d |
 
-**O roteiro fica congelado antes da primeira chamada.** Se precisar mudar falas depois, apague
+**O roteiro fica congelado antes de gerar as vozes.** Se precisar mudar falas depois, apague
 `episodes/epNN/tts.tsv` e `media/epNN/` e gere tudo de novo — nunca reaproveite índices.
 
-Para cada linha `i` do `LINES`, em ordem, chame `create_speech_without_player` (HeyGen) com:
-`voiceId` da tabela, `text` = texto da linha, `language="pt"`,
-`outputFormat={"encoding":"mp3","sample_rate_hertz":44100,"bitrate_bps":128000}`. Não peça timestamps.
-Faça várias chamadas por mensagem (até ~10) e, a cada lote, anexe em `episodes/epNN/tts.tsv` uma linha por fala:
+As vozes são geradas pela **API do HeyGen dentro de uma GitHub Action** (`.github/workflows/tts.yml`), paga com o
+saldo pré-pago da API (segredo `HEYGEN_API_KEY` do repositório). **Não use as ferramentas do HeyGen desta conversa
+(`create_speech_without_player`) para as vozes** — elas gastam a assinatura, que o Matheus vai cancelar. O shell
+daqui não acessa o HeyGen; quem gera e baixa é a Action. `VOICES` no episódio usa os voice_ids da tabela acima.
 
-```
-<i>\t<voice_id>\t<id do audio_url, o trecho depois de "id=" e antes de ".mp3">\t<duration>
-```
-
-Se uma chamada falhar com erro não-repetível, pare e avise o Matheus (passo 7).
-
-## 4. Baixar os áudios (o shell daqui não acessa o HeyGen; quem baixa é um GitHub Action)
+## 4. Gerar e baixar os áudios (GitHub Action `tts`)
 
 ```bash
-python3 tools/assets.py epNN
-git add -A && git commit -qm "epNN: roteiro e áudios" && git -c push.negotiate=true push -q
-sleep 60 && git pull -q        # repita o pull até media/epNN/audio ter todos os arquivos (pode levar ~2 min)
-python3 tools/verify_audio.py episodes.epNN_<slug> epNN   # TEM que dar "ok"
+python3 tools/tts_jobs.py episodes.epNN_<slug> epNN        # cria tts_in/epNN_*.json com as falas sem áudio
+git add -A && git commit -qm "epNN: roteiro" && git -c push.negotiate=true push -q
+sleep 60; for i in $(seq 1 20); do git pull -q; [ ! -e tts_in ] || ! ls tts_in/epNN_* >/dev/null 2>&1 && break; sleep 20; done
+ls tts_out 2>/dev/null && cat tts_out/*                        # erros da API, se houver
+python3 tools/verify_audio.py episodes.epNN_<slug> epNN        # TEM que dar "ok"
 ```
 
-O Action (`.github/workflows/fetch-assets.yml`) baixa os arquivos listados, faz commit em `media/` e apaga a lista.
-Se `verify_audio` acusar duração errada: apague os arquivos errados, rode `tools/assets.py` de novo, push, pull.
+A Action gera 4 falas por vez (um episódio leva 1–3 min), salva `media/epNN/audio/NNN.mp3`, preenche
+`episodes/epNN/tts.tsv` e apaga o pedido. Se uma fala falhar, o pedido fica em `tts_in/` e o erro em `tts_out/`:
+leia o erro; se for temporário, apague `tts_out/`, faça commit e dispare de novo com
+`gh api -X POST repos/matheuspdias/<repo>/actions/workflows/tts.yml/dispatches -f ref=main` (só refaz as que faltam).
+Se for falta de saldo ("insufficient"/"balance"/402), pare e avise o Matheus para colocar saldo na API do HeyGen.
 
 ## 5. Conferir antes de renderizar
 
