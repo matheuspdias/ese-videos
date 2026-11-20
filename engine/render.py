@@ -593,6 +593,9 @@ def overlay(ctx, fx, u, dur, t, shot):
             video_call(ctx, item, p, t)
         if isinstance(item, dict) and 'queda' in item:
             queda(ctx, item, p, t)
+        # ep09: cartão "FALANDO DE VOCÊ" {'costas': cid, 'onde': 'na cozinha'}
+        if isinstance(item, dict) and 'costas' in item:
+            costas_card(ctx, item, p, t)
         if isinstance(item, dict) and 'freio' in item:
             freio(ctx, item['freio'], p)
         # ep06: caderninho com lista {'anota': ['linha', ...], 'titulo': 'ANOTA AÍ'}
@@ -794,6 +797,50 @@ def video_call(ctx, item, p, t):
     text(ctx, item.get('nome', CAST[cid]['name']), 0, -320, 40, '#FFFFFF')
     ctx.arc(-150, -335, 9, 0, TAU); ctx.set_source_rgba(0.9, 0.15, 0.2, 1); ctx.fill()
     ctx.arc(0, 330, 40, 0, TAU); fill_stroke(ctx, '#E63946', 5)
+    ctx.restore()
+
+
+def costas_card(ctx, item, p, t):
+    """ep09: alguém está falando de você pelas costas — cartão no canto com a cabeça de quem fala (boca sincronizada),
+    ondas pulsando e o lugar onde a pessoa está."""
+    cid = item['costas']
+    talk = 0.0
+    for c in _G.get('clips', []):
+        if c['sp'] == cid and c['t0'] <= t < c['t1']:
+            e = _G['envs'].get(c['i'])
+            if e is not None:
+                talk = float(e[min(int((t - c['t0']) * FPS), len(e) - 1)])
+    a = ease(p / 0.08)
+    if a <= 0:
+        return
+    x0, y0, w, h = item.get('x', 1230), 40, 650, 200
+    ctx.save()
+    ctx.translate((1 - a) * 420, 0)
+    rrect(ctx, x0, y0, w, h, 34)
+    ctx.set_source_rgba(0.08, 0.02, 0.12, 0.86); ctx.fill_preserve()
+    ctx.set_source_rgba(1, 0.3, 0.7, 0.9); ctx.set_line_width(5); ctx.stroke()
+    hx, hy, r = x0 + 105, y0 + h / 2, 72
+    for k in range(3):
+        ph = ((t * 1.1) + k / 3) % 1
+        ctx.arc(hx, hy, r * (1 + ph * 0.55), 0, TAU)
+        ctx.set_source_rgba(1, 0.3, 0.7, 0.6 * (1 - ph))
+        ctx.set_line_width(6 * (1 - ph) + 1)
+        ctx.stroke()
+    ctx.save()
+    ctx.arc(hx, hy, r, 0, TAU); ctx.set_source_rgba(0.98, 0.85, 0.92, 1); ctx.fill_preserve(); ctx.clip()
+    from .chars import draw_head
+    pose = dict(mouth='smile', eyes='half'); pose.update(item.get('pose', {}))
+    pose['talk'] = talk
+    ctx.translate(hx, hy + 22); ctx.scale(0.5, 0.5)
+    draw_head(ctx, cid, CAST[cid], Pose(**pose), 0, 0, 118)
+    ctx.restore()
+    ctx.arc(hx, hy, r, 0, TAU); ctx.set_source_rgba(*OUT); ctx.set_line_width(5); ctx.stroke()
+    blink = 0.55 + 0.45 * abs(math.sin(t * 4))
+    ctx.arc(x0 + 215, y0 + 62, 9, 0, TAU); ctx.set_source_rgba(1, 0.2, 0.3, blink); ctx.fill()
+    text(ctx, 'FALANDO DE VOCÊ', x0 + 232, y0 + 75, 36, '#FFD23F', align='left')
+    text(ctx, item.get('nome', CAST[cid]['name']), x0 + 215, y0 + 128, 34, '#FFFFFF', align='left')
+    if item.get('onde'):
+        text(ctx, item['onde'], x0 + 215, y0 + 172, 30, '#F7A8D8', align='left')
     ctx.restore()
 
 

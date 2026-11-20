@@ -1,0 +1,490 @@
+{
+"ep": "ep09",
+"jobs": [
+{
+"i": 0,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Tem alguém falando de você agora. Do outro lado da cidade. E você está ouvindo cada palavra."
+},
+{
+"i": 1,
+"voice": "d903526edc8945139b1b114f609c6bc8",
+"text": "Aquele menino só vive no celular. Vai ser o quê na vida? Testador de sofá?"
+},
+{
+"i": 2,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Testador de sofá. Isso existe? Parece um emprego ótimo."
+},
+{
+"i": 3,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Você ainda está na esquina da escola. Lá no portão, o seu Jorge conversa com uma menina do sexto ano. E você ouve."
+},
+{
+"i": 4,
+"voice": "9ce5f601f9e04382bb26141d5a3f839d",
+"text": "Esse menino do moletom verde é o único que me dá bom dia olhando no olho."
+},
+{
+"i": 5,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Na sala, o Davi vira pra trás e cochicha com o Caio. Bem baixinho."
+},
+{
+"i": 6,
+"voice": "336828260ba148aab9d5d47768cdbc11",
+"text": "O cabeção ronca na aula de química. Parece um liquidificador velho."
+},
+{
+"i": 7,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Eu não ronco!"
+},
+{
+"i": 8,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "A sala inteira olha pra você. O Davi estava cochichando. Você estava do outro lado."
+},
+{
+"i": 9,
+"voice": "336828260ba148aab9d5d47768cdbc11",
+"text": "Como é que você ouviu isso, cabeção?"
+},
+{
+"i": 10,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Desde hoje cedo, toda vez que alguém fala de você pelas costas, você ouve. Não importa onde."
+},
+{
+"i": 11,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "No primeiro dia, você ouve trinta e oito comentários. Da escola, do bairro, da família."
+},
+{
+"i": 12,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Mas tem uma pessoa que nunca fala de você. Nenhuma vez. A Bia."
+},
+{
+"i": 13,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Ela fala de cachorro, de prova, de chuva. De mim, nada."
+},
+{
+"i": 14,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "E agora você precisa saber. O que a Bia fala de você, quando você não está perto? Se é que ela fala."
+},
+{
+"i": 15,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Em casa, sua mãe está no telefone com a tia Marta. Você está no quarto. E ouve."
+},
+{
+"i": 16,
+"voice": "e808da2329754929803c8bd98dc36857",
+"text": "Ele lavou a louça ontem sem eu pedir, Marta. Sem eu pedir!"
+},
+{
+"i": 17,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Ela tá se gabando de mim. Então amanhã eu lavo de novo."
+},
+{
+"i": 18,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "E você lava. E seca. E guarda. A sua mãe conta pra metade do bairro."
+},
+{
+"i": 19,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Já a Lari, na sua cara, diz que você é chato. Mas no telefone com a amiga..."
+},
+{
+"i": 20,
+"voice": "a8c7b58e38c44719b3ab36342f080e95",
+"text": "Meu irmão é chato. Mas ele me ensinou a andar de bicicleta. Ele é legal, tá?"
+},
+{
+"i": 21,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Ela me acha legal. E ela nunca vai saber que eu sei."
+},
+{
+"i": 22,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Domingo, almoço na casa da vó Cida. Você na mesa. A tia e a vó, na cozinha, cochichando."
+},
+{
+"i": 23,
+"voice": "d903526edc8945139b1b114f609c6bc8",
+"text": "Ele tá crescendo bonito, né, mãe? Só não fala pra ele, senão fica metido."
+},
+{
+"i": 24,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Tia Marta! Me elogiando! Escondida na cozinha, como se fosse crime."
+},
+{
+"i": 25,
+"voice": "045e4a2e57434943bd3bb5db714aad75",
+"text": "Ele tem o jeito do avô. Ri igualzinho, fechando um olho só."
+},
+{
+"i": 26,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Na escola, você vira especialista. Sabe quem te acha engraçado, quem te acha chato, quem te acha esquisito."
+},
+{
+"i": 27,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Na sala dos professores, a professora Neide comenta sobre você."
+},
+{
+"i": 28,
+"voice": "e808da2329754929803c8bd98dc36857",
+"text": "O do moletom verde nunca estuda. Quarta eu chamo ele no quadro. Quero ver."
+},
+{
+"i": 29,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Na quarta, você está pronto. Resolve a equação no quadro antes dela terminar de ler."
+},
+{
+"i": 30,
+"voice": "e808da2329754929803c8bd98dc36857",
+"text": "Ué. Quem te contou que eu ia te chamar?"
+},
+{
+"i": 31,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Ninguém me contou, professora. Eu ouvi."
+},
+{
+"i": 32,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "No intervalo, um menino do nono ano diz na fila da cantina que você é esquisito. E alguém responde."
+},
+{
+"i": 33,
+"voice": "336828260ba148aab9d5d47768cdbc11",
+"text": "Esquisito é você. O cabeção é o cara mais engraçado que eu conheço."
+},
+{
+"i": 34,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "O Davi. Me defendendo. Pelas costas. Ele nunca me disse isso."
+},
+{
+"i": 35,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Mas a Bia continua em silêncio. Então você tenta de tudo pra ela falar de você."
+},
+{
+"i": 36,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Conta a melhor piada da sua vida. Senta do lado das amigas dela. Até corta o cabelo."
+},
+{
+"i": 37,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "As amigas dela falam de você. A cantina fala de você. A Bia, nada."
+},
+{
+"i": 38,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Cento e doze pessoas falaram de mim. E a única que eu queria ouvir não fala."
+},
+{
+"i": 39,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Naquela noite, você pesquisa no celular: por que as pessoas falam tanto umas das outras?"
+},
+{
+"i": 40,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "E descobre uma coisa de verdade. Pesquisadores escutaram conversas de pessoas em lugares públicos."
+},
+{
+"i": 41,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Cerca de dois terços do tempo, elas estavam falando de gente. De quem fez o quê, com quem."
+},
+{
+"i": 42,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "E outros estudos mostram que a maior parte da fofoca nem é falar mal. É só contar da vida dos outros."
+},
+{
+"i": 43,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Tem cientista que acha que é assim que um grupo de pessoas se mantém unido."
+},
+{
+"i": 44,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Então se a Bia não fala de mim... eu não faço parte do grupo dela?"
+},
+{
+"i": 45,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Daí em diante, você não só ouve. Você começa a responder."
+},
+{
+"i": 46,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Você agradece o seu Valdir por um elogio que ele fez pra uma cliente. Ele fica branco."
+},
+{
+"i": 47,
+"voice": "9ce5f601f9e04382bb26141d5a3f839d",
+"text": "Mas eu falei isso lá no fundo da barraca, menino..."
+},
+{
+"i": 48,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Aí, na pelada de quinta, você ouve o Davi. Do outro lado da quadra, conversando com o Caio."
+},
+{
+"i": 49,
+"voice": "336828260ba148aab9d5d47768cdbc11",
+"text": "O cabeção tá chato. Agora só fala do que os outros falam dele."
+},
+{
+"i": 50,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Você atravessa a quadra inteira. Na frente de todo mundo."
+},
+{
+"i": 51,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Eu ouvi, Davi! Você falou que eu tô chato!"
+},
+{
+"i": 52,
+"voice": "336828260ba148aab9d5d47768cdbc11",
+"text": "Como você ouviu? Eu tava cochichando aqui do gol!"
+},
+{
+"i": 53,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Não interessa. Você fala de mim pelas costas!"
+},
+{
+"i": 54,
+"voice": "336828260ba148aab9d5d47768cdbc11",
+"text": "Falei pelas costas porque não tive coragem de falar na sua cara. Mas é verdade."
+},
+{
+"i": 55,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "O jogo para. Ninguém fala nada. E o Davi vai embora sem pegar a bola."
+},
+{
+"i": 56,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "No dia seguinte, a turma para de conversar quando você chega. Ninguém sabe como. Mas todo mundo sabe: você escuta."
+},
+{
+"i": 57,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "E a Bia, que nunca fala de ninguém, para do seu lado."
+},
+{
+"i": 58,
+"voice": "4a4acf945bc14c42a69559ed381f2194",
+"text": "O Davi tá triste, sabia? Ele não disse nada. Mas eu vi."
+},
+{
+"i": 59,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Naquela noite, você deita. E, pela primeira vez, ninguém está falando de você. Silêncio."
+},
+{
+"i": 60,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Cento e doze pessoas. E agora, nenhuma. Nem o Davi."
+},
+{
+"i": 61,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "No sábado, você vai pra casa da vó Cida. Ela está no sofá, fazendo crochê."
+},
+{
+"i": 62,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Vó, a senhora fala de mim quando eu não tô?"
+},
+{
+"i": 63,
+"voice": "045e4a2e57434943bd3bb5db714aad75",
+"text": "[laughs] Todo santo dia. Pra vizinha, pra moça da padaria, pro moço do gás."
+},
+{
+"i": 64,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "E por que a senhora nunca fala pra mim?"
+},
+{
+"i": 65,
+"voice": "045e4a2e57434943bd3bb5db714aad75",
+"text": "Com o seu avô foi assim. Eu elogiava ele pra cidade inteira. Pra ele, quase nunca."
+},
+{
+"i": 66,
+"voice": "045e4a2e57434943bd3bb5db714aad75",
+"text": "Hoje eu daria tudo pra ter falado mais na cara dele."
+},
+{
+"i": 67,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "E aí você entende. Passou a semana ouvindo coisa bonita pelas costas. E não disse uma pra ninguém. Nem pro Davi."
+},
+{
+"i": 68,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Eu sei o que todo mundo acha de mim. Mas ninguém sabe o que eu acho deles."
+},
+{
+"i": 69,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Então você muda. Cada coisa boa que ouvir pelas costas, você vai devolver. Na cara."
+},
+{
+"i": 70,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Segunda-feira, você diz pro seu Jorge que o bom dia dele é o melhor da escola."
+},
+{
+"i": 71,
+"voice": "9ce5f601f9e04382bb26141d5a3f839d",
+"text": "Ô, rapaz... Ninguém nunca me disse isso."
+},
+{
+"i": 72,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Você diz pra Lari que ela anda de bicicleta melhor que você. Ela finge que não liga. E sorri."
+},
+{
+"i": 73,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Mas falta uma pessoa. E você não sabe como consertar."
+},
+{
+"i": 74,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Sexta-feira. Último dia de aula. Amigo secreto da turma. E você tirou o Davi."
+},
+{
+"i": 75,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "A regra é simples. Antes de entregar o presente, você descreve o seu amigo. Na frente de todo mundo."
+},
+{
+"i": 76,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "O meu amigo secreto... fala de mim pelas costas."
+},
+{
+"i": 77,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "A sala fica gelada. O Davi abaixa a cabeça."
+},
+{
+"i": 78,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Ele disse que eu tava chato. E tinha razão. Eu passei a semana preocupado com o que falavam de mim."
+},
+{
+"i": 79,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "E esqueci de dizer que ele me defende quando eu não tô. Que ele é o melhor amigo do mundo."
+},
+{
+"i": 80,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Meu amigo secreto é o Davi."
+},
+{
+"i": 81,
+"voice": "336828260ba148aab9d5d47768cdbc11",
+"text": "[laughs] Cabeção... você é muito esquisito."
+},
+{
+"i": 82,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Ele ri. Ele te abraça. E a turma inteira bate palma."
+},
+{
+"i": 83,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Aí chega a vez da última pessoa. A Bia. Com um presente embrulhado em papel de cachorrinho."
+},
+{
+"i": 84,
+"voice": "4a4acf945bc14c42a69559ed381f2194",
+"text": "O meu amigo secreto é uma pessoa que dá bom dia olhando no olho."
+},
+{
+"i": 85,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Seu coração para. Foi exatamente isso que o seu Jorge disse. No primeiro dia."
+},
+{
+"i": 86,
+"voice": "4a4acf945bc14c42a69559ed381f2194",
+"text": "Que ri de si mesmo quando cai no pátio. E que essa semana sumiu. Mas hoje voltou."
+},
+{
+"i": 87,
+"voice": "4a4acf945bc14c42a69559ed381f2194",
+"text": "Meu amigo secreto é você."
+},
+{
+"i": 88,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "A turma inteira faz: uuuuh. E o Davi grita mais alto que todo mundo."
+},
+{
+"i": 89,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Depois, no meio-fio, você abre o presente. Um caderno. Com um cachorrinho desenhado na capa."
+},
+{
+"i": 90,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Bia... por que você nunca fala de mim? Tipo, com as suas amigas?"
+},
+{
+"i": 91,
+"voice": "4a4acf945bc14c42a69559ed381f2194",
+"text": "[laughs] Porque o que eu acho de você, eu queria falar pra você primeiro."
+},
+{
+"i": 92,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Ela ri pelo nariz. Você ri também. Fechando um olho só."
+},
+{
+"i": 93,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Mais tarde, já deitado, você ouve uma voz baixinha. A Bia, conversando com a mãe dela."
+},
+{
+"i": 94,
+"voice": "4a4acf945bc14c42a69559ed381f2194",
+"text": "Mãe, lembra do menino do moletom verde? Então... deixa pra lá. Amanhã eu te conto."
+},
+{
+"i": 95,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "No fim, o que falam de você pelas costas importa menos do que o que você tem coragem de dizer de frente."
+},
+{
+"i": 96,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "E você? Ia querer ouvir o que falam de você pelas costas? Escreve aqui nos comentários."
+}
+]
+}
