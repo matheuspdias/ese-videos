@@ -9,7 +9,7 @@ Inscritos: 4 · views totais: 564 · vídeos: 6
 | E se você tivesse carisma nível 500? | 2026-11-16 | 23 | — | — | 1:54 | 22% | 0 | 55% |
 | E se você crescesse 1 cm toda vez que pedisse desculpa? | 2026-11-17 | 2 | — | — | 0:00 | 0% | 0 | — |
 | E se você ficasse preso num shopping com seu crush por 30 di | 2026-11-18 | 78 | — | — | 0:00 | 0% | 0 | — |
-| E se você pudesse ver quem te acha bonito? | 2026-11-19 | 0 | — | — | 0:00 | 0% | 0 | — |
+| E se você pudesse ver quem te acha bonito? | 2026-11-19 | 2 | — | — | 0:00 | 0% | 0 | — |
 
 ## Fontes de tráfego (canal)
 
