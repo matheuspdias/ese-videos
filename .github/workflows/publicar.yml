@@ -10,6 +10,9 @@ on:
         description: 'só testar se o projeto pode publicar (sobe 5 s não listado e apaga)'
         type: boolean
         default: false
+      ensaio:
+        description: 'só renderizar este módulo (ex.: episodes.ep08_forte ep08), sem enviar'
+        required: false
 permissions:
   contents: write
 concurrency:
@@ -34,8 +37,11 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
         run: python3 -u tools/publicar.py --teste
+      - name: Ensaio (só render)
+        if: inputs.ensaio != ''
+        run: bash tools/produce.sh ${{ inputs.ensaio }}
       - name: Renderizar e enviar
-        if: ${{ !inputs.teste }}
+        if: ${{ !inputs.teste && inputs.ensaio == '' }}
         env:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
@@ -60,7 +66,7 @@ jobs:
           retention-days: 14
           if-no-files-found: ignore
       - name: Commit
-        if: always() && !inputs.teste
+        if: always() && !inputs.teste && inputs.ensaio == ''
         run: |
           git config user.name "publicar-bot"
           git config user.email "actions@github.com"
