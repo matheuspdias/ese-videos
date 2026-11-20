@@ -23,7 +23,7 @@ Toda semana uma pergunta nova: e se você...? Se inscreve no Já Pensou? pra nã
 já pensou, e se você, e se, what if, animação, história animada, ouvir o que falam de você, pelas costas, fofoca, superpoder, amigo secreto, melhor amigo, crush, vó, escola
 
 **Ao publicar**
-- Programar (não Estreia) para dom 22/11/2026 às 17h30.
+- Programar (não Estreia) para sáb 21/11/2026 às 17h30 (movido de 22/11 pelo Matheus).
 - Legenda: enviar ep09_legenda_pt.srt como Português (Brasil), "Com tempo".
 - Marcar "Conteúdo alterado ou sintético: Sim" (vozes geradas por IA).
 - Público: não é conteúdo para crianças. Categoria: Entretenimento.
