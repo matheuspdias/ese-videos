@@ -1,6 +1,6 @@
 # Já Pensou? — 2026-11-20
 
-Inscritos: 4 · views totais: 564 · vídeos: 6
+Inscritos: 4 · views totais: 450 · vídeos: 6
 
 | Vídeo | Publicado | Views | Impr. | CTR | Média | % visto | Inscr. | Retém 30s |
 |---|---|---|---|---|---|---|---|---|
@@ -19,17 +19,3 @@ Inscritos: 4 · views totais: 564 · vídeos: 6
 - YT_OTHER_PAGE: 3 views
 - NO_LINK_OTHER: 1 views
 - END_SCREEN: 1 views
-
-## Avisos
-
-- impressões/CTR indisponíveis: GET https://youtubereporting.googleapis.com/v1/jobs -> 403: {
-  "error": {
-    "code": 403,
-    "message": "YouTube Reporting API has not been used in project 56828188456 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/youtubereporting.googleapis.com/overview?project=56828188456 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.",
-    "status": "PERMISSION_DENIED",
-    "details": [
-      {
-        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
-        "reason": "SERVICE_DISABLED",
-        "domain": "googleapis.com",
-        "metadata
