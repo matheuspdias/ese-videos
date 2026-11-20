@@ -159,11 +159,24 @@ Escreva `episodes/epNN/youtube.md` (antes do produce) no modelo de `episodes/ep0
 com gancho de 2 parágrafos + pergunta do CTA + linha do fato real + "Se inscreve no Já Pensou?…" + hashtags, tags,
 e o bloco "Ao publicar".
 
-## 7. Entregar
+## 7. Publicar e entregar
 
-1. Atualize `episodes/temas.md` (status `feito — epNN, DD/MM`) e `episodes/agenda.md`. Commit e push (sem `build/`).
-2. Envie com **SendUserFile** os arquivos de `build/epNN/entrega/` (vídeo, thumb, legenda, título/descrição).
-3. Mande com **SendUserMessage** um resumo curto: título, data/horário em que deve ser agendado (17h30), duração,
-   e qualquer coisa que ele deva olhar. Se algo falhou, diga o que e em que passo parou.
+O vídeo vai para o YouTube **sozinho**, como Programado para as 17h30 da data da agenda, pela Action `publicar`
+(renderiza de novo no runner com `tools/produce.sh` e envia com título, descrição, tags, thumbnail, legenda e
+"conteúdo sintético: sim"). O Matheus só revisa no Studio e pode barrar até o horário.
 
-Lembretes que vão na mensagem: legenda "Com tempo", "Conteúdo alterado ou sintético: Sim", agendar (não Estreia).
+1. Atualize `episodes/temas.md` (status `feito — epNN, DD/MM`) e `episodes/agenda.md`.
+2. Crie `publicar/epNN.json`:
+   `{"ep": "epNN", "mod": "episodes.epNN_<slug>", "publicar_em": "AAAA-MM-DDT17:30:00-03:00"}`
+3. Commit e push (sem `build/`). O push do JSON dispara a Action. Acompanhe com
+   `gh run list -R matheuspdias/ese-videos --workflow publicar.yml -L 1` até terminar (~15 min) e dê `git pull`:
+   o JSON volta com `video_id`, `link`, `status` e `avisos`.
+4. Mande com **SendUserMessage** um resumo curto: título, link do vídeo no YouTube, data/horário em que publica,
+   duração, e os avisos (thumbnail ou legenda recusada, agendamento não mantido). Envie com **SendUserFile** só a
+   thumb e a `conferencia.png`, para ele bater o olho. Se a Action falhou, envie o pacote de `build/epNN/entrega/`
+   com SendUserFile e diga para agendar à mão (legenda "Com tempo", "Conteúdo alterado ou sintético: Sim",
+   agendar, não Estreia).
+5. Confira no JSON mais recente de `analytics/` (atualizado todo dia) os vídeos enviados: um vídeo com
+   `status` "private" e sem `agendado` antes da data dele travou — avise o Matheus para agendar à mão.
+
+Teste do projeto (se suspeitar de trava): dispare a Action com `-f 'inputs[teste]=true'`.
