@@ -4,12 +4,14 @@ Inscritos: 4 · views totais: 564 · vídeos: 6
 
 | Vídeo | Publicado | Views | Impr. | CTR | Média | % visto | Inscr. | Retém 30s |
 |---|---|---|---|---|---|---|---|---|
-| E se você pudesse ver o quanto cada pessoa te ama de verdade | 2026-11-14 | 214 | — | — | 2:35 | 39% | 0 | 62% |
+| E se você pudesse ver o quanto cada pessoa te ama de verdade | 2026-11-14 | 213 | — | — | 2:35 | 39% | 0 | 62% |
 | E se todo mundo pudesse ouvir seus pensamentos? | 2026-11-15 | 131 | — | — | 2:25 | 30% | 1 | 68% |
 | E se você tivesse carisma nível 500? | 2026-11-16 | 23 | — | — | 1:54 | 22% | 0 | 55% |
 | E se você crescesse 1 cm toda vez que pedisse desculpa? | 2026-11-17 | 2 | — | — | 0:00 | 0% | 0 | — |
-| E se você ficasse preso num shopping com seu crush por 30 di | 2026-11-18 | 78 | — | — | 0:00 | 0% | 0 | — |
-| E se você pudesse ver quem te acha bonito? | 2026-11-19 | 2 | — | — | 0:00 | 0% | 0 | — |
+| E se você ficasse preso num shopping com seu crush por 30 di | 2026-11-18 | 83 | — | — | 0:00 | 0% | 0 | — |
+| E se você pudesse ver quem te acha bonito? | 2026-11-19 | 98 | — | — | 0:00 | 0% | 0 | — |
+| E se você pudesse ouvir o que falam de você pelas costas? | 2026-11-20 | 0 | — | — | 0:00 | 0% | 0 | — |
+| E se você fosse a pessoa mais forte do Brasil? | 2026-11-20 | 0 | — | — | 0:00 | 0% | 0 | — |
 
 ## Fontes de tráfego (canal)
 
