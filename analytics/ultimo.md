@@ -1,6 +1,6 @@
 # Já Pensou? — 2026-11-20
 
-Inscritos: 4 · views totais: 450 · vídeos: 6
+Inscritos: 4 · views totais: 564 · vídeos: 6
 
 | Vídeo | Publicado | Views | Impr. | CTR | Média | % visto | Inscr. | Retém 30s |
 |---|---|---|---|---|---|---|---|---|
