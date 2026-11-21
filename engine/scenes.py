@@ -598,11 +598,11 @@ def bg_quadra(ctx, t):
     ctx.stroke()
 
 
-def bg_salao(ctx, t):
+def bg_salao(ctx, t, faixa='80 ANOS DA VÓ CIDA', bolo='80'):
     wall(ctx, '#FFF1E6', 780, '#E8C2CA', 560)
     # faixa
     rr(ctx, 460, 70, 1000, 120, 16, '#C9184A')
-    text(ctx, '80 ANOS DA VÓ CIDA', 960, 152, 66, '#FFFFFF', outline='#590D22', lw=10)
+    text(ctx, faixa, 960, 152, 66 if len(faixa) <= 18 else 58, '#FFFFFF', outline='#590D22', lw=10)
     # balões dourados e rosa
     for k, (x, y) in enumerate(((150, 160), (260, 120), (1660, 150), (1780, 110), (360, 230), (1560, 230))):
         bob = 8 * math.sin(t * 1.5 + k)
@@ -616,7 +616,13 @@ def bg_salao(ctx, t):
     ctx.save(); ctx.translate(1650, 640); ctx.scale(1, 0.3); ctx.arc(0, 0, 110, 0, TAU); ctx.restore()
     fill_stroke(ctx, '#FFFFFF', 4)
     rect(ctx, 1570, 520, 160, 120, '#FFB5C2')
-    text(ctx, '80', 1650, 610, 70, '#C9184A')
+    if bolo:
+        text(ctx, bolo, 1650, 610, 70, '#C9184A')
+    else:
+        for k in range(5):
+            rect(ctx, 1590 + k * 30, 470, 10, 50, '#FFFFFF')
+            ctx.save(); ctx.translate(1595 + k * 30, 458 + math.sin(t * 9 + k) * 2); ctx.scale(0.6, 1)
+            ctx.arc(0, 0, 10, 0, TAU); ctx.restore(); setc(ctx, '#FFB703'); ctx.fill()
 
 
 def bg_salao_posse(ctx, t):
@@ -710,6 +716,7 @@ BG = {
     'onibus': (bg_onibus, fg_onibus),
     'quadra': (bg_quadra, None),
     'salao': (bg_salao, None),
+    'salao_vo': (lambda ctx, t: bg_salao(ctx, t, 'FELIZ ANIVERSÁRIO, VÓ!', None), None),  # ep10
     'salao_posse': (bg_salao_posse, None),
     'quarto_noite': (bg_quarto_noite, None),
     'desenho': (bg_plain('#6D4C41', '#4E342E'), None),
@@ -736,6 +743,7 @@ SLOTS = {
     'quadra': dict(a=(500, 1010, 0.9), b=(1000, 1010, 0.95), gol=(1720, 1000, 0.85), gol2=(1640, 980, 0.85),
                    alto=(1520, 680, 0.8), c=(1330, 1010, 0.9)),  # alto (alguém erguido no ar) e c: ep05
     'salao': dict(a=(330, 1010, 0.9), b=(700, 1010, 0.9), c=(1060, 1010, 0.95), d=(1400, 1010, 0.8), e=(1700, 1010, 0.9)),
+    'salao_vo': dict(a=(330, 1010, 0.9), b=(700, 1010, 0.9), c=(1060, 1010, 0.95), d=(1400, 1010, 0.8), e=(1700, 1010, 0.9)),
     'salao_posse': dict(a=(330, 1010, 0.9), b=(700, 1010, 0.9), c=(1060, 1010, 0.95), d=(1400, 1010, 0.8), e=(1700, 1010, 0.9)),
     'quarto_noite': dict(a=(760, 1010, 1.0)),
     'onibus': dict(a=(300, 870, 0.85), b=(1030, 870, 0.9), c=(1290, 870, 0.9)),

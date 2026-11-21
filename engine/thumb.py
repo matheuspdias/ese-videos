@@ -161,6 +161,15 @@ def generic(spec, out):
     if spec.get('heart_right') and R:
         from .render import heart_icon
         heart_icon(ctx, R['head'][0], R['top'][1] - 110, 2.2, 1.0, 0.0, 0.3)
+    if spec.get('ghost'):
+        # ep10: mensagem apagada flutuando entre os dois (balão tracejado com selo APAGADA)
+        from .render import chat_bubble
+        ctx.save(); ctx.translate(spec.get('ghost_x', 1000), spec.get('ghost_y', 330)); ctx.scale(2.0, 2.0); ctx.rotate(-0.04)
+        msg = ('ela', '\n'.join(spec['ghost']), 'apagada')
+        lines = spec['ghost']
+        w = max(len(l) for l in lines) * 16.5 + 44
+        chat_bubble(ctx, -w / 2, 0, msg, 1.0, 0.0, reveal=1.0, ghost=1.0)
+        ctx.restore()
     if spec.get('bar_left') is not None:
         neon_bar(ctx, hx, L['top'][1] - 70, 1.9, spec['bar_left'], style=spec.get('bar_style'))
     a, b = spec['text']

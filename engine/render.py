@@ -596,6 +596,9 @@ def overlay(ctx, fx, u, dur, t, shot):
         # ep09: cartão "FALANDO DE VOCÊ" {'costas': cid, 'onde': 'na cozinha'}
         if isinstance(item, dict) and 'costas' in item:
             costas_card(ctx, item, p, t)
+        # ep10: celular com conversa e mensagens apagadas {'chat': [...], 'cid': 'bia'}
+        if isinstance(item, dict) and 'chat' in item:
+            chat_phone(ctx, item, p, t)
         if isinstance(item, dict) and 'freio' in item:
             freio(ctx, item['freio'], p)
         # ep06: caderninho com lista {'anota': ['linha', ...], 'titulo': 'ANOTA AÍ'}
@@ -875,6 +878,168 @@ def chat_ui(ctx, p, t):
     if p > 0.55:
         a = ease((p - 0.55) / 0.1)
         text(ctx, '19× "alô?"', 1560, 420, 60, '#25D366', outline='#081C15', lw=10)
+
+
+# ---------------------------------------------------------------- ep10: mensagens apagadas antes de mandar
+CHAT_W = 410
+
+
+def _chat_lines(txt, width=19):
+    out = []
+    for part in txt.split('\n'):
+        out.extend(wrap(part, width) or [''])
+    return out
+
+
+def chat_bubble(ctx, x, y, msg, a, t, reveal=1.0, ghost=0.0):
+    """balão de conversa com topo em (x, y): x é a borda esquerda ('ela') ou direita ('eu').
+    ghost 0..1 transforma o balão em mensagem apagada (contorno tracejado rosa, texto translúcido, selo APAGADA).
+    devolve a altura ocupada."""
+    lado, txt = msg[0], msg[1]
+    tipo = msg[2] if len(msg) > 2 else 'ok'
+    autor = msg[3] if len(msg) > 3 else None
+    if tipo == 'foto':
+        w, h = 300, 230
+    else:
+        full = _chat_lines(txt)
+        n = max(1, int(round(len(txt) * reveal)))
+        shown = _chat_lines(txt[:n]) if reveal < 1 else full
+        base_l = shown if reveal < 1 else full
+        w = max(len(l) for l in base_l) * 16.5 + 44
+        w = max(w, 150 if not autor else 200)
+        h = len(base_l) * 36 + 30 + (30 if autor else 0)
+    bx = x if lado == 'ela' else x - w
+    ctx.save()
+    ctx.push_group()
+    rrect(ctx, bx, y, w, h, 18)
+    if ghost > 0:
+        base = (0.13, 0.17, 0.2) if lado == 'ela' else (0.0, 0.36, 0.29)
+        g = (0.35, 0.05, 0.2)
+        ctx.set_source_rgba(*[b + (c - b) * ghost for b, c in zip(base, g)], 1 - 0.55 * ghost)
+        ctx.fill_preserve()
+        ctx.set_dash([14, 9]); ctx.set_line_width(4)
+        ctx.set_source_rgba(1, 0.31, 0.68, ghost); ctx.stroke(); ctx.set_dash([])
+    else:
+        setc(ctx, '#202C33' if lado == 'ela' else '#005C4B'); ctx.fill()
+    ty = y + 42
+    if autor:
+        text(ctx, autor, bx + 22, ty - 4, 22, '#FFD23F', align='left')
+        ty += 30
+    if tipo == 'foto':
+        rrect(ctx, bx + 12, y + 12, w - 24, h - 24, 12); setc(ctx, '#FFFFFF'); ctx.fill()
+        # guarda-chuva com dois cachorrinhos (o desenho da Bia)
+        cx = bx + w / 2
+        ctx.move_to(cx - 110, y + 120); ctx.curve_to(cx - 100, y + 30, cx + 100, y + 30, cx + 110, y + 120); ctx.close_path()
+        fill_stroke(ctx, '#FF8FAB', 4)
+        ctx.move_to(cx, y + 120); ctx.line_to(cx, y + 200); ctx.set_source_rgba(*OUT); ctx.set_line_width(4); ctx.stroke()
+        for k in range(6):
+            ctx.move_to(bx + 30 + k * 48, y + 30 + (k % 2) * 20); ctx.line_to(bx + 22 + k * 48, y + 52 + (k % 2) * 20)
+        ctx.set_source_rgba(0.3, 0.55, 0.9, 1); ctx.set_line_width(3); ctx.stroke()
+        rrect(ctx, cx - 82, y + 172, 56, 34, 10); setc(ctx, '#2D9C5A'); ctx.fill()
+        SC.dog_doodle(ctx, cx - 54, y + 160, 0.55)
+        SC.dog_doodle(ctx, cx + 54, y + 160, 0.55)
+    else:
+        col = '#FFC4E7' if ghost > 0.5 else '#FFFFFF'
+        for k, ln in enumerate(shown):
+            text(ctx, ln, bx + 22, ty + k * 36, 28, col, align='left')
+        if reveal < 1 and int(t * 4) % 2 == 0:
+            k = len(shown) - 1
+            ctx.select_font_face('Poppins', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD); ctx.set_font_size(28)
+            cx_ = bx + 22 + ctx.text_extents(shown[k]).x_advance + 3
+            ctx.rectangle(cx_, ty + k * 36 - 26, 3, 32); setc(ctx, '#FFFFFF'); ctx.fill()
+    ctx.pop_group_to_source()
+    flick = 1.0 if ghost < 0.5 else 0.78 + 0.12 * math.sin(t * 9 + y)
+    ctx.paint_with_alpha(a * flick)
+    if ghost > 0.3:
+        b = ease((ghost - 0.3) / 0.7) * a
+        sx = min(bx + w - 30, x + CHAT_W - 120) if lado == 'ela' else max(bx + 30, x - CHAT_W + 120)
+        ctx.save(); ctx.translate(sx, y - 4); ctx.rotate(-0.06); ctx.scale(b, b)
+        rrect(ctx, -70, -20, 140, 38, 19); setc(ctx, '#E63946'); ctx.fill()
+        text(ctx, 'APAGADA', 0, 9, 22, '#FFFFFF')
+        ctx.restore()
+    ctx.restore()
+    return h + 26
+
+
+def chat_phone(ctx, item, p, t):
+    """{'chat': [(lado, texto, tipo, autor), ...], 'nome': 'Bia', 'cid': 'bia', 'x': 1450, 'ja': 0, 'digitando': False}
+    lado: 'ela' (recebida, esquerda) | 'eu' (sua, direita); tipo: 'ok' | 'apagada' (é digitada letra a letra e some) | 'foto'.
+    As mensagens entram uma a uma ao longo do plano; 'ja' = quantas já aparecem prontas no começo."""
+    msgs = item['chat']
+    ja = item.get('ja', 0)
+    novas = max(1, len(msgs) - ja)
+    span = item.get('tempo', 0.78)
+    a = ease(p / 0.06) if item.get('entra', True) else 1.0
+    X = item.get('x', 1450)
+    ctx.save()
+    ctx.translate(X, 540 + (1 - a) * 320)
+    rrect(ctx, -230, -420, 460, 840, 50); fill_stroke(ctx, '#1E1E24', 8)
+    rrect(ctx, -205, -390, CHAT_W, 780, 36); setc(ctx, '#0B141A'); ctx.fill()
+    ctx.save(); rrect(ctx, -205, -390, CHAT_W, 780, 36); ctx.clip()
+    # mensagens
+    states, typing = [], False
+    for k, m in enumerate(msgs):
+        if k < ja:
+            states.append((1.0, 1.0, 1.0 if (len(m) > 2 and m[2] == 'apagada') else 0.0))
+            continue
+        j = k - ja
+        s0 = 0.05 + j * span / novas
+        d = span / novas
+        r = (p - s0) / d
+        if r <= 0:
+            break
+        if len(m) > 2 and m[2] == 'apagada':
+            rev = min(1.0, r / 0.6)
+            gh = ease((r - 0.68) / 0.25)
+            if rev < 1 and m[0] == 'ela':
+                typing = True
+            states.append((1.0, rev, gh))
+        else:
+            states.append((ease(r / 0.15), 1.0, 0.0))
+    hs = []
+    for k, (al, rev, gh) in enumerate(states):
+        m = msgs[k]
+        if len(m) > 2 and m[2] == 'foto':
+            hs.append(256)
+        else:
+            hs.append(len(_chat_lines(m[1])) * 36 + 30 + (30 if len(m) > 3 and m[3] else 0) + 26)
+    top = -250
+    bottom = 300
+    total = sum(hs)
+    off = min(0, bottom - (top + total))
+    y = top + off
+    for k, (al, rev, gh) in enumerate(states):
+        m = msgs[k]
+        x = -185 if m[0] == 'ela' else 185
+        chat_bubble(ctx, x, y + (1 - al) * 30, m, al, t, reveal=rev, ghost=gh)
+        y += hs[k]
+    dig = typing or (item.get('digitando') and p > 0.05 + span * 0.9)
+    if dig:
+        rrect(ctx, -185, 310, 120, 54, 27); setc(ctx, '#202C33'); ctx.fill()
+        for k in range(3):
+            yy = 337 - 8 * max(0, math.sin(t * 8 - k * 0.9))
+            ctx.arc(-155 + k * 30, yy, 8, 0, TAU); ctx.set_source_rgba(0.75, 0.8, 0.85, 1); ctx.fill()
+    ctx.restore()
+    # cabeçalho
+    ctx.save(); rrect(ctx, -205, -390, CHAT_W, 780, 36); ctx.clip()
+    ctx.rectangle(-205, -390, CHAT_W, 120); setc(ctx, '#202C33'); ctx.fill()
+    ctx.restore()
+    cid = item.get('cid')
+    if cid:
+        ctx.save(); ctx.arc(-140, -330, 40, 0, TAU); ctx.set_source_rgba(0.85, 0.9, 0.95, 1); ctx.fill_preserve(); ctx.clip()
+        ctx.translate(-140, -318); ctx.scale(0.3, 0.3)
+        from .chars import draw_head
+        draw_head(ctx, cid, CAST[cid], Pose(mouth='smile'), 0, 0, 118)
+        ctx.restore()
+    text(ctx, item.get('nome', CAST[cid]['name'] if cid else ''), -85, -333, 34, '#FFFFFF', align='left')
+    if dig:
+        dots = '.' * (1 + int(t * 3) % 3)
+        text(ctx, 'digitando' + dots, -85, -293, 26, '#25D366', align='left')
+    else:
+        text(ctx, item.get('status', 'online'), -85, -293, 26, '#9AA5AD', align='left')
+    if item.get('hora'):
+        text(ctx, item['hora'], 175, -333, 26, '#9AA5AD', align='right')
+    ctx.restore()
 
 
 # ---------------------------------------------------------------- frame
