@@ -153,6 +153,9 @@ acrescente uma cena curta coerente **antes** de gerar vozes (ou suba `TAIL` em `
 tools/produce.sh episodes.epNN_<slug> epNN     # ~8–10 min: render, legenda, thumbnail, pacote em build/epNN/entrega
 ```
 
+O vídeo sai em **1440p (2560×1440)**, 24 fps: o motor desenha em coordenadas 1920×1080 e só escala na saída, então
+cenários, posições e stills continuam em 1080. Para voltar a Full HD: `VIDEO_H=1080 tools/produce.sh ...`.
+
 Confira `build/epNN/conferencia.png` (12 quadros do vídeo final) e `build/epNN/thumb.jpg` com Read.
 
 Escreva `episodes/epNN/youtube.md` (antes do produce) no modelo de `episodes/ep02/youtube.md`: título, descrição

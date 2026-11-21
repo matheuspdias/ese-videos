@@ -23,6 +23,7 @@ GAP_NAR = 0.28
 GAP_DIALOG = 0.35
 LEAD = 0.4
 TAIL = 18.0
+OUT_H = int(os.environ.get('VIDEO_H', '1440'))  # altura do vídeo final (1080 = Full HD; 1440 = 2K)
 
 
 def ease(x):
@@ -1425,9 +1426,13 @@ def _render_range(args):
     ep_mod, ep_id, f0, f1, out = args
     if not _G:
         _init(ep_mod, ep_id)
-    surf = cairo.ImageSurface(cairo.FORMAT_RGB24, W, H)
+    # o desenho é vetorial em coordenadas 1920x1080; o vídeo sai em OUT_H (padrão 1440p) só escalando o contexto
+    sc = OUT_H / H
+    ow, oh = int(round(W * sc)), OUT_H
+    surf = cairo.ImageSurface(cairo.FORMAT_RGB24, ow, oh)
     ctx = cairo.Context(surf)
-    proc = subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'bgra', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-',
+    ctx.scale(sc, sc)
+    proc = subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'bgra', '-s', f'{ow}x{oh}', '-r', str(FPS), '-i', '-',
                              '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-pix_fmt', 'yuv420p', out], stdin=subprocess.PIPE)
     for f in range(f0, f1):
         ctx.save()
