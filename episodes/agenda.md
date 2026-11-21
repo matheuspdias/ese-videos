@@ -11,6 +11,7 @@
 | ep07 | qui 19/11/2026 | E se você pudesse ver quem te acha bonito? | publicado (19/11, pelo analytics) |
 | ep08 | sex 20/11/2026 | E se você fosse a pessoa mais forte do Brasil? | sobe hoje (Matheus) |
 | ep09 | sáb 21/11/2026 | E se você pudesse ouvir o que falam de você pelas costas? | agendado (youtu.be/AbU8t4CaCjE) — movido de 22/11 para 21/11 pelo Matheus no Studio |
+| ep10 | dom 22/11/2026 | E se você pudesse ver as mensagens que apagaram antes de te mandar? | entregue |
 
-Próximo: **ep10 — dom 22/11/2026**. Cada execução produz o próximo episódio e acrescenta uma linha aqui
+Próximo: **ep11 — seg 23/11/2026**. Cada execução produz o próximo episódio e acrescenta uma linha aqui
 (status `entregue`). O próximo depois de cada um é sempre o dia seguinte à última data da tabela.
