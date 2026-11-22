@@ -215,6 +215,12 @@ def neon_bar(ctx, x, y, s, value, pop=0.0, alpha=1.0, flicker=False, t=0, style=
     hx = -w / 2 - 6 * s
     if st['icon'] == 'star':
         star(ctx, hx, 0, 40 * s, '#FFD23F')
+    elif st['icon'] == 'pensa':   # ep11: nuvenzinha de pensamento
+        for bx, by, br in ((-14, 6, 17), (2, -10, 20), (18, 4, 16), (2, 12, 15), (-22, 26, 6), (-30, 38, 4)):
+            ctx.new_sub_path(); ctx.arc(hx + bx * s, by * s, br * s, 0, TAU)
+        ctx.set_source_rgba(0.1, 0.05, 0.2, alpha); ctx.set_line_width(7 * s); ctx.stroke_preserve()
+        ctx.set_source_rgba(1, 1, 1, alpha); ctx.fill()
+        ctx.new_path()
     else:
         heart(ctx, hx, 0, 34 * s, (1, 0.25, 0.6, alpha))
     if st['label']:
@@ -517,6 +523,36 @@ def overlay(ctx, fx, u, dur, t, shot):
                     ctx.save(); ctx.translate(0, 30); draw_prop_cake(ctx); ctx.restore()
                 text(ctx, lbl, 0, 125, 32, '#3A0CA3')
                 ctx.restore()
+    if 'bilhete_bia' in fx:
+        # ep11: bilhete do correio elegante com cachorrinho de moletom verde
+        a = ease(p / 0.12)
+        ctx.save(); ctx.translate(960, 560 + (1 - a) * 80); ctx.rotate(-0.05)
+        rrect(ctx, -420, -440, 840, 860, 18); fill_stroke(ctx, '#FFF6E5', 7)
+        ctx.set_source_rgba(1, 0.55, 0.75, 1); ctx.rectangle(-420, -440, 840, 40); ctx.fill()
+        hand_text(ctx, 'correio elegante', -380, -330, 46, '#C9184A')
+        d = ease((p - 0.1) / 0.25)
+        ctx.save(); ctx.translate(0, 20); ctx.scale(d, d)
+        ctx.set_line_width(7); ctx.set_line_join(cairo.LINE_JOIN_ROUND)
+        rrect(ctx, -120, 0, 240, 200, 70); fill_stroke(ctx, '#3FA34D', 7)          # moletom verde
+        ctx.move_to(-40, 30); ctx.line_to(-30, 110); ctx.move_to(40, 30); ctx.line_to(30, 110)
+        ctx.set_source_rgba(0.1, 0.15, 0.1, 1); ctx.stroke()
+        ctx.save(); ctx.translate(0, -70); ctx.scale(1.15, 1)
+        ctx.arc(0, 0, 105, 0, TAU); ctx.restore(); fill_stroke(ctx, '#F2D3A0', 7)  # cabeça
+        for sx in (-1, 1):                                                           # orelhas caídas
+            ctx.save(); ctx.translate(sx * 115, -60); ctx.rotate(sx * 0.35); ctx.scale(0.45, 1)
+            ctx.arc(0, 0, 80, 0, TAU); ctx.restore(); fill_stroke(ctx, '#9C6B3C', 7)
+            ctx.arc(sx * 40, -85, 11, 0, TAU); ctx.set_source_rgba(0.1, 0.07, 0.07, 1); ctx.fill()
+        ctx.save(); ctx.translate(0, -45); ctx.scale(1.4, 1); ctx.arc(0, 0, 16, 0, TAU); ctx.restore()
+        ctx.set_source_rgba(0.1, 0.07, 0.07, 1); ctx.fill()
+        ctx.arc(-18, -22, 18, 0.2, 2.6); ctx.new_sub_path(); ctx.arc(18, -22, 18, 0.5, 2.9)
+        ctx.set_line_width(6); ctx.stroke()
+        heart(ctx, 190, -150, 34, (1, 0.25, 0.6, 1))
+        ctx.restore()
+        b = ease((p - 0.45) / 0.15)
+        if b > 0:
+            hand_text(ctx, 'me encontra no', -260, 300, 58, '#1D3557', b)
+            hand_text(ctx, 'meio-fio :)', -200, 375, 58, '#1D3557', b)
+        ctx.restore()
     if 'cta2' in fx and p > 0.15:
         a = ease((p - 0.15) / 0.12)
         rrect(ctx, 960, 240, 860, 520, 40)
