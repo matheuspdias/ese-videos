@@ -12,7 +12,7 @@ Inscritos: 5 · views totais: 843 · vídeos: 8
 | E se você pudesse ver quem te acha bonito? | 2026-11-19 | 5 | 4497 | 1.78% | 0:13 | 2% | 0 | — |
 | E se você fosse a pessoa mais forte do Brasil? | 2026-11-20 | 123 | 5140 | 1.58% | 0:00 | 0% | 0 | — |
 | E se você pudesse ver as mensagens que apagaram antes de te  | 2026-11-21 | 0 | — | — | 0:00 | 0% | 0 | — |
-| E se você pudesse ouvir o que falam de você pelas costas? | 2026-11-21 | 33 | — | — | 0:00 | 0% | 0 | — |
+| E se você pudesse ouvir o que falam de você pelas costas? | 2026-11-21 | 21 | — | — | 0:00 | 0% | 0 | — |
 | E se você pudesse ver quantas vezes cada pessoa pensou em vo | 2026-11-22 | 0 | — | — | 0:00 | 0% | 0 | — |
 
 ## Fontes de tráfego (canal)
