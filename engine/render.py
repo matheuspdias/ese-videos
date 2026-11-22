@@ -530,7 +530,7 @@ def overlay(ctx, fx, u, dur, t, shot):
         rrect(ctx, -420, -440, 840, 860, 18); fill_stroke(ctx, '#FFF6E5', 7)
         ctx.set_source_rgba(1, 0.55, 0.75, 1); ctx.rectangle(-420, -440, 840, 40); ctx.fill()
         hand_text(ctx, 'correio elegante', -380, -330, 46, '#C9184A')
-        d = ease((p - 0.1) / 0.25)
+        d = max(0.02, ease((p - 0.1) / 0.25))
         ctx.save(); ctx.translate(0, 20); ctx.scale(d, d)
         ctx.set_line_width(7); ctx.set_line_join(cairo.LINE_JOIN_ROUND)
         rrect(ctx, -120, 0, 240, 200, 70); fill_stroke(ctx, '#3FA34D', 7)          # moletom verde
