@@ -20,7 +20,7 @@ Poderes/mecânicas abstratas ("carisma nível 500": 0,78%; "1 cm por desculpa": 
 | 8 | E se você fosse a pessoa mais forte do Brasil? | Questionverse, 326 mil | segura aí.. | levantar ônibus, mudança da vó, campeonato de queda de braço | feito — ep08, 20/11 |
 | 9 | E se você pudesse ouvir o que falam de você pelas costas? | IFNation, 296 mil | ele disse isso?.. | churrasco de família, escola; fio central: o que a Bia fala de você? | feito — ep09, 21/11 |
 | 10 | E se você pudesse ver as mensagens que apagaram antes de te mandar? | nova (padrão "ver o que escondem") | digitando.. | grupo da família, conversa com a Bia; fio central: o que a Bia apagou? | feito — ep10, 22/11 |
-| 11 | E se você pudesse ver quantas vezes cada pessoa pensou em você hoje? | nova (fórmula do ep01: número sobre a cabeça) | só 1 vez?.. | contador sobre a cabeça de cada um; fio central: qual é o número da Bia? | pendente |
+| 11 | E se você pudesse ver quantas vezes cada pessoa pensou em você hoje? | nova (fórmula do ep01: número sobre a cabeça) | só 1 vez?.. | contador sobre a cabeça de cada um; fio central: qual é o número da Bia? | feito — ep11, 23/11 |
 | 12 | E se ninguém pudesse mentir pra você por um dia? | nova (padrão "ver o que escondem") | ela disse que.. | escola, família, vendedor; fio central: a pergunta que você tem coragem de fazer pra Bia | pendente |
 | 13 | E se você soubesse quem está guardando um segredo de você? | nova (padrão "ver o que escondem") | até a vó?.. | ícone de cadeado sobre quem esconde algo; fio central: o segredo da vó/da Bia (final bonito, ex.: festa surpresa) | pendente |
 | 14 | E se você pudesse ver quem sente saudade de você? | nova (fórmula do ep01: número na tela) | 97%.. | barra de saudade; final emocional com a vó Cida | pendente |
