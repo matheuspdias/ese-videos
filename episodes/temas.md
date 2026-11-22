@@ -7,6 +7,9 @@ Texto da thumb é sugestão; pode melhorar mantendo o padrão "consequência + .
 ("quanto cada pessoa te ama", "ouvir seus pensamentos") tiveram o dobro de cliques (1,6–1,9%) e a melhor retenção.
 Poderes/mecânicas abstratas ("carisma nível 500": 0,78%; "1 cm por desculpa": 1,43%) e "preso com o crush"
 (0,86%) foram mal. Ao acrescentar temas novos, coloque os do primeiro tipo no topo.
+**Atualização 22/11/2026 (7 vídeos com CTR):** o padrão se confirmou em 3 vídeos — "quanto te ama" 1,6%, "ouvir
+pensamentos" 1,86%, "quem te acha bonito" 1,78% — contra "carisma" 0,78% e "shopping com o crush" 1,09%.
+"Pessoa mais forte do Brasil" (1,58%) mostra que poder físico concreto também clica razoavelmente.
 
 | # | Título | Referência | Thumb | Ideia de cenário/conflito (sugestão) | Status |
 | --- | --- | --- | --- | --- | --- |
@@ -25,5 +28,8 @@ Poderes/mecânicas abstratas ("carisma nível 500": 0,78%; "1 cm por desculpa": 
 | 13 | E se você soubesse quem está guardando um segredo de você? | nova (padrão "ver o que escondem") | até a vó?.. | ícone de cadeado sobre quem esconde algo; fio central: o segredo da vó/da Bia (final bonito, ex.: festa surpresa) | pendente |
 | 14 | E se você pudesse ver quem sente saudade de você? | nova (fórmula do ep01: número na tela) | 97%.. | barra de saudade; final emocional com a vó Cida | pendente |
 | 15 | E se você ganhasse R$ 1 toda vez que alguém falasse mal de você? | nova (padrão "toda vez que") | R$ 4.832.. | contador de dinheiro; descobrir quem fala (não colocar logo depois do nº 9) | pendente |
+| 16 | E se você pudesse ver como cada pessoa salvou o seu nome no celular? | nova (padrão "ver o que escondem") | salvo como.. | apelido aparece sobre a cabeça (mãe: "Meu Tesouro", Davi: "Cabeção 2"); fio central: como a Bia te salvou? | pendente — adicionado 22/11: padrão de CTR confirmado em 3 vídeos; não achamos versão BR |
+| 17 | E se você pudesse ver a primeira impressão que cada pessoa teve de você? | nova (padrão "o que os outros pensam de você") | "esquisito".. | palavra flutuando sobre cada um; fio central: a primeira impressão da Bia (final bonito) | pendente — adicionado 22/11: mesmo padrão; fila tinha só 4 pendentes (mínimo 7) |
+| 18 | E se você pudesse ver o quanto cada pessoa confia em você? | nova (fórmula do ep01: % na tela) | 12%.. | barra de confiança; fio central: subir a barra da Bia/da Lari sem mentir (não colocar logo depois do nº 14) | pendente — adicionado 22/11: fórmula de número na tela (ep01, ep11) + padrão vencedor |
 
 Quando restarem 3 pendentes, avise o Matheus na mensagem de entrega para fazermos uma nova pesquisa de temas.

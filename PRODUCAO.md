@@ -51,6 +51,9 @@ python3 tools/catalogo.py   # cenários, posições, elenco, poses, objetos e ef
 - **Plante a pergunta-gancho até 1:00** ("e qual será o número da Bia?", "e se a Bia ouvir *aquilo*?") e prometa a
   resposta; entregue só no clímax.
 - **Números e contadores na tela** (porcentagens, R$, dias) prendem: use o efeito de número sempre que o tema permitir.
+- **Depois de nomear o poder, siga em frente — sem flashback.** No ep04 ("Ontem, no almoço de domingo…") e no ep05
+  ("Domingo. Almoço na casa da vó…") a volta no tempo logo após o título foi o trecho de maior queda (0:45–1:30);
+  o ep01, linear, ficou estável nesse trecho. (Analytics 22/11/2026)
 - Depois do CTA o vídeo acaba: não deixe mais de ~5 s de fala depois da pergunta final (no ep02, 7% saiu ali).
 
 **Regras de texto**
