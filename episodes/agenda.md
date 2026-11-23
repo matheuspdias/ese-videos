@@ -4,7 +4,7 @@
 | --- | --- | --- | --- |
 | ep01 | sáb 14/11/2026 | E se você pudesse ver o quanto cada pessoa te ama de verdade? | agendado |
 | ep02 | dom 15/11/2026 | E se todo mundo pudesse ouvir seus pensamentos? | entregue |
-| ep03 | seg 16/11/2026 | E se você ficasse preso num bunker com seu crush? | entregue |
+| ep03 | — | E se você ficasse preso num bunker com seu crush? | descartado pelo Matheus em 22/11 (não publicar: repetitivo com o ep06 do shopping) |
 | ep04 | ter 17/11/2026 | E se você tivesse carisma nível 500? | entregue |
 | ep05 | qua 18/11/2026 | E se você crescesse 1 cm toda vez que pedisse desculpa? | entregue |
 | ep06 | qui 19/11/2026 | E se você ficasse preso num shopping com seu crush por 30 dias? | entregue |
