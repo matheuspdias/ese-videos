@@ -1,0 +1,485 @@
+{
+"ep": "ep12",
+"jobs": [
+{
+"i": 0,
+"voice": "e808da2329754929803c8bd98dc36857",
+"text": "Filho, esse seu cabelo tá parecendo um ninho de passarinho."
+},
+{
+"i": 1,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Sua mãe tampa a boca. Ela ia dizer que tava lindo. Saiu isso."
+},
+{
+"i": 2,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Lari, sério, tá tão ruim assim?"
+},
+{
+"i": 3,
+"voice": "a8c7b58e38c44719b3ab36342f080e95",
+"text": "Tá pior. E seu moletom tem cheiro de cachorro molhado."
+},
+{
+"i": 4,
+"voice": "a8c7b58e38c44719b3ab36342f080e95",
+"text": "Ué. Eu ia dizer que tava cheiroso."
+},
+{
+"i": 5,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Hoje, por um dia, ninguém consegue mentir pra você."
+},
+{
+"i": 6,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Nem mentirinha. Nem pra ser educado. Até a meia-noite, tudo que falarem pra você vai ser verdade."
+},
+{
+"i": 7,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Isso vai ser o melhor dia da minha vida."
+},
+{
+"i": 8,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Mãe, a lasanha da semana passada… era congelada?"
+},
+{
+"i": 9,
+"voice": "e808da2329754929803c8bd98dc36857",
+"text": "Era. E eu falei pra sua vó que fiz do zero."
+},
+{
+"i": 10,
+"voice": "a8c7b58e38c44719b3ab36342f080e95",
+"text": "E fui eu que comi o seu chocolate ontem. Ai, não!"
+},
+{
+"i": 11,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "E aí você pensa na Bia."
+},
+{
+"i": 12,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "A Bia, que ri pelo nariz e desenha cachorrinho na margem do caderno."
+},
+{
+"i": 13,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Faz um ano que você tem uma pergunta pra ela. Uma só. E nunca teve coragem."
+},
+{
+"i": 14,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Se eu perguntar hoje, ela vai ter que falar a verdade."
+},
+{
+"i": 15,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "E a verdade pode ser sim. Ou pode ser a pior coisa que você já ouviu na vida."
+},
+{
+"i": 16,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Ah, e hoje à noite tem a festa de setenta anos da vó Cida. A Bia vai estar lá."
+},
+{
+"i": 17,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Bom dia, seu Jorge! Tudo bem?"
+},
+{
+"i": 18,
+"voice": "9ce5f601f9e04382bb26141d5a3f839d",
+"text": "Tudo péssimo. Meu joanete tá latejando e eu odeio segunda-feira."
+},
+{
+"i": 19,
+"voice": "9ce5f601f9e04382bb26141d5a3f839d",
+"text": "Nossa. Faz vinte anos que eu respondo que tá tudo ótimo."
+},
+{
+"i": 20,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Aí chega o Davi. Hora de testar de verdade."
+},
+{
+"i": 21,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Davi. Você copia a minha lição?"
+},
+{
+"i": 22,
+"voice": "336828260ba148aab9d5d47768cdbc11",
+"text": "Copio. Toda. Faz dois anos. Até os erros, cabeção."
+},
+{
+"i": 23,
+"voice": "336828260ba148aab9d5d47768cdbc11",
+"text": "Por que eu falei isso?"
+},
+{
+"i": 24,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Hoje ninguém consegue mentir pra mim. E eu vou perguntar pra Bia se ela gosta de mim."
+},
+{
+"i": 25,
+"voice": "336828260ba148aab9d5d47768cdbc11",
+"text": "No recreio. Antes que você amarele."
+},
+{
+"i": 26,
+"voice": "336828260ba148aab9d5d47768cdbc11",
+"text": "Mas começa com uma de aquecimento. Tipo: você me acha engraçado?"
+},
+{
+"i": 27,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Na sala, a professora Neide devolve as redações."
+},
+{
+"i": 28,
+"voice": "e808da2329754929803c8bd98dc36857",
+"text": "A sua foi a pior do ano. Mas eu ri dez minutos no banheiro."
+},
+{
+"i": 29,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "A Bia ri pelo nariz. Duas carteiras na frente."
+},
+{
+"i": 30,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "É a sua chance. Pergunta de aquecimento. Você cochicha."
+},
+{
+"i": 31,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Bia. Você me acha engraçado?"
+},
+{
+"i": 32,
+"voice": "4a4acf945bc14c42a69559ed381f2194",
+"text": "Acho. Mas quando você se esforça demais fica meio estranho."
+},
+{
+"i": 33,
+"voice": "4a4acf945bc14c42a69559ed381f2194",
+"text": "[laughs] Por que eu falei a parte do estranho?"
+},
+{
+"i": 34,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Ela me acha engraçado. E estranho. Isso é bom? Isso é bom."
+},
+{
+"i": 35,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Recreio. Você vai até ela. É agora."
+},
+{
+"i": 36,
+"voice": "4a4acf945bc14c42a69559ed381f2194",
+"text": "Oi. Seu moletom tá do avesso."
+},
+{
+"i": 37,
+"voice": "4a4acf945bc14c42a69559ed381f2194",
+"text": "E você tá com cara de quem vai me perguntar alguma coisa."
+},
+{
+"i": 38,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Que… que horas são?"
+},
+{
+"i": 39,
+"voice": "4a4acf945bc14c42a69559ed381f2194",
+"text": "Dez e quinze. E você tá suando muito."
+},
+{
+"i": 40,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Você sai andando. De moletom do avesso."
+},
+{
+"i": 41,
+"voice": "336828260ba148aab9d5d47768cdbc11",
+"text": "Que horas são? Sério, cabeção? Plano B: na festa da sua vó, depois do parabéns."
+},
+{
+"i": 42,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Ela não consegue mentir. Eu é que não consigo perguntar."
+},
+{
+"i": 43,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "E sabe quanto a gente mente num dia normal? Isso já foi estudado."
+},
+{
+"i": 44,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Pesquisadores pediram pra pessoas anotarem num diário todas as conversas de uma semana. Em média, cada uma contou uma ou duas mentiras por dia."
+},
+{
+"i": 45,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "E a maioria era pequenininha. Mentira pra não magoar ninguém."
+},
+{
+"i": 46,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Tá lindo. Tô ótima. Adorei o presente."
+},
+{
+"i": 47,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Hoje, ninguém pode fazer isso por você. Você ainda não sabe o que isso significa."
+},
+{
+"i": 48,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "À tarde, a família toda arruma o salão da igreja pra festa da vó."
+},
+{
+"i": 49,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "A vó pendura bandeirinha e sorri. Ela sempre diz que tá ótima."
+},
+{
+"i": 50,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Tia Marta, gostou da caneca que eu te dei no Natal?"
+},
+{
+"i": 51,
+"voice": "d903526edc8945139b1b114f609c6bc8",
+"text": "Virou pote de ração do gato. Ai, meu Deus!"
+},
+{
+"i": 52,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Todo mundo ri. Você está se achando o rei da verdade. Aí você vira pra vó."
+},
+{
+"i": 53,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "E a senhora, vó? Tá feliz com a festa?"
+},
+{
+"i": 54,
+"voice": "045e4a2e57434943bd3bb5db714aad75",
+"text": "Não, meu filho. Eu não queria festa."
+},
+{
+"i": 55,
+"voice": "045e4a2e57434943bd3bb5db714aad75",
+"text": "Eu queria que vocês viessem me ver num dia comum. Faz três meses que ninguém vem."
+},
+{
+"i": 56,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "O salão fica em silêncio. A sua mãe larga a bandeirinha."
+},
+{
+"i": 57,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "A vó fica vermelha. Ela nunca ia falar aquilo. Foi você que arrancou dela."
+},
+{
+"i": 58,
+"voice": "045e4a2e57434943bd3bb5db714aad75",
+"text": "Vou ver o bolo na cozinha."
+},
+{
+"i": 59,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Três meses. E toda vez que eu ligava, ela dizia que tava ótima."
+},
+{
+"i": 60,
+"voice": "e808da2329754929803c8bd98dc36857",
+"text": "A gente vive dizendo que tá sem tempo. Né, filho?"
+},
+{
+"i": 61,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "E você nem pode dizer que é mentira."
+},
+{
+"i": 62,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Você vai atrás dela."
+},
+{
+"i": 63,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Desculpa, vó. Eu não devia ter perguntado."
+},
+{
+"i": 64,
+"voice": "045e4a2e57434943bd3bb5db714aad75",
+"text": "Mentirinha de vó é carinho, meu filho. Era pra você não se preocupar."
+},
+{
+"i": 65,
+"voice": "045e4a2e57434943bd3bb5db714aad75",
+"text": "Verdade boa é a que a gente dá. Não a que a gente arranca dos outros."
+},
+{
+"i": 66,
+"voice": "045e4a2e57434943bd3bb5db714aad75",
+"text": "E vê se aparece numa quarta. Eu faço pudim."
+},
+{
+"i": 67,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "E aí você entende o que ia fazer com a Bia."
+},
+{
+"i": 68,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Eu ia arrancar a resposta dela. Sem ela poder escolher."
+},
+{
+"i": 69,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Você risca a pergunta do caderno."
+},
+{
+"i": 70,
+"voice": "336828260ba148aab9d5d47768cdbc11",
+"text": "Cabeção, tá de pé o plano B? Eu distraio a tia Marta."
+},
+{
+"i": 71,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Mudou o plano, Davi. Eu não vou perguntar nada."
+},
+{
+"i": 72,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Oito da noite. O salão lotado. Bandeirinha, bolo, a família inteira."
+},
+{
+"i": 73,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Na hora do parabéns, você pega o microfone. E dá a sua verdade."
+},
+{
+"i": 74,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Vó, eu passei três meses sem vir. Isso acaba hoje. Toda quarta, almoço aqui."
+},
+{
+"i": 75,
+"voice": "d903526edc8945139b1b114f609c6bc8",
+"text": "Eu vou também! E é verdade, porque hoje ninguém mente pra ele!"
+},
+{
+"i": 76,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "A vó chora e ri ao mesmo tempo. E aí acontece uma coisa que você não esperava."
+},
+{
+"i": 77,
+"voice": "336828260ba148aab9d5d47768cdbc11",
+"text": "Cabeção, eu copio sua lição porque eu gosto de fazer junto. Você é meu irmão."
+},
+{
+"i": 78,
+"voice": "a8c7b58e38c44719b3ab36342f080e95",
+"text": "Você é o melhor irmão do mundo. Às vezes."
+},
+{
+"i": 79,
+"voice": "e808da2329754929803c8bd98dc36857",
+"text": "Aquela redação horrível? Eu guardei ela na gaveta."
+},
+{
+"i": 80,
+"voice": "e808da2329754929803c8bd98dc36857",
+"text": "E esse cabelo continua um ninho. Mas é o meu ninho favorito."
+},
+{
+"i": 81,
+"voice": "045e4a2e57434943bd3bb5db714aad75",
+"text": "Fazia tempo que eu não ficava tão feliz. E isso, hoje, é verdade."
+},
+{
+"i": 82,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Lá do fundo do salão, a Bia te olha. E ri pelo nariz."
+},
+{
+"i": 83,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Ninguém pode mentir pra você hoje. Então todo elogio que chega é verdadeiro. Todos."
+},
+{
+"i": 84,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Onze e cinquenta e oito. A Bia está sentada no meio-fio da igreja."
+},
+{
+"i": 85,
+"voice": "4a4acf945bc14c42a69559ed381f2194",
+"text": "Você ia me perguntar uma coisa de manhã. Ainda dá tempo."
+},
+{
+"i": 86,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Era só perguntar. Ela ia ter que responder."
+},
+{
+"i": 87,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Você abre a boca. E lembra da vó."
+},
+{
+"i": 88,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Não vou perguntar. Vou falar. Eu gosto de você. Desde o primeiro cachorrinho no caderno."
+},
+{
+"i": 89,
+"voice": "d703f08d1ef34302a36945aa3efc7b3f",
+"text": "Você não precisa responder. Responde amanhã, quando puder mentir."
+},
+{
+"i": 90,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Ela olha pro relógio. Olha pra você. E não fala nada."
+},
+{
+"i": 91,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "O sino da igreja toca. Meia-noite."
+},
+{
+"i": 92,
+"voice": "4a4acf945bc14c42a69559ed381f2194",
+"text": "Pronto. Agora eu posso mentir. Então presta atenção."
+},
+{
+"i": 93,
+"voice": "4a4acf945bc14c42a69559ed381f2194",
+"text": "Eu também gosto de você."
+},
+{
+"i": 94,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "Você nunca vai ter certeza se foi verdade. Mas ela ri pelo nariz. E isso, ela nunca conseguiu fingir."
+},
+{
+"i": 95,
+"voice": "bced1ec9731240068f358c2ff535b420",
+"text": "E você? Que pergunta você faria se ninguém pudesse mentir pra você? Escreve aqui nos comentários."
+}
+]
+}
