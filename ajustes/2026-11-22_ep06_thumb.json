@@ -1,0 +1,6 @@
+{
+ "video_id": "6miZq5qteKA",
+ "ep": "ep06",
+ "thumb": {"mod": "episodes.ep06_shopping", "override": {"text": ["ela gosta", "de mim?.."]}},
+ "motivo": "teste A/B de thumbnail: CTR 1,09%; texto antigo '30 dias aqui..' troca por pergunta sobre o que a Bia sente (padrão vencedor)"
+}

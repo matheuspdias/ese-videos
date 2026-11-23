@@ -58,8 +58,11 @@ python3 tools/catalogo.py   # cenários, posições, elenco, poses, objetos e ef
 
 **Regras de texto**
 - Segunda pessoa ("você"), tempo presente, frases curtas (5–14 palavras), linguagem falada brasileira ("pra", "tá").
-- **Tamanho: 1.300 a 1.450 palavras no total** → vídeo de 8 min ou mais (o mínimo para anúncios no meio). Confira com
-  `sum(len(l[1].split()) for l in LINES)`.
+- **Tamanho: 1.000 a 1.100 palavras no total** → vídeo de ~6–6,5 min. Confira com
+  `sum(len(l[1].split()) for l in LINES)`. **Teste desde 22/11 (ep12–ep14; veja analytics/experimentos.md):** o ep01
+  (1.100 palavras, 6:36) reteve 40%; ep02→ep06 (1.300–1.450 palavras) caíram de 32% para 13%. O canal ainda não
+  monetiza, então o mínimo de 8 min para anúncios no meio não rende nada agora. Corte cenas do meio que não avançam o
+  fio central; não corte o gancho nem a revelação final.
 - Elenco fixo (é um universo recorrente): você (protagonista, moletom verde), Bia (crush, ri pelo nariz, desenha
   cachorrinhos), Davi (melhor amigo, te chama de "cabeção"), Lari (irmã de 10 anos), vó Cida, mãe, tia Marta,
   seu Jorge (porteiro), professora Neide, seu Valdir (feira). Pode criar coadjuvantes novos.
