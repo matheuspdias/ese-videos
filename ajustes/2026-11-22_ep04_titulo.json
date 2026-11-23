@@ -2,5 +2,10 @@
  "video_id": "Tnzq4esMw1c",
  "ep": "ep04",
  "titulo": "E se todo mundo te amasse do nada?",
- "motivo": "teste A/B de título: CTR 0,78% (pior do canal); novo título no padrão 'o que os outros sentem por você' (1,6–1,86% em 3 vídeos)"
+ "motivo": "teste A/B de título: CTR 0,78% (pior do canal); novo título no padrão 'o que os outros sentem por você' (1,6–1,86% em 3 vídeos)",
+ "antes": {
+  "titulo": "E se você tivesse carisma nível 500?"
+ },
+ "aplicado_em": "2026-11-22T21:32:29-03:00",
+ "avisos": []
 }

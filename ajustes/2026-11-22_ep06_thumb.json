@@ -1,6 +1,19 @@
 {
  "video_id": "6miZq5qteKA",
  "ep": "ep06",
- "thumb": {"mod": "episodes.ep06_shopping", "override": {"text": ["ela gosta", "de mim?.."]}},
- "motivo": "teste A/B de thumbnail: CTR 1,09%; texto antigo '30 dias aqui..' troca por pergunta sobre o que a Bia sente (padrão vencedor)"
+ "thumb": {
+  "mod": "episodes.ep06_shopping",
+  "override": {
+   "text": [
+    "ela gosta",
+    "de mim?.."
+   ]
+  }
+ },
+ "motivo": "teste A/B de thumbnail: CTR 1,09%; texto antigo '30 dias aqui..' troca por pergunta sobre o que a Bia sente (padrão vencedor)",
+ "antes": {
+  "titulo": "E se você ficasse preso num shopping com seu crush por 30 dias?"
+ },
+ "aplicado_em": "2026-11-22T21:32:32-03:00",
+ "avisos": []
 }
