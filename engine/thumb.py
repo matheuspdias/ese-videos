@@ -116,6 +116,7 @@ def generic(spec, out):
     left_s / left_x: escala e posição do personagem da esquerda (opcional; ex.: protagonista gigante)
     lift: objeto erguido pelo personagem da esquerda ('onibus' | 'mudanca' | 'bolo3'; ep08), lift_s: escala dele
     left_y: altura dos pés do personagem da esquerda (padrão 1380)
+    lock_right: tamanho de um cadeado dourado sobre o personagem da direita (ep13; 1 normal, 2 gigante)
     heart_right: True para um coraçãozinho neon sobre o personagem da direita (ep07)
     bar_left: valor de uma barra neon sobre o personagem da esquerda (opcional, usa o BAR do episódio)
     """
@@ -161,6 +162,9 @@ def generic(spec, out):
     if spec.get('heart_right') and R:
         from .render import heart_icon
         heart_icon(ctx, R['head'][0], R['top'][1] - 110, 2.2, 1.0, 0.0, 0.3)
+    if spec.get('lock_right') and R:
+        from .render import lock_icon
+        lock_icon(ctx, R['head'][0], R['top'][1] - 150, 2.4, spec['lock_right'], 0.0, 0.3)
     if spec.get('ghost'):
         # ep10: mensagem apagada flutuando entre os dois (balão tracejado com selo APAGADA)
         from .render import chat_bubble

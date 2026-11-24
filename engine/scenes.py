@@ -717,6 +717,7 @@ BG = {
     'quadra': (bg_quadra, None),
     'salao': (bg_salao, None),
     'salao_vo': (lambda ctx, t: bg_salao(ctx, t, 'FELIZ ANIVERSÁRIO, VÓ!', None), None),  # ep10
+    'salao_niver': (lambda ctx, t: bg_salao(ctx, t, 'PARABÉNS, CABEÇÃO!', None), None),  # ep13
     'salao_posse': (bg_salao_posse, None),
     'quarto_noite': (bg_quarto_noite, None),
     'desenho': (bg_plain('#6D4C41', '#4E342E'), None),
@@ -744,6 +745,7 @@ SLOTS = {
                    alto=(1520, 680, 0.8), c=(1330, 1010, 0.9)),  # alto (alguém erguido no ar) e c: ep05
     'salao': dict(a=(330, 1010, 0.9), b=(700, 1010, 0.9), c=(1060, 1010, 0.95), d=(1400, 1010, 0.8), e=(1700, 1010, 0.9)),
     'salao_vo': dict(a=(330, 1010, 0.9), b=(700, 1010, 0.9), c=(1060, 1010, 0.95), d=(1400, 1010, 0.8), e=(1700, 1010, 0.9)),
+    'salao_niver': dict(a=(330, 1010, 0.9), b=(700, 1010, 0.9), c=(1060, 1010, 0.95), d=(1400, 1010, 0.8), e=(1700, 1010, 0.9)),
     'salao_posse': dict(a=(330, 1010, 0.9), b=(700, 1010, 0.9), c=(1060, 1010, 0.95), d=(1400, 1010, 0.8), e=(1700, 1010, 0.9)),
     'quarto_noite': dict(a=(760, 1010, 1.0)),
     'onibus': dict(a=(300, 870, 0.85), b=(1030, 870, 0.9), c=(1290, 870, 0.9),

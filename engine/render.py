@@ -270,6 +270,102 @@ def heart_icon(ctx, x, y, s, value, pop=0.0, t=0, alpha=1.0):
     ctx.fill()
 
 
+def lock_icon(ctx, x, y, s, value, pop=0.0, t=0, alpha=1.0):
+    """ep13: cadeado dourado flutuando sobre a cabeça (BAR = dict(mode='cadeado')).
+    value > 0: fechado (1 = normal, 2 = gigante); value < 0: aberto (|value| = tamanho); 0 = some.
+    Animar de 1 para -1 faz o 'clique': encolhe, abre e volta com brilho."""
+    k = abs(value)
+    if k <= 0.02:
+        return
+    aberto = value < 0
+    size = min(k, 1.0) * (1.0 + 0.9 * max(0.0, k - 1.0))
+    pulse = 1 + 0.05 * math.sin(t * 5 + x * 0.01)
+    r = 46 * s * size * pulse * (1 + 0.3 * pop)
+    yy = y - 6 * s * math.sin(t * 2.2 + x * 0.017)
+    glow = (0.45, 1.0, 0.6) if aberto else (1.0, 0.78, 0.2)
+    for g in range(5, 0, -1):
+        ctx.arc(x, yy, r * (1.05 + g * 0.24), 0, TAU)
+        ctx.set_source_rgba(*glow, 0.05 * alpha * (1 + pop))
+        ctx.fill()
+    ctx.save()
+    ctx.translate(x, yy)
+    # haste (arco): aberta sobe e gira
+    ctx.save()
+    if aberto:
+        ctx.translate(r * 0.55, -r * 0.35)
+        ctx.rotate(0.5)
+        ctx.translate(-r * 0.55, 0)
+    ctx.new_path()
+    ctx.arc(0, -r * 0.25, r * 0.58, math.pi, 0)
+    ctx.line_to(r * 0.58, r * 0.05)
+    ctx.move_to(-r * 0.58, r * 0.05)
+    ctx.line_to(-r * 0.58, -r * 0.25)
+    ctx.set_line_cap(cairo.LINE_CAP_ROUND)
+    ctx.set_source_rgba(0.12, 0.05, 0.1, alpha); ctx.set_line_width(r * 0.36); ctx.stroke_preserve()
+    ctx.set_source_rgba(0.82, 0.84, 0.9, alpha); ctx.set_line_width(r * 0.2); ctx.stroke()
+    ctx.restore()
+    # corpo
+    rrect(ctx, -r * 0.85, -r * 0.2, r * 1.7, r * 1.25, r * 0.22)
+    ctx.set_source_rgba(0.12, 0.05, 0.1, alpha); ctx.set_line_width(max(3, r * 0.14)); ctx.stroke_preserve()
+    g = cairo.LinearGradient(0, -r * 0.2, 0, r * 1.05)
+    if aberto:
+        g.add_color_stop_rgba(0, 0.6, 1.0, 0.65, alpha); g.add_color_stop_rgba(1, 0.15, 0.7, 0.35, alpha)
+    else:
+        g.add_color_stop_rgba(0, 1.0, 0.88, 0.35, alpha); g.add_color_stop_rgba(1, 0.92, 0.6, 0.08, alpha)
+    ctx.set_source(g); ctx.fill()
+    # buraco da chave
+    ctx.arc(0, r * 0.28, r * 0.15, 0, TAU)
+    ctx.move_to(-r * 0.08, r * 0.32); ctx.line_to(r * 0.08, r * 0.32); ctx.line_to(r * 0.05, r * 0.7); ctx.line_to(-r * 0.05, r * 0.7)
+    ctx.close_path()
+    ctx.set_source_rgba(0.25, 0.12, 0.05, alpha); ctx.fill()
+    # brilho
+    ctx.arc(-r * 0.5, r * 0.05, r * 0.1, 0, TAU); ctx.set_source_rgba(1, 1, 1, 0.8 * alpha); ctx.fill()
+    ctx.restore()
+    if aberto:
+        for a_ in range(3):
+            star(ctx, x + r * (1.1 + 0.25 * a_) * math.cos(-1.2 + a_ * 0.9), yy + r * 1.1 * math.sin(-1.2 + a_ * 0.9),
+                 r * (0.28 + 0.06 * math.sin(t * 6 + a_)), '#FFF3B0')
+
+
+def cachorrinho(ctx, x, y, s, rot=0.0):
+    """ep13: cachorrinho de moletom verde rabiscado na margem do caderno da Bia."""
+    ctx.save(); ctx.translate(x, y); ctx.rotate(rot); ctx.scale(s, s)
+    ctx.set_line_width(5); ctx.set_line_join(cairo.LINE_JOIN_ROUND)
+    rrect(ctx, -34, 0, 68, 56, 18); fill_stroke(ctx, '#3FA34D', 5)               # moletom verde
+    ctx.arc(0, -22, 30, 0, TAU); fill_stroke(ctx, '#E9C48F', 5)                  # cabeça
+    for sx in (-1, 1):                                                         # orelhas
+        ctx.save(); ctx.translate(sx * 26, -30); ctx.rotate(sx * 0.35); ctx.scale(0.55, 1)
+        ctx.arc(0, 0, 18, 0, TAU); ctx.restore(); fill_stroke(ctx, '#8D5A2B', 5)
+    for sx in (-1, 1):
+        ctx.arc(sx * 10, -26, 4, 0, TAU); setc(ctx, '#1B1B1B'); ctx.fill()
+    ctx.arc(0, -14, 6, 0, TAU); setc(ctx, '#1B1B1B'); ctx.fill()
+    ctx.arc(0, -8, 8, 0.3, math.pi - 0.3); setc(ctx, '#1B1B1B'); ctx.set_line_width(3); ctx.stroke()
+    ctx.restore()
+
+
+def caderno_bia(ctx, p, t):
+    """ep13: caderno da Bia aberto, margens cheias de cachorrinhos de moletom verde + frase escrita."""
+    notebook(ctx)
+    pos = [(-560, -340), (-560, -200), (-560, -60), (-560, 80), (-560, 220), (-560, 340),
+           (540, -330), (540, -190), (540, -50), (540, 90), (540, 230), (540, 345),
+           (-330, 360), (-110, 360), (110, 360), (330, 360)]
+    ctx.save(); ctx.translate(960, 560); ctx.rotate(-0.025)
+    for k, (dx, dy) in enumerate(pos):
+        a = ease((p - 0.05 - k * 0.025) / 0.06)
+        if a > 0:
+            cachorrinho(ctx, dx, dy, 0.85 * a, rot=((k * 37) % 11 - 5) * 0.04)
+    ctx.restore()
+    if p > 0.5:
+        a = ease((p - 0.5) / 0.12)
+        hand_text(ctx, 'um ano inteiro', 620, 380, 64, '#1D3557', a)
+        hand_text(ctx, 'de cachorrinho', 620, 480, 64, '#1D3557', a)
+        hand_text(ctx, 'de moletom verde.', 620, 580, 64, '#1D3557', a)
+    if p > 0.68:
+        a = ease((p - 0.68) / 0.12)
+        hand_text(ctx, 'sempre foi você.', 620, 720, 72, '#C9184A', a)
+        heart(ctx, 1390, 700, 36, (0.79, 0.09, 0.29, a))
+
+
 def heart(ctx, x, y, r, col):
     ctx.save()
     ctx.translate(x, y)
@@ -427,6 +523,8 @@ def overlay(ctx, fx, u, dur, t, shot):
                 ctx.scale(a, a)
                 text(ctx, random.choice(['HAHAHA', 'KKKKK', 'HAHA']), 0, 0, 64, '#FFFFFF', outline='#E63946', lw=10)
                 ctx.restore()
+    if 'caderno_bia' in fx:
+        caderno_bia(ctx, p, t)
     if 'desenho' in fx:
         # porta do quarto com o desenho colado
         rrect(ctx, 560, 40, 800, 1040, 10); fill_stroke(ctx, '#A47148', 8)
@@ -1365,6 +1463,9 @@ def draw_frame(ctx, ep, clips, shots, envs, t):
             continue   # não briga com o título no topo
         if (getattr(ep, 'BAR', None) or {}).get('mode') == 'coracao':
             heart_icon(ctx, tx, by - 10 * s, max(0.75, s), v, pop, t)
+            continue
+        if (getattr(ep, 'BAR', None) or {}).get('mode') == 'cadeado':
+            lock_icon(ctx, tx, by - 20 * s, max(0.75, s), v, pop, t)
             continue
         neon_bar(ctx, tx, by, max(0.75, s), v, pop, flicker=('flicker' in fx and cid == 'davi'), t=t)
     if 'hearts' in fx:
