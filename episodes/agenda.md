@@ -14,6 +14,7 @@
 | ep10 | dom 22/11/2026 | E se você pudesse ver as mensagens que apagaram antes de te mandar? | agendado (auto) |
 | ep11 | seg 23/11/2026 | E se você pudesse ver quantas vezes cada pessoa pensou em você hoje? | agendado (auto) |
 | ep12 | ter 24/11/2026 | E se ninguém pudesse mentir pra você por um dia? | agendado (auto) |
+| ep13 | qua 25/11/2026 | E se você soubesse quem está guardando um segredo de você? | entregue |
 
-Próximo: **ep13 — qua 25/11/2026**. Cada execução produz o próximo episódio e acrescenta uma linha aqui
+Próximo: **ep14 — qui 26/11/2026**. Cada execução produz o próximo episódio e acrescenta uma linha aqui
 (status `entregue`). O próximo depois de cada um é sempre o dia seguinte à última data da tabela.
