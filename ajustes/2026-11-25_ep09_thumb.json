@@ -4,11 +4,27 @@
  "thumb": {
   "mod": "episodes.ep09_pelas_costas",
   "override": {
-   "text": ["ela falou", "de mim?.."],
-   "right": ["bia", {"eyes": "happy", "mouth": "smile", "blush": true, "facing": -1}],
+   "text": [
+    "ela falou",
+    "de mim?.."
+   ],
+   "right": [
+    "bia",
+    {
+     "eyes": "happy",
+     "mouth": "smile",
+     "blush": true,
+     "facing": -1
+    }
+   ],
    "link": "neon",
    "heart_right": true
   }
  },
- "motivo": "teste A/B de thumbnail (E4): CTR 1,25%; as 3 thumbs com coração/número rosa sobre o outro personagem (ep01, ep02, ep07) fizeram 1,65–1,88%, as de anéis sem símbolo (ep09, ep10) 1,08–1,25%"
+ "motivo": "teste A/B de thumbnail (E4): CTR 1,25%; as 3 thumbs com coração/número rosa sobre o outro personagem (ep01, ep02, ep07) fizeram 1,65–1,88%, as de anéis sem símbolo (ep09, ep10) 1,08–1,25%",
+ "antes": {
+  "titulo": "E se você pudesse ouvir o que falam de você pelas costas?"
+ },
+ "aplicado_em": "2026-11-25T15:34:22-03:00",
+ "avisos": []
 }
