@@ -22,7 +22,7 @@ BAR = dict(max=100, fmt='{v}%', icon='gota', glow=(0.35, 0.55, 1.0), fill=((0.62
            stroke=(0.8, 0.88, 1.0))
 THUMB = dict(bg='sofa_vo', text=('97% de', 'saudade..'),
              left=('voce', dict(eyes='wide', mouth='o', arms='hold', prop='celular', sweat=True)),
-             right=('vo', dict(eyes='sad', mouth='smile', arms='hold', prop='bolo')),
+             right=('vo', dict(eyes='half', mouth='smile', arms='hold', prop='bolo')),
              link='bar', bar=97)
 
 VOICES = {
