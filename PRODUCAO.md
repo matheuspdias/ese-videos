@@ -54,6 +54,10 @@ python3 tools/catalogo.py   # cenários, posições, elenco, poses, objetos e ef
 - **Depois de nomear o poder, siga em frente — sem flashback.** No ep04 ("Ontem, no almoço de domingo…") e no ep05
   ("Domingo. Almoço na casa da vó…") a volta no tempo logo após o título foi o trecho de maior queda (0:45–1:30);
   o ep01, linear, ficou estável nesse trecho. (Analytics 22/11/2026)
+- **Teste desde 25/11 (E5, a partir do ep15): o primeiro minuto acontece num lugar só.** Do 0:00 até o poder ser
+  nomeado e a pergunta-gancho plantada, a cena não muda de lugar (ex.: o almoço na vó do ep01, a aula do ep02). Nada de
+  esquetes rápidas com coadjuvantes em lugares diferentes (ônibus → portão → pátio). Retenção aos 60 s: 50–57% com 2
+  lugares (ep01, ep02, ep04) contra 24–36% com 4–5 lugares (ep06, ep08, ep09). A montagem de lugares fica para depois de 1:00.
 - Depois do CTA o vídeo acaba: não deixe mais de ~5 s de fala depois da pergunta final (no ep02, 7% saiu ali).
 
 **Regras de texto**
