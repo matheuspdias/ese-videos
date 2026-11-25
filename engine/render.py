@@ -221,6 +221,18 @@ def neon_bar(ctx, x, y, s, value, pop=0.0, alpha=1.0, flicker=False, t=0, style=
         ctx.set_source_rgba(0.1, 0.05, 0.2, alpha); ctx.set_line_width(7 * s); ctx.stroke_preserve()
         ctx.set_source_rgba(1, 1, 1, alpha); ctx.fill()
         ctx.new_path()
+    elif st['icon'] == 'gota':    # ep14: gotinha de saudade
+        r = 22 * s
+        ctx.new_path()
+        ctx.move_to(hx, -r * 1.9)
+        ctx.curve_to(hx + r * 0.5, -r * 1.0, hx + r * 1.15, -r * 0.35, hx + r * 1.15, r * 0.25)
+        ctx.arc(hx, r * 0.25, r * 1.15, 0, 3.14159265)
+        ctx.curve_to(hx - r * 1.15, -r * 0.35, hx - r * 0.5, -r * 1.0, hx, -r * 1.9)
+        ctx.close_path()
+        ctx.set_source_rgba(0.1, 0.05, 0.2, alpha); ctx.set_line_width(7 * s); ctx.stroke_preserve()
+        ctx.set_source_rgba(0.55, 0.8, 1.0, alpha); ctx.fill()
+        ctx.new_sub_path(); ctx.arc(hx - r * 0.4, r * 0.1, r * 0.28, 0, TAU)
+        ctx.set_source_rgba(1, 1, 1, 0.85 * alpha); ctx.fill()
     else:
         heart(ctx, hx, 0, 34 * s, (1, 0.25, 0.6, alpha))
     if st['label']:
