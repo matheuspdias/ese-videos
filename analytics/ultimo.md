@@ -1,6 +1,6 @@
-# Já Pensou? — 2026-11-24
+# Já Pensou? — 2026-11-25
 
-Inscritos: 5 · views totais: 973 · vídeos: 10
+Inscritos: 5 · views totais: 988 · vídeos: 11
 
 | Vídeo | Publicado | Views | Impr. | CTR | Média | % visto | Inscr. | Retém 30s |
 |---|---|---|---|---|---|---|---|---|
@@ -13,9 +13,10 @@ Inscritos: 5 · views totais: 973 · vídeos: 10
 | E se você fosse a pessoa mais forte do Brasil? | 2026-11-20 | 128 | 6725 | 1.41% | 0:57 | 11% | 1 | 44% |
 | E se você pudesse ouvir o que falam de você pelas costas? | 2026-11-21 | 62 | 3683 | 1.25% | 1:36 | 19% | 0 | 54% |
 | E se você pudesse ver as mensagens que apagaram antes de te  | 2026-11-22 | 11 | 833 | 1.08% | 2:14 | 25% | 0 | — |
-| E se ninguém pudesse mentir pra você por um dia? | 2026-11-23 | 0 | — | — | 0:00 | 0% | 0 | — |
 | E se você pudesse ver quantas vezes cada pessoa pensou em vo | 2026-11-23 | 1 | — | — | 0:00 | 0% | 0 | — |
 | E se você soubesse quem está guardando um segredo de você? | 2026-11-24 | 0 | — | — | 0:00 | 0% | 0 | — |
+| E se ninguém pudesse mentir pra você por um dia? | 2026-11-24 | 0 | — | — | 0:00 | 0% | 0 | — |
+| E se você pudesse ver quem sente saudade de você? | 2026-11-25 | 0 | — | — | 0:00 | 0% | 0 | — |
 
 ## Fontes de tráfego (canal)
 
