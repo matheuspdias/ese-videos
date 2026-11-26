@@ -339,6 +339,59 @@ def lock_icon(ctx, x, y, s, value, pop=0.0, t=0, alpha=1.0):
                  r * (0.28 + 0.06 * math.sin(t * 6 + a_)), '#FFF3B0')
 
 
+def dream_icon(ctx, x, y, s, value, pop=0.0, t=0, alpha=1.0):
+    """ep15: nuvem de sonho flutuando sobre a cabeça de quem sonhou com você (BAR = dict(mode='sonho')), com um
+    você pequenininho dentro. value > 0: sonho bom (lilás, estrelinhas); value < 0: pesadelo (cinza, raio);
+    |value| = tamanho (1 normal, 2 gigante); 0 = some. Animar de -1 para 1 faz o pesadelo virar sonho bom."""
+    from .chars import draw_head
+    k = abs(value)
+    if k <= 0.02:
+        return
+    bom = value > 0
+    size = min(k, 1.0) * (1.0 + 0.8 * max(0.0, k - 1.0))
+    pulse = 1 + 0.04 * math.sin(t * 4 + x * 0.01)
+    r = 68 * s * size * pulse * (1 + 0.3 * pop)
+    yy = y - 7 * s * math.sin(t * 2.0 + x * 0.015) - r * 0.3
+    glow = (0.8, 0.55, 1.0) if bom else (0.35, 0.38, 0.5)
+    for g in range(5, 0, -1):
+        ctx.save(); ctx.translate(x, yy); ctx.scale(1.35, 1.0)
+        ctx.arc(0, 0, r * (1.0 + g * 0.22), 0, TAU); ctx.restore()
+        ctx.set_source_rgba(*glow, 0.05 * alpha * (1 + pop))
+        ctx.fill()
+    # bolinhas que ligam a nuvem à cabeça
+    for bx, by, br in ((-0.55, 1.25, 0.16), (-0.8, 1.6, 0.1)):
+        ctx.new_sub_path(); ctx.arc(x + bx * r, yy + by * r, br * r, 0, TAU)
+    blobs = ((-0.75, 0.15, 0.55), (-0.3, -0.35, 0.62), (0.35, -0.38, 0.6), (0.8, 0.1, 0.55), (0.3, 0.42, 0.58), (-0.35, 0.42, 0.58))
+    for bx, by, br in blobs:
+        ctx.new_sub_path(); ctx.arc(x + bx * r, yy + by * r, br * r, 0, TAU)
+    ctx.set_source_rgba(0.12, 0.05, 0.2, alpha); ctx.set_line_width(max(4, r * 0.16)); ctx.stroke_preserve()
+    if bom:
+        ctx.set_source_rgba(0.9, 0.82, 1.0, alpha)
+    else:
+        ctx.set_source_rgba(0.6, 0.62, 0.7, alpha)
+    ctx.fill()
+    # você pequenininho dentro
+    ctx.save(); ctx.translate(x, yy + r * 0.08); ctx.scale(r * 0.0042, r * 0.0042)
+    p = Pose(eyes='happy' if bom else 'wide', mouth='grin' if bom else 'wavy', sweat=not bom)
+    draw_head(ctx, 'voce', CAST['voce'], p, 0, 0, 118)
+    ctx.restore()
+    if bom:
+        for a_ in range(3):
+            star(ctx, x + r * (1.25 + 0.15 * a_) * math.cos(-2.2 + a_ * 1.1), yy + r * 0.95 * math.sin(-2.2 + a_ * 1.1),
+                 r * (0.16 + 0.05 * math.sin(t * 6 + a_)), '#FFF3B0')
+    else:
+        # raio amarelo saindo da nuvem
+        bx, by = x + r * 0.95, yy + r * 0.45
+        q = r * 0.5
+        ctx.move_to(bx, by); ctx.line_to(bx + q * 0.55, by + q * 0.05); ctx.line_to(bx + q * 0.25, by + q * 0.55)
+        ctx.line_to(bx + q * 0.75, by + q * 0.6); ctx.line_to(bx + q * 0.05, by + q * 1.5); ctx.line_to(bx + q * 0.22, by + q * 0.85)
+        ctx.line_to(bx - q * 0.25, by + q * 0.8); ctx.close_path()
+        ctx.set_source_rgba(0.12, 0.05, 0.2, alpha); ctx.set_line_width(max(3, r * 0.08)); ctx.set_line_join(cairo.LINE_JOIN_ROUND)
+        ctx.stroke_preserve()
+        fl = 0.6 + 0.4 * (int(t * 10) % 4 != 0)
+        ctx.set_source_rgba(1.0, 0.85, 0.2, alpha * fl); ctx.fill()
+
+
 def cachorrinho(ctx, x, y, s, rot=0.0):
     """ep13: cachorrinho de moletom verde rabiscado na margem do caderno da Bia."""
     ctx.save(); ctx.translate(x, y); ctx.rotate(rot); ctx.scale(s, s)
@@ -1478,6 +1531,9 @@ def draw_frame(ctx, ep, clips, shots, envs, t):
             continue
         if (getattr(ep, 'BAR', None) or {}).get('mode') == 'cadeado':
             lock_icon(ctx, tx, by - 20 * s, max(0.75, s), v, pop, t)
+            continue
+        if (getattr(ep, 'BAR', None) or {}).get('mode') == 'sonho':
+            dream_icon(ctx, tx, by - 20 * s, max(0.75, s), v, pop, t)
             continue
         neon_bar(ctx, tx, by, max(0.75, s), v, pop, flicker=('flicker' in fx and cid == 'davi'), t=t)
     if 'hearts' in fx:

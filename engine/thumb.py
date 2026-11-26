@@ -165,6 +165,9 @@ def generic(spec, out):
     if spec.get('lock_right') and R:
         from .render import lock_icon
         lock_icon(ctx, R['head'][0], R['top'][1] - 150, 2.4, spec['lock_right'], 0.0, 0.3)
+    if spec.get('dream_right') and R:
+        from .render import dream_icon
+        dream_icon(ctx, R['head'][0] + 40, R['top'][1] - 190, 2.2, spec['dream_right'], 0.0, 0.3)
     if spec.get('ghost'):
         # ep10: mensagem apagada flutuando entre os dois (balão tracejado com selo APAGADA)
         from .render import chat_bubble
