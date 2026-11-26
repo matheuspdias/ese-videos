@@ -4,6 +4,10 @@ Cada rodada de analytics avalia os testes abertos e decide: **manter** (vira reg
 (dado insuficiente). Um teste por variável por vídeo; espere 3+ dias e 500+ impressões novas antes de decidir.
 Títulos/thumbs de vídeos publicados são trocados por um pedido em `ajustes/*.json` (Action `atualizar`).
 
+**Autorização do Matheus (26/11/2026):** "pode aplicar qualquer sugestão que tenha, não precisa pedir permissão pra nada,
+até pra mudar formato; depois da análise, o que precisar mexer pode sempre mexer". Mudanças de formato, horário, elenco
+ou estrutura também são aplicadas direto (como teste, com métrica, revertendo se piorar), não só sugeridas.
+
 | # | Início | Teste | Hipótese | Base (antes) | Como medir | Status |
 |---|---|---|---|---|---|---|
 | E1 | 22/11 | ep04: título "E se você tivesse carisma nível 500?" → "E se todo mundo te amasse do nada?" | título no padrão "o que os outros sentem por você" puxa clique | CTR 0,78% (1.794 impr. até 19/11) | CTR das impressões depois de 22/11 (diferença do acumulado entre snapshots) | continuar (25/11): o relatório de alcance só vai até 22/11 (troca às 21h32), então ainda não há impressão nova medida; o ep04 recebe ~2 impr./dia (1.794 → 1.799), pode demorar a chegar a 500 |
