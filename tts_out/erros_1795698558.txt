@@ -1,1 +1,0 @@
-ep15 fala 33 (bced1ec9731240068f358c2ff535b420): HTTP 429: {"error":{"request_id":"59e60b0fb3e0486caa78816066ecef13","code":"rate_limit_exceeded","message":"Rate limit exceeded, please reduce the rate to call this api.","doc_url":"https://developers.heygen.com/docs/error-codes#rate-limit-exceeded"}}
