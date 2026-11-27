@@ -233,6 +233,19 @@ def neon_bar(ctx, x, y, s, value, pop=0.0, alpha=1.0, flicker=False, t=0, style=
         ctx.set_source_rgba(0.55, 0.8, 1.0, alpha); ctx.fill()
         ctx.new_sub_path(); ctx.arc(hx - r * 0.4, r * 0.1, r * 0.28, 0, TAU)
         ctx.set_source_rgba(1, 1, 1, 0.85 * alpha); ctx.fill()
+    elif st['icon'] == 'moeda':   # ep16: moeda de R$ 1
+        r = 30 * s
+        ctx.new_sub_path(); ctx.arc(hx, 0, r, 0, TAU)
+        ctx.set_source_rgba(0.1, 0.05, 0.2, alpha); ctx.set_line_width(7 * s); ctx.stroke_preserve()
+        ctx.set_source_rgba(1.0, 0.8, 0.2, alpha); ctx.fill()
+        ctx.new_sub_path(); ctx.arc(hx, 0, r * 0.72, 0, TAU)
+        ctx.set_source_rgba(0.85, 0.6, 0.1, alpha); ctx.set_line_width(3 * s); ctx.stroke()
+        ctx.select_font_face('Poppins', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+        ctx.set_font_size(30 * s)
+        e = ctx.text_extents('1')
+        ctx.move_to(hx - e.width / 2 - e.x_bearing, e.height / 2)
+        ctx.set_source_rgba(0.55, 0.35, 0.05, alpha); ctx.show_text('1')
+        ctx.new_path()
     else:
         heart(ctx, hx, 0, 34 * s, (1, 0.25, 0.6, alpha))
     if st['label']:
@@ -247,6 +260,8 @@ def neon_bar(ctx, x, y, s, value, pop=0.0, alpha=1.0, flicker=False, t=0, style=
         ctx.set_source_rgba(*st['stroke'], alpha)
         ctx.fill()
     label = st['fmt'].format(v=int(round(value)))
+    if st.get('milhar'):   # ep16: R$ 1.500 (milhar com ponto)
+        label = label.replace(',', '.')
     ctx.select_font_face('Poppins', cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
     ctx.set_font_size(42 * s)
     e = ctx.text_extents(label)
