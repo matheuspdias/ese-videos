@@ -17,6 +17,7 @@
 | ep13 | qua 25/11/2026 | E se você soubesse quem está guardando um segredo de você? | agendado (auto) |
 | ep14 | qui 26/11/2026 | E se você pudesse ver quem sente saudade de você? | agendado (auto) |
 | ep15 | sex 27/11/2026 | E se você pudesse ver quem já sonhou com você? | agendado (auto) |
+| ep16 | sáb 28/11/2026 | E se você ganhasse R$ 1 toda vez que alguém falasse mal de você? | agendado (auto) |
 
-Próximo: **ep16 — sáb 28/11/2026**. Cada execução produz o próximo episódio e acrescenta uma linha aqui
+Próximo: **ep17 — dom 29/11/2026**. Cada execução produz o próximo episódio e acrescenta uma linha aqui
 (status `entregue`). O próximo depois de cada um é sempre o dia seguinte à última data da tabela.
